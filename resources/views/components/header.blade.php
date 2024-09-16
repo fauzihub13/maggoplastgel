@@ -23,50 +23,31 @@
                             <div class="nav-wrap">
                                 <nav id="mainnav" class="mainnav">
                                     <ul class="menu">
-                                        <li class="menu-item-has-children">
-                                            <a href="#" title="">Home</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="#" title="">Home 01</a></li>
-                                                <li><a href="#" title="">Home 02</a></li>
-                                            </ul>
+                                        <li class="">
+                                            <a href="{{ route('user.home') }}" title="">Home</a>
+
                                             <!-- /.sub-menu -->
                                         </li>
                                         <li class=" menu-item-has-children">
-                                            <a href="#" title="">About</a>
+                                            <a href="{{ route('user.about-us') }}" title="">About</a>
                                             <ul class="sub-menu">
-                                                <li><a href="#" title="">About Us</a></li>
-                                                <li><a href="#" title="">Team</a></li>
-                                                <li><a href="#" title="">Faq</a></li>
-                                            </ul>
-                                            <!-- /.sub-menu -->
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#" title="">Services</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="#" title="">Services</a></li>
-                                                <li><a href="#" title="">Service Details</a></li>
-                                            </ul>
-                                            <!-- /.sub-menu -->
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#" title="">Case</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="#" title="">Case Study</a></li>
-                                                <li><a href="#" title="">Case Details</a></li>
+                                                <li><a href="{{ route('user.about-us') }}" title="">About Us</a></li>
+                                                <li><a href="{{ route('user.team') }}" title="">Team</a></li>
                                             </ul>
                                             <!-- /.sub-menu -->
                                         </li>
                                         <li class="current-menu-item menu-item-has-children">
-                                            <a href="#" title="">Blog</a>
+                                            <a href="{{ route('user.blog') }}" title="">Blog</a>
                                             <ul class="sub-menu">
-                                                <li><a href="#" title="">Blog Standard</a></li>
-                                                <li class="current-item"><a href="#" title="">Blog Detail</a></li>
+                                                <li><a href="{{ route('user.blog') }}" title="">Blog Index</a></li>
+                                                <li class="current-item"><a href="{{ route('user.blog.detail') }}" title="">Blog Detail</a></li>
                                             </ul>
                                             <!-- /.sub-menu -->
                                         </li>
                                         <li>
-                                            <a href="#" title="">Contact</a>
+                                            <a href="{{ route('user.contact-us') }}" title="">Contact Us</a>
                                         </li>
+                                        <li><a href="{{ route('user.faq') }}" title="">Faq</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -74,29 +55,12 @@
                         <div class="col-md-3">
                             <div class="site-header-right">
                                 <div class="header-inner">
-                                    <div class="search flat-show-search">
-                                        <div class="show-search">
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                        <div class="top-search widgets-input">
-                                            <form action="get" id="searchform-all"
-                                                class="header-search search-form">
-                                                <div class="input-group">
-                                                    <input type="search" id="s"
-                                                        class="search-field"
-                                                        placeholder="Search here" aria-label="Search" />
-                                                        <button class="search-submit" type="submit" title="Search"></button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
+
                                     <div class="cart">
                                         <a href="#" class="cart-btn"><i
                                                 class="fa fa-shopping-cart"></i></a>
                                     </div>
-                                    <div class="button">
-                                        <a href="#" class="btn">Get A Quote</a>
-                                    </div>
+
                                 </div>
                             </div>
                             <!-- header right -->
