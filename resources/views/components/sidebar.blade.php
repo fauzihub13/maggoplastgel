@@ -22,6 +22,21 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-header">Konten</li>
+            <li class="nav-item dropdown {{ $type_menu === 'article' ? 'active' : '' }}">
+                <a href="#"
+                    class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Artikel</span></a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('/artikel/daftar-artikel') ? 'active' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ url('/artikel/daftar-artikel') }}">Daftar  Artikel</a>
+                    </li>
+                    <li class='{{ Request::is('/artikel/tambah-artikel') ? 'active' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ url('/artikel/tambah-artikel') }}">Tambah  Artikel</a>
+                    </li>
+                </ul>
+            </li>
             <li class="menu-header">Starter</li>
             <li class="nav-item dropdown {{ $type_menu === 'layout' ? 'active' : '' }}">
                 <a href="#"

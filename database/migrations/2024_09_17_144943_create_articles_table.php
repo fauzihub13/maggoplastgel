@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->uuid('id');
+            $table->foreignUuid('user_id');
             $table->foreignUuid('article_category_id');
             $table->string('slug')->unique();
             $table->string('title');
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->text('body');
             $table->enum('status', ['publish', 'draft', 'pending']);
             $table->string('tags');
+            $table->timestamp('deleted_at');
             $table->timestamps();
         });
     }

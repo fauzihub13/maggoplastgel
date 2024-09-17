@@ -30,6 +30,14 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
         return view('pages.admin.dashboard-general-dashboard', ['type_menu' => 'dashboard']);
     });
 
+    // Artikel
+    Route::get('/artikel/tambah-artikel', function(){
+        return view('pages.admin.article.article-create', ['type_menu' => 'article']);
+    });
+    Route::get('/artikel/daftar-artikel', function(){
+        return view('pages.admin.article.article-list', ['type_menu' => 'article']);
+    });
+
     // Route::redirect('/', '/dashboard-general-dashboard');
 
     // Dashboard
