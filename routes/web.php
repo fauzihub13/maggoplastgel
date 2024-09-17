@@ -26,7 +26,11 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
     //     return 'Admin sub domain';
     // });
 
-    Route::redirect('/', '/dashboard-general-dashboard');
+    Route::get('/', function(){
+        return view('pages.admin.dashboard-general-dashboard', ['type_menu' => 'dashboard']);
+    });
+
+    // Route::redirect('/', '/dashboard-general-dashboard');
 
     // Dashboard
     Route::get('/dashboard-general-dashboard', function () {
