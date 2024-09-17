@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('title');
             $table->string('thumbnail');
-            $table->text('body');
+            $table->longText('body');
             $table->enum('status', ['publish', 'draft', 'pending']);
             $table->string('tags');
-            $table->timestamp('deleted_at');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,11 +32,10 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
     });
 
     // Artikel
-    Route::get('/artikel/tambah-artikel', function(){
-        return view('pages.admin.article.article-create', ['type_menu' => 'article']);
-    });
-    Route::get('/artikel/daftar-artikel', function(){
-        return view('pages.admin.article.article-list', ['type_menu' => 'article']);
+    Route::controller(ArticleController::class)->group(function() {
+        Route::get('/artikel/tambah-artikel', 'createIndex');
+        Route::get('/artikel/daftar-artikel', 'list');
+        Route::post('/artikel/tambah-artikel', 'create');
     });
 
     // Route::redirect('/', '/dashboard-general-dashboard');

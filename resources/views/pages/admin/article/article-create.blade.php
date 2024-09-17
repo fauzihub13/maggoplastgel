@@ -9,6 +9,7 @@
     <link rel="stylesheet"
         href="{{ asset('library/selectric/public/selectric.css') }}">
     <link rel="stylesheet"
+
         href="{{ asset('library/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endpush
 
@@ -36,7 +37,8 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <form class="card" method="post" action="">
+                            @csrf
                             <div class="card-header">
                                 <h4>Mulai Tulis Artikel</h4>
                             </div>
@@ -45,23 +47,23 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul</label>
                                     <div class="col-sm-12 col-md-7">
                                         <input type="text"
-                                            class="form-control">
+                                            class="form-control" name="title">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <select class="form-control selectric">
-                                            <option>Tech</option>
-                                            <option>News</option>
-                                            <option>Political</option>
+                                        <select class="form-control selectric" name="article_category_id">
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Konten</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea class="summernote"></textarea>
+                                        <textarea class="summernote" name="body"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
@@ -81,16 +83,16 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tags</label>
                                     <div class="col-sm-12 col-md-7">
                                         <input type="text"
-                                            class="form-control inputtags">
+                                            class="form-control inputtags" name="tags">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <select class="form-control selectric">
-                                            <option>Publish</option>
-                                            <option>Draft</option>
-                                            <option>Pending</option>
+                                        <select class="form-control selectric" name="status">
+                                            <option value="publish">Publish</option>
+                                            <option value="draft">Draft</option>
+                                            <option value="pending">Pending</option>
                                         </select>
                                     </div>
                                 </div>
@@ -101,7 +103,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

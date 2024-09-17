@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\ArticleCategory;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,8 +18,23 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
+            'id' => '9d08582d-0b84-4862-91a5-fd9581490c17',
+            'name' => 'Ali',
             'email' => 'test@example.com',
+            'password' => Hash::make('imtheadmin'),
+            'role' => 'admin',
+            'kelurahan' => 'Kebon Jeruk',
+            'kecamatan' => 'Kebon Jeruk',
+            'city' => 'Jakarta Barat',
+            'province' => 'DKI Jakarta',
+            'address_detail' => 'Jl. Raya Kebon Jeruk No. 1',
+            'zip_code' => '11530',
+            'phone_number' => '08123456789',
+        ]);
+
+        ArticleCategory::create([
+            'id' => '7d08582d-0b84-4862-91a5-fd9581490c20',
+            'name' => 'Kesehatan',
         ]);
     }
 }
