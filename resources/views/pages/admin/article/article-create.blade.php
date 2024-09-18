@@ -37,7 +37,7 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <form class="card" method="post" action="">
+                        <form class="card" method="post" action="" enctype="multipart/form-data">
                             @csrf
                             <div class="card-header">
                                 <h4>Mulai Tulis Artikel</h4>
@@ -74,8 +74,9 @@
                                             <label for="image-upload"
                                                 id="image-label">Pilih Gambar</label>
                                             <input type="file"
-                                                name="image"
-                                                id="image-upload" />
+                                                name="thumbnail"
+                                                id="image-upload" 
+                                                required/>
                                         </div>
                                     </div>
                                 </div>

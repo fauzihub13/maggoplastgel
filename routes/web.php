@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,22 +24,27 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
 
 // Admin Only
 Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
-    // Route::get('/', function () {
-    //     return 'Admin sub domain';
-    // });
+    
+    Route::get('/login', function(){
+        return view('pages.admin.auth.auth-login', ['type_menu' => 'login']);
+    })->name('login')->middleware('guest');
 
-    Route::get('/', function(){
-        return view('pages.admin.dashboard-general-dashboard', ['type_menu' => 'dashboard']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/', function(){
+            return view('pages.admin.dashboard-general-dashboard', ['type_menu' => 'dashboard']);
+        });
+        
+        // Artikel
+        Route::controller(ArticleController::class)->group(function() {
+            Route::get('/artikel/tambah-artikel', 'createIndex');
+            Route::get('/artikel/daftar-artikel', 'list');
+            Route::post('/artikel/tambah-artikel', 'create');
+        });
     });
 
-    // Artikel
-    Route::controller(ArticleController::class)->group(function() {
-        Route::get('/artikel/tambah-artikel', 'createIndex');
-        Route::get('/artikel/daftar-artikel', 'list');
-        Route::post('/artikel/tambah-artikel', 'create');
-    });
-
-    // Route::redirect('/', '/dashboard-general-dashboard');
 
     // Dashboard
     Route::get('/dashboard-general-dashboard', function () {
