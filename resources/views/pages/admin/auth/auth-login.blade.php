@@ -29,6 +29,7 @@
                         class="form-control"
                         name="email"
                         tabindex="1"
+                        value="{{ old('email') ?? '' }}"
                         required
                         autofocus>
                         @csrf

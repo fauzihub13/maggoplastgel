@@ -19,4 +19,24 @@ class Article extends Model
     public function articleCategory() {
         return $this->belongsTo(ArticleCategory::class);
     }
+
+    public function scopeNotInTrash($query) {
+        return $query->whereNull('deleted_at');
+    }
+
+    public function scopePublish($query) {
+        return $query->where('status', 'publish')->whereNull('deleted_at');
+    }
+
+    public function scopeDraft($query) {
+        return $query->where('status', 'draft')->whereNull('deleted_at');
+    }
+
+    public function scopePending($query) {
+        return $query->where('status', 'pending')->whereNull('deleted_at');
+    }
+
+    public function scopeTrash($query) {
+        return $query->whereNotNull('deleted_at');
+    }
 }

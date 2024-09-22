@@ -21,33 +21,40 @@
                     <a href="features-posts.html"
                         class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
                 </div>
-                <h1>Buat Artikel Baru</h1>
+                <h1>{{ isset($article) ? "Edit Artikel" : "Buat Artikel Baru" }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Artikel</a></div>
-                    <div class="breadcrumb-item">Buat Artikel Baru</div>
+                    <div class="breadcrumb-item">{{ isset($article) ? "Edit Artikel" : "Buat Artikel Baru" }}</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Buat Artikel Baru</h2>
+                <h2 class="section-title">{{ isset($article) ? "Edit Artikel" : "Buat Artikel Baru" }}</h2>
                 <p class="section-lead">
-                    Di halaman ini Anda dapat membuat artikel baru dan mengisi semua kolom.
+                    {{ isset($article) ? "Di halaman ini Anda dapat mengubah data atau konten dari artikel" : "Di halaman ini Anda dapat membuat artikel baru dan mengisi semua kolom." }}
                 </p>
 
                 <div class="row">
                     <div class="col-12">
                         <form class="card" method="post" action="" enctype="multipart/form-data">
                             @csrf
+                            @isset($article)
+                                @method('PUT')
+                                <input type="hidden" name="id" value="{{ $article->id }}">
+                            @endisset
                             <div class="card-header">
-                                <h4>Mulai Tulis Artikel</h4>
+                                <h4>{{ isset($article) ? "Edit Artikel" : "Mulai Tulis Artikel" }}</h4>
                             </div>
                             <div class="card-body">
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul</label>
                                     <div class="col-sm-12 col-md-7">
                                         <input type="text"
-                                            class="form-control" name="title">
+                                            class="form-control" 
+                                            name="title"
+                                            value="{{ isset($article) ? $article->title : "" }}"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
@@ -55,7 +62,7 @@
                                     <div class="col-sm-12 col-md-7">
                                         <select class="form-control selectric" name="article_category_id">
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option value="{{ $category->id }}" @selected(isset($article) && $article->article_category_id == $category->id)>{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -63,20 +70,21 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Konten</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea class="summernote" name="body"></textarea>
+                                        <textarea class="summernote" name="body">{{ isset($article) ? $article->body : "" }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
                                     <div class="col-sm-12 col-md-7">
                                         <div id="image-preview"
-                                            class="image-preview">
+                                            class="image-preview" style="{{ isset($article) ? "background-image: url('/storage/$article->thumbnail'); background-size: cover; background-position: center" : ""}}">
                                             <label for="image-upload"
                                                 id="image-label">Pilih Gambar</label>
                                             <input type="file"
                                                 name="thumbnail"
                                                 id="image-upload" 
-                                                required/>
+                                                accept="image/png, image/gif, image/jpeg, image/jpg"
+                                                {{ isset($article) ? "" : "required" }}/>
                                         </div>
                                     </div>
                                 </div>
@@ -84,23 +92,25 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tags</label>
                                     <div class="col-sm-12 col-md-7">
                                         <input type="text"
-                                            class="form-control inputtags" name="tags">
+                                            class="form-control inputtags" 
+                                            name="tags"
+                                            value="{{ isset($article) ? $article->tags : "" }}">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
                                     <div class="col-sm-12 col-md-7">
                                         <select class="form-control selectric" name="status">
-                                            <option value="publish">Publish</option>
-                                            <option value="draft">Draft</option>
-                                            <option value="pending">Pending</option>
+                                            <option value="publish" @selected(isset($article) && $article->status == "publish")>Publish</option>
+                                            <option value="draft" @selected(isset($article) && $article->status == "draft")>Draft</option>
+                                            <option value="pending" @selected(isset($article) && $article->status == "pending")>Pending</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <button class="btn btn-primary">Buat Artikel</button>
+                                        <button class="btn btn-primary">{{ isset($article) ? "Edit" : "Buat" }} Artikel</button>
                                     </div>
                                 </div>
                             </div>

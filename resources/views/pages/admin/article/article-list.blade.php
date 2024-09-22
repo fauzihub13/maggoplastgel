@@ -36,19 +36,35 @@
                                 <ul class="nav nav-pills">
                                     <li class="nav-item">
                                         <a class="nav-link active"
-                                            href="#">All <span class="badge badge-white">5</span></a>
+                                            data-toggle="tab"
+                                            href="#all"
+                                            role="tab"
+                                            aria-controls="all"
+                                            aria-selected="true">All <span class="badge badge-white">{{ $articles->count() }}</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"
-                                            href="#">Draft <span class="badge badge-primary">1</span></a>
+                                            data-toggle="tab"
+                                            href="#draft"
+                                            role="tab"
+                                            aria-controls="draft"
+                                            aria-selected="false">Draft <span class="badge badge-primary">{{ $draft->count() }}</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"
-                                            href="#">Pending <span class="badge badge-primary">1</span></a>
+                                            data-toggle="tab"
+                                            href="#pending"
+                                            role="tab"
+                                            aria-controls="pending"
+                                            aria-selected="false">Pending <span class="badge badge-primary">{{ $pending->count() }}</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"
-                                            href="#">Trash <span class="badge badge-primary">0</span></a>
+                                            data-toggle="tab"
+                                            href="#trash"
+                                            role="tab"
+                                            aria-controls="trash"
+                                            aria-selected="false">Trash <span class="badge badge-primary">{{ $trash->count() }}</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -61,7 +77,7 @@
                             <div class="card-header">
                                 <h4>Semua Artikel</h4>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body tab-content">
                                 <div class="float-left">
                                     <select class="form-control selectric">
                                         <option>Action For Selected</option>
@@ -85,7 +101,10 @@
 
                                 <div class="clearfix mb-3"></div>
 
-                                <div class="table-responsive">
+                                <div class="table-responsive tab-pane fade show active"
+                                        id="all"
+                                        role="tabpanel"
+                                        aria-labelledby="home-tab3">
                                     <table class="table-striped table">
                                         <tr>
                                             <th class="pt-2 text-center">
@@ -119,11 +138,16 @@
                                             </td>
                                             <td>{{ $article->title }}
                                                 <div class="table-links">
-                                                    <a href="#">View</a>
+                                                    <a href="/artikel/{{ $article->slug }}">View</a>
                                                     <div class="bullet"></div>
-                                                    <a href="#">Edit</a>
+                                                    <a href="/artikel/edit-artikel/{{ $article->id }}">Edit</a>
                                                     <div class="bullet"></div>
                                                     <a href="#"
+                                                        onclick="
+                                                            event.preventDefault();
+                                                            document.getElementById('trash-article').action = '/artikel/hapus-artikel/{{ $article->id }}';
+                                                            document.getElementById('trash-article').submit();
+                                                        "
                                                         class="text-danger">Trash</a>
                                                 </div>
                                             </td>
@@ -150,6 +174,225 @@
                                         
                                     </table>
                                 </div>
+
+                                <div class="table-responsive tab-pane fade"
+                                        id="draft"
+                                        role="tabpanel"
+                                        aria-labelledby="draft">
+                                    <table class="table-striped table">
+                                        <tr>
+                                            <th class="pt-2 text-center">
+                                                <div class="custom-checkbox custom-checkbox-table custom-control">
+                                                    <input type="checkbox"
+                                                        data-checkboxes="mygroup"
+                                                        data-checkbox-role="dad"
+                                                        class="custom-control-input"
+                                                        id="checkbox-all">
+                                                    <label for="checkbox-all"
+                                                        class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </th>
+                                            <th>Judul</th>
+                                            <th>Kategori</th>
+                                            <th>Author</th>
+                                            <th>Tanggal Dibuat</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        @foreach ($draft as $article)
+                                        <tr>
+                                            <td>
+                                                <div class="custom-checkbox custom-control">
+                                                    <input type="checkbox"
+                                                        data-checkboxes="mygroup"
+                                                        class="custom-control-input"
+                                                        id="checkbox-2">
+                                                    <label for="checkbox-2"
+                                                        class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <td>{{ $article->title }}
+                                                <div class="table-links">
+                                                    <a href="/artikel/{{ $article->slug }}">View</a>
+                                                    <div class="bullet"></div>
+                                                    <a href="/artikel/edit-artikel/{{ $article->id }}">Edit</a>
+                                                    <div class="bullet"></div>
+                                                    <a href="#"
+                                                        onclick="
+                                                            event.preventDefault();
+                                                            document.getElementById('trash-article').action = '/artikel/hapus-artikel/{{ $article->id }}';
+                                                            document.getElementById('trash-article').submit();
+                                                        "
+                                                        class="text-danger">Trash</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="#">{{ $article->articleCategory->name }}</a>
+                                            </td>
+                                            <td>
+                                                <a href="#">
+                                                    <img alt="image"
+                                                        src="{{ asset('img/avatar/avatar-5.png') }}"
+                                                        class="rounded-circle"
+                                                        width="35"
+                                                        data-toggle="title"
+                                                        title="">
+                                                    <div class="d-inline-block ml-1">{{ $article->user->name }}</div>
+                                                </a>
+                                            </td>
+                                            <td>{{ $article->created_at->format('Y-m-d') }}</td>
+                                            <td>
+                                                <div class="badge badge-{{ $article->status == 'publish' ? 'primary' : ($article->status == 'draft' ? 'danger' : 'warning') }} text-capitalize">{{ $article->status }}</div>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                        
+                                    </table>
+                                </div>
+
+                                <div class="table-responsive tab-pane fade"
+                                        id="pending"
+                                        role="tabpanel"
+                                        aria-labelledby="pending">
+                                    <table class="table-striped table">
+                                        <tr>
+                                            <th class="pt-2 text-center">
+                                                <div class="custom-checkbox custom-checkbox-table custom-control">
+                                                    <input type="checkbox"
+                                                        data-checkboxes="mygroup"
+                                                        data-checkbox-role="dad"
+                                                        class="custom-control-input"
+                                                        id="checkbox-all">
+                                                    <label for="checkbox-all"
+                                                        class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </th>
+                                            <th>Judul</th>
+                                            <th>Kategori</th>
+                                            <th>Author</th>
+                                            <th>Tanggal Dibuat</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        @foreach ($pending as $article)
+                                        <tr>
+                                            <td>
+                                                <div class="custom-checkbox custom-control">
+                                                    <input type="checkbox"
+                                                        data-checkboxes="mygroup"
+                                                        class="custom-control-input"
+                                                        id="checkbox-2">
+                                                    <label for="checkbox-2"
+                                                        class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <td>{{ $article->title }}
+                                                <div class="table-links">
+                                                    <a href="/artikel/{{ $article->slug }}">View</a>
+                                                    <div class="bullet"></div>
+                                                    <a href="/artikel/edit-artikel/{{ $article->id }}">Edit</a>
+                                                    <div class="bullet"></div>
+                                                    <a href="{{ route('article.trash', ['task' => $task]) }}"
+                                                        class="text-danger">Trash</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="#">{{ $article->articleCategory->name }}</a>
+                                            </td>
+                                            <td>
+                                                <a href="#">
+                                                    <img alt="image"
+                                                        src="{{ asset('img/avatar/avatar-5.png') }}"
+                                                        class="rounded-circle"
+                                                        width="35"
+                                                        data-toggle="title"
+                                                        title="">
+                                                    <div class="d-inline-block ml-1">{{ $article->user->name }}</div>
+                                                </a>
+                                            </td>
+                                            <td>{{ $article->created_at->format('Y-m-d') }}</td>
+                                            <td>
+                                                <div class="badge badge-{{ $article->status == 'publish' ? 'primary' : ($article->status == 'draft' ? 'danger' : 'warning') }} text-capitalize">{{ $article->status }}</div>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                        
+                                    </table>
+                                </div>
+
+                                <div class="table-responsive tab-pane fade"
+                                        id="trash"
+                                        role="tabpanel"
+                                        aria-labelledby="trash">
+                                    <table class="table-striped table">
+                                        <tr>
+                                            <th class="pt-2 text-center">
+                                                <div class="custom-checkbox custom-checkbox-table custom-control">
+                                                    <input type="checkbox"
+                                                        data-checkboxes="mygroup"
+                                                        data-checkbox-role="dad"
+                                                        class="custom-control-input"
+                                                        id="checkbox-all">
+                                                    <label for="checkbox-all"
+                                                        class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </th>
+                                            <th>Judul</th>
+                                            <th>Kategori</th>
+                                            <th>Author</th>
+                                            <th>Tanggal Dibuat</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        @foreach ($trash as $article)
+                                        <tr>
+                                            <td>
+                                                <div class="custom-checkbox custom-control">
+                                                    <input type="checkbox"
+                                                        data-checkboxes="mygroup"
+                                                        class="custom-control-input"
+                                                        id="checkbox-2">
+                                                    <label for="checkbox-2"
+                                                        class="custom-control-label">&nbsp;</label>
+                                                </div>
+                                            </td>
+                                            <td>{{ $article->title }}
+                                                <div class="table-links">
+                                                    <a href="/artikel/{{ $article->slug }}">View</a>
+                                                    <div class="bullet"></div>
+                                                    <a href="#"
+                                                    onclick="
+                                                            event.preventDefault();
+                                                            document.getElementById('restore-article').action = '/artikel/restore-artikel/{{ $article->id }}';
+                                                            document.getElementById('restore-article').submit();
+                                                        "
+                                                        >Restore</a>
+                                                    <div class="bullet"></div>
+                                                    <a href="#"
+                                                        class="text-danger confirm-delete">Delete</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="#">{{ $article->articleCategory->name }}</a>
+                                            </td>
+                                            <td>
+                                                <a href="#">
+                                                    <img alt="image"
+                                                        src="{{ asset('img/avatar/avatar-5.png') }}"
+                                                        class="rounded-circle"
+                                                        width="35"
+                                                        data-toggle="title"
+                                                        title="">
+                                                    <div class="d-inline-block ml-1">{{ $article->user->name }}</div>
+                                                </a>
+                                            </td>
+                                            <td>{{ $article->created_at->format('Y-m-d') }}</td>
+                                            <td>
+                                                <div class="badge badge-{{ $article->status == 'publish' ? 'primary' : ($article->status == 'draft' ? 'danger' : 'warning') }} text-capitalize">{{ $article->status }}</div>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                        
+                                    </table>
+                                </div>
+
                                 <div class="float-right">
                                     <nav>
                                         <ul class="pagination">
@@ -191,6 +434,21 @@
             </div>
         </section>
     </div>
+    <form id="trash-article" action="/artikel/hapus-artikel/" method="post"
+        style="display: none;">
+        @csrf
+        @method('PUT')
+   </form>   
+   <form id="restore-article" action="/artikel/restore-artikel/" method="post"
+        style="display: none;">
+        @csrf
+        @method('PUT')
+   </form> 
+   <form id="delete-article" action="/artikel/restore-artikel/" method="post"
+        style="display: none;">
+        @csrf
+        @method('PUT')
+   </form>   
 @endsection
 
 @push('scripts')
@@ -199,4 +457,29 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/features-posts.js') }}"></script>
+
+    <!-- JS Libraies -->
+    <script src="{{ asset('library/sweetalert/dist/sweetalert.min.js') }}"></script>
+
+    <!-- Script Fort This page -->
+    <script>
+        $(".confirm-delete").click(function() {
+            swal({
+                title: 'Apakah Anda yakin?',
+                text: 'Setelah dihapus, data artikel tidak dapat dikembalikan!',
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        document.getElementById('delete-article').action = '/artikel/hapus-permanen-artikel/{{ $article->id }}';
+                        document.getElementById('delete-article').submit();
+                    } else {
+                        swal('Artikel batal dihapus');
+                    }
+                }
+            );
+        });
+    </script>
 @endpush

@@ -41,7 +41,13 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
         Route::controller(ArticleController::class)->group(function() {
             Route::get('/artikel/tambah-artikel', 'createIndex');
             Route::get('/artikel/daftar-artikel', 'list');
+            Route::get('/artikel/edit-artikel/{article}', 'updateIndex');
+            Route::get('/artikel/{article:slug}', 'show');
             Route::post('/artikel/tambah-artikel', 'create');
+            Route::put('/artikel/edit-artikel/{article}', 'update');
+            Route::put('/artikel/hapus-artikel/{article}', 'delete');
+            Route::put('/artikel/hapus-permanen-artikel/{article}', 'destroy');
+            Route::put('/artikel/restore-artikel/{article}', 'restore');
         });
     });
 
