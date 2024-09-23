@@ -290,7 +290,12 @@
                                                     <div class="bullet"></div>
                                                     <a href="/artikel/edit-artikel/{{ $article->id }}">Edit</a>
                                                     <div class="bullet"></div>
-                                                    <a href="{{ route('article.trash', ['task' => $task]) }}"
+                                                    <a href="#"
+                                                        onclick="
+                                                            event.preventDefault();
+                                                            document.getElementById('trash-article').action = '/artikel/hapus-artikel/{{ $article->id }}';
+                                                            document.getElementById('trash-article').submit();
+                                                        "
                                                         class="text-danger">Trash</a>
                                                 </div>
                                             </td>

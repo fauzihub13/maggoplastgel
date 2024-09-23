@@ -47,6 +47,11 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Relasi one-to-many dengan tabel 'articles'
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function articles() {
         return $this->hasMany(Article::class);
     }
