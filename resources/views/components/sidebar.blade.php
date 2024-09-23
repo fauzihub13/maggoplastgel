@@ -25,15 +25,29 @@
             <li class="menu-header">Konten</li>
             <li class="nav-item dropdown {{ $type_menu === 'article' ? 'active' : '' }}">
                 <a href="#"
-                    class="nav-link has-dropdown"><i class="fas fa-newspaperr"></i><span>Artikel</span></a>
+                    class="nav-link has-dropdown"><i class="fas fa-newspaper"></i><span>Artikel</span></a>
                 <ul class="dropdown-menu">
                     <li class='{{ Request::is('artikel/daftar-artikel') ? 'active' : '' }}'>
                         <a class="nav-link"
-                            href="{{ url('/artikel/daftar-artikel') }}">Daftar  Artikel</a>
+                            href="{{ url('/artikel/daftar-artikel') }}">Daftar Artikel</a>
                     </li>
                     <li class='{{ Request::is('artikel/tambah-artikel') ? 'active' : '' }}'>
                         <a class="nav-link"
-                            href="{{ url('/artikel/tambah-artikel') }}">Tambah  Artikel</a>
+                            href="{{ url('/artikel/tambah-artikel') }}">Tambah Artikel</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown {{ $type_menu === 'product' ? 'active' : '' }}">
+                <a href="#"
+                    class="nav-link has-dropdown"><i class="fas fa-box-archive"></i><span>Produk</span></a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('produk/daftar-produk') ? 'active' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ url('/produk/daftar-produk') }}">Daftar Produk</a>
+                    </li>
+                    <li class='{{ Request::is('produk/tambah-produk') ? 'active' : '' }}'>
+                        <a class="nav-link"
+                            href="{{ url('/produk/tambah-produk') }}">Tambah Produk</a>
                     </li>
                 </ul>
             </li>

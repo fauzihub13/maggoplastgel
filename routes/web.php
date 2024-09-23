@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -48,6 +49,13 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
             Route::put('/artikel/hapus-artikel/{article}', 'delete');
             Route::put('/artikel/hapus-permanen-artikel/{article}', 'destroy');
             Route::put('/artikel/restore-artikel/{article}', 'restore');
+        });
+
+        // Produk
+        Route::controller(ProductController::class)->group(function(){
+            Route::get('/produk/tambah-produk', 'createIndex');
+            Route::get('/produk/daftar-produk', 'list');
+            Route::post('/produk/tambah-produk', 'store');
         });
     });
 

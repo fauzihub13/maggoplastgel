@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('user_id');
-            $table->foreignUuid('article_category_id');
             $table->string('slug')->unique();
-            $table->string('title');
-            $table->string('thumbnail');
-            $table->longText('body');
-            $table->enum('status', ['publish', 'draft', 'pending']);
-            $table->string('tags');
+            $table->string('name');
+            $table->text('description');
+            $table->integer('price');
+            $table->integer('weight');
+            $table->integer('length')->nullable();
+            $table->integer('width')->nullable();
+            $table->integer('height')->nullable();
+            $table->integer('stock');
+            $table->boolean('status');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('products');
     }
 };

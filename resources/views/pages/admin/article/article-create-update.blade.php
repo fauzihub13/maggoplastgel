@@ -41,7 +41,6 @@
                             @csrf
                             @isset($article)
                                 @method('PUT')
-                                <input type="hidden" name="id" value="{{ $article->id }}">
                             @endisset
                             <div class="card-header">
                                 <h4>{{ isset($article) ? "Edit Artikel" : "Mulai Tulis Artikel" }}</h4>
