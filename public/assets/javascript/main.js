@@ -120,7 +120,7 @@
         }); // each contactform
     };
 
-    //Wow animation 
+    //Wow animation
     var wow = new WOW({
         animateClass: 'animated',
         offset: 100
@@ -468,11 +468,11 @@
             if ( nav.size() !== 0 ) {
 
             $(window).on('load', function(){
-            var header = $('.header-style2.bg-color');           
+            var header = $('.header-style2.bg-color');
             var offsetTop = $('.header-style2.bg-color').offset().top;
             var headerHeight = $('.header-style2.bg-color').height();
-            var buffer  = $('<div>', { height: headerHeight }).insertAfter(header);   
-                buffer.hide();                 
+            var buffer  = $('<div>', { height: headerHeight }).insertAfter(header);
+                buffer.hide();
 
                 $(window).on('load scroll', function(){
                     if ( $(window).scrollTop() > offsetTop  ) {
@@ -483,7 +483,7 @@
                         buffer.hide();
                     }
                 })
-           
+
             });
         }
     };
@@ -495,7 +495,7 @@
         $('.flat-toggle.enable .toggle-title').on('click', function () {
             $(this).closest('.flat-toggle').find('.toggle-content').slideToggle(args);
             $(this).toggleClass('active');
-        }); // toggle 
+        }); // toggle
 
         $('.flat-accordion .toggle-title').on('click', function () {
             if (!$(this).is('.active')) {
@@ -571,11 +571,11 @@
     var retinaLogos = function() {
         var retina = window.devicePixelRatio > 1 ? true : false;
           if(retina) {
-              $('.logo-header').find('img').attr( {src:'./icon/logo-dark@2x.png',width:'172.7',height:'59.96'} );
+              $('.logo-header').find('img').attr( {src:'./assets/images/logo/Logo-x.png',width:'172.7',height:'59.96'} );
               $('.logo-footer-style2').find('img').attr( {src:'./icon/logo-dark@2x.png',width:'172.7',height:'59.96'} );
-              $('.logo-footer').find('img').attr( {src:'./icon/logo-light@2x.png',width:'172.7',height:'59.96'} );  
+              $('.logo-footer').find('img').attr( {src:'./icon/logo-light@2x.png',width:'172.7',height:'59.96'} );
           }
-      };       
+      };
 
     // Dom Ready
     $(function () {

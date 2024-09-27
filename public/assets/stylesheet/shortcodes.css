@@ -1,4 +1,4 @@
-/* 
+/*
   *Font global
   *Column custom
   *Header style 1
@@ -32,7 +32,7 @@
   *case details
 */
 
-/* font global 
+/* font global
 ---------------------------------------*/
 .sub-title {
     font-size: 16px;
@@ -61,7 +61,7 @@
     font-weight: 700;
 }
 
-/* column custom 
+/* column custom
 ---------------------------------------*/
 .item-three-column,
 .item-four-column {
@@ -76,7 +76,7 @@
     width: 25%;
 }
 
-/* header style 1 
+/* header style 1
 ---------------------------------------*/
 .top-header1 .top-location,
 .top-mail {
@@ -167,7 +167,7 @@
 .page-title-home1,
 .page-title-home2 {
     position: relative;
-    background-image: url(../images/home/imgheader.jpg);
+    background-image: url(../images/hero/hero-background.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -193,7 +193,7 @@
     right: 0;
 }
 
-/* slide 
+/* slide
 ---------------------------------------*/
 .title-slider {
     font-family: 'Jost', sans-serif;
@@ -238,7 +238,7 @@
     z-index: 200;
 }
 
-/* features 
+/* features
 ---------------------------------------*/
 .flat-features {
     margin-right: 0.3%;
@@ -269,7 +269,7 @@
     margin-left: -1px;
 }
 
-/* about 
+/* about
 ---------------------------------------*/
 .flat-about .about-post {
     position: relative;
@@ -378,11 +378,11 @@
     margin-left: -13px;
 }
 
-/* service 
+/* service
 ---------------------------------------*/
 .flat-services {
     background-color: var(--primary-color3);
-    background-image: url(../images/mask-back-ground/mask-services.png);
+    background-image: url(../images/background/section-background-1.webp);
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
@@ -500,7 +500,7 @@
     letter-spacing: -0.5px;
 }
 
-/* team 
+/* team
 ---------------------------------------*/
 .flat-team {
     background-color: var(--primary-color2);
@@ -604,7 +604,7 @@
     margin-bottom: 15px;
 }
 
-/* team profolio 
+/* team profolio
 ---------------------------------------*/
 .flat-profolio {
     margin: -166px 2.9% 0 2.5%;
@@ -690,7 +690,7 @@
     color: #ffff;
 }
 
-/* testimonials 
+/* testimonials
 ---------------------------------------*/
 .flat-testimonials {
     text-align: center;
@@ -772,7 +772,7 @@
     box-shadow: 4px 19px 73px #b4b4b46b;
 }
 
-/* about 2nd 
+/* about 2nd
 ---------------------------------------*/
 .flat-about-2nd {
     position: relative;
@@ -870,7 +870,7 @@
     margin-right: 13px;
 }
 
-/* subcribe 
+/* subcribe
 ---------------------------------------*/
 .subcribe-about {
     position: absolute;
@@ -934,7 +934,7 @@
     padding-right: 11px;
 }
 
-/* work process 
+/* work process
 ---------------------------------------*/
 .flat-work-process {
     padding: 120px 0 67px 0;
@@ -1005,7 +1005,7 @@
     padding: 24px 26px 24px 26px;
 }
 
-/* contact 
+/* contact
 ---------------------------------------*/
 .flat-contact {
     position: relative;
@@ -1163,7 +1163,7 @@ textarea {
     margin-top: 3px;
 }
 
-/* Blog 
+/* Blog
 ---------------------------------------*/
 .flat-blog-home01 {
     padding: 121px 0 167px 0;
@@ -1258,7 +1258,7 @@ textarea {
     letter-spacing: 0 !important;
 }
 
-/* features-home2 
+/* features-home2
 ---------------------------------------*/
 .features-home2 {
     position: absolute;
@@ -1294,7 +1294,7 @@ textarea {
     margin: 13px 0 0 -9px;
 }
 
-/* why choose us 
+/* why choose us
 ---------------------------------------*/
 .flat-why-choose-us {
     background-image: url(../images/mask-back-ground/Leaf-WCU.png);
@@ -1363,7 +1363,7 @@ textarea {
     margin-left: 8px;
 }
 
-/* about home2 
+/* about home2
 ---------------------------------------*/
 .flat-about-home2 {
     background-image: url(../images/mask-back-ground/mark-leaf.png);
@@ -1435,7 +1435,7 @@ textarea {
     margin-top: 39px;
 }
 
-/* service home2 
+/* service home2
 ---------------------------------------*/
 .flat-service-home2 {
     position: relative;
@@ -1503,7 +1503,7 @@ textarea {
     margin: 37px 0 30px 0;
 }
 
-/* shop 
+/* shop
 ---------------------------------------*/
 .flat-shop {
     margin-top: 254px;
@@ -1586,7 +1586,7 @@ textarea {
     font-family: 'FontAwesome';
 }
 
-/* counter 
+/* counter
 ---------------------------------------*/
 .flat-counter {
     background-color: var(--primary-color3);
@@ -1629,7 +1629,7 @@ textarea {
     padding: 37px 28px 31px 40px;
 }
 
-/* profolio home2 
+/* profolio home2
 ---------------------------------------*/
 .flat-profolio-home2 {
     margin: 0 2.4% 0 3%;
@@ -1648,7 +1648,7 @@ textarea {
     right: 6%;
 }
 
-/* testimonials home2 
+/* testimonials home2
 ---------------------------------------*/
 .flat-testimonials-home2 {
     position: relative;
@@ -1711,7 +1711,7 @@ textarea {
     margin-right: 1%;
 }
 
-/* news home2 
+/* news home2
 ---------------------------------------*/
 .flat-news-home2 {
     background-image: url(../images/news/news-mark-leaf.png);
@@ -1755,7 +1755,7 @@ textarea {
     margin-left: 10px;
 }
 
-/* services details 
+/* services details
 ---------------------------------------*/
 .flat-service-details .widget-nav-tab ul li {
     position: relative;
@@ -1900,7 +1900,7 @@ textarea {
     color: var(--primary-color2) ;
 }
 
-/* team page 
+/* team page
 -----------------------------*/
 .flat-team-page {
     padding: 121px 0 180px 0;
@@ -1915,7 +1915,7 @@ textarea {
     margin-top: 0;
 }
 
-/* case study 
+/* case study
 -----------------------------*/
 .flat-case-study .list-box-profolio .image-profolio img {
     width: 100%;
@@ -1931,7 +1931,7 @@ textarea {
     right: 5.8%;
 }
 
-/* flat faq 
+/* flat faq
 -----------------------------*/
 .flat-faq {
     margin: 120px 0;
@@ -2010,7 +2010,7 @@ textarea {
     color: #ffff;
 }
 
-/* flat contact page 
+/* flat contact page
 -----------------------------*/
 .flat-contact-page {
     margin: 117px 0;
@@ -2144,7 +2144,7 @@ textarea {
     background-color: #007BB5;
 }
 
-/* footer style2 
+/* footer style2
 ---------------------------------------*/
 .footer-style-2 {
     background-color: var(--primary-color3) !important;

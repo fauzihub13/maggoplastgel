@@ -6,7 +6,7 @@
                         <div class="top-footer wow fadeInDown">
                             <div class="top-footer-left">
                                 <div class="logo-footer">
-                                    <a href="#"><img src="{{ asset('assets/icon/logo-light.png') }}" alt="images"></a>
+                                    <a href="#"><img src="{{ asset('icon/logo-light.png') }}" alt="images"></a>
                                 </div>
                             </div>
                             <div class="top-footer-right">

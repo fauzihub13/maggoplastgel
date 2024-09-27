@@ -19,6 +19,7 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('stylesheet/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('stylesheet/custom.css') }}">
 
     <!-- Reponsive -->
     <link rel="stylesheet" type="text/css" href="{{ asset('stylesheet/responsive.css') }}">
@@ -40,43 +41,54 @@
 
 <body>
 
-    @include('components.main-header')
+    <div class="boxed blog">
 
-    @yield('main')
+        @include('components.main-header')
 
-    @include('components.main-footer')
+        @yield('main')
 
-    @stack('scripts')
+        <!-- btn go top -->
+        <div class="button-go-top">
+            <a href="#" title="" class="go-top">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
+        <!-- / btn go top -->
 
-    <!-- Javascript -->
-    <script type="text/javascript" src="{{ asset('javascript/jquery.min.js') }}"></script>
-    <script src="{{ asset('owlcarousel/owl.carousel.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('javascript/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('javascript/owl.carousel.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('javascript/jquery-validate.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('javascript/jquery.easing.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('javascript/jquery.cookie.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('javascript/waypoints.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('javascript/countto.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('javascript/wow.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('javascript/main.js') }}"></script>
-    <!-- /javascript -->
+        @include('components.main-footer')
 
-    <!-- slider -->
-    <script src="{{ asset('rev-slider/js/jquery.themepunch.revolution.min.js') }}"></script>
-    <script src="{{ asset('rev-slider/js/jquery.themepunch.tools.min.js') }}"></script>
-    <script src="{{ asset('javascript/rev-slider.js') }}"></script>
+        @stack('scripts')
 
-    <!-- Load Extensions only on Local File Systems ! The following part can be removed on Server for On Demand Loading -->
-    <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.actions.min.js') }}"></script>
-    <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.carousel.min.js') }}"></script>
-    <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.kenburn.min.js') }}"></script>
-    <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}"></script>
-    <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.migration.min.js') }}"></script>
-    <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.navigation.min.js') }}"></script>
-    <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.parallax.min.js') }}"></script>
-    <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}"></script>
-    <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
+        <!-- Javascript -->
+        <script type="text/javascript" src="{{ asset('javascript/jquery.min.js') }}"></script>
+        <script src="{{ asset('owlcarousel/owl.carousel.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('javascript/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('javascript/owl.carousel.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('javascript/jquery-validate.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('javascript/jquery.easing.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('javascript/jquery.cookie.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('javascript/waypoints.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('javascript/countto.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('javascript/wow.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('javascript/main.js') }}"></script>
+        <!-- /javascript -->
+
+        <!-- slider -->
+        <script src="{{ asset('rev-slider/js/jquery.themepunch.revolution.min.js') }}"></script>
+        <script src="{{ asset('rev-slider/js/jquery.themepunch.tools.min.js') }}"></script>
+        <script src="{{ asset('javascript/rev-slider.js') }}"></script>
+
+        <!-- Load Extensions only on Local File Systems ! The following part can be removed on Server for On Demand Loading -->
+        <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.actions.min.js') }}"></script>
+        <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.carousel.min.js') }}"></script>
+        <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.kenburn.min.js') }}"></script>
+        <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}"></script>
+        <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.migration.min.js') }}"></script>
+        <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.navigation.min.js') }}"></script>
+        <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.parallax.min.js') }}"></script>
+        <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}"></script>
+        <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
+    </div>
 
 </body>
 
