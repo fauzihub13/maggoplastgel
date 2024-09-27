@@ -12,7 +12,7 @@
 <div class="boxed blog">
 
         <!-- page title -->
-        <div class="page-title">
+        <div class="page-title space-header">
             <div class="container-fluid">
                 <div class="row">
                     <div class="inner-title">
@@ -45,7 +45,7 @@
                             <div class="content-blog-detail">
                                 <div class="image-box">
                                     <div class="image">
-                                        <img src="{{ asset('assets/images/blog/young-workers-greenhouse-feed-flowers-concept-caring-plants.jpg')}}" alt="image">
+                                        <img src="{{ asset('images/blog/young-workers-greenhouse-feed-flowers-concept-caring-plants.jpg')}}" alt="image">
                                     </div>
                                 </div>
                                 <div class="content mg-top-15">
@@ -81,7 +81,7 @@
                                     </p>
                                     <div class="image-box">
                                         <div class="image-2">
-                                            <img src="{{ asset('assets/images/blog/young-woman-working-glass-greenhouse.jpg')}}" alt="image">
+                                            <img src="{{ asset('images/blog/young-woman-working-glass-greenhouse.jpg')}}" alt="image">
                                         </div>
                                     </div>
                                     <div class="content-2 heading-content-box">
@@ -126,7 +126,7 @@
                                         <div class="widgets-comment-box">
                                             <div class="box-1">
                                                 <div class="image-comment bd-radius-50-image">
-                                                    <img src="{{ asset('assets/images/blog/avt1.jpg')}}" alt="image">
+                                                    <img src="{{ asset('images/blog/avt1.jpg')}}" alt="image">
                                                 </div>
                                                 <div class="content-comment">
                                                     <div class="title">
@@ -144,7 +144,7 @@
                                             </div>
                                             <div class="box-2">
                                                 <div class="image-comment bd-radius-50-image">
-                                                    <img src="{{ asset('assets/images//blog/avt2.jpg')}}" alt="image">
+                                                    <img src="{{ asset('images//blog/avt2.jpg')}}" alt="image">
                                                 </div>
                                                 <div class="content-comment">
                                                     <div class="title">
@@ -216,7 +216,7 @@
                                 <ul class="lastest-posts data-effect clearfix">
                                     <li class="clearfix">
                                         <div class="thumb data-effect-item has-effect-icon">
-                                            <img src="{{ asset('assets/images/blog/medium-shot-woman-holding-plant-pot.jpg')}}" alt="Image">
+                                            <img src="{{ asset('images/blog/medium-shot-woman-holding-plant-pot.jpg')}}" alt="Image">
                                             <div class="elm-link">
                                                 <a href="page-blog-single.html" class="icon-2"></a>
                                             </div>
@@ -228,7 +228,7 @@
                                     </li>
                                     <li class="clearfix">
                                         <div class="thumb data-effect-item has-effect-icon">
-                                            <img src="{{ asset('assets/images/blog/close-up-picture-hand-holding-wo.jpg')}}" alt="Image">
+                                            <img src="{{ asset('images/blog/close-up-picture-hand-holding-wo.jpg')}}" alt="Image">
                                             <div class="elm-link">
                                                 <a href="page-blog-single.html" class="icon-2"></a>
                                             </div>
@@ -240,7 +240,7 @@
                                     </li>
                                     <li class="clearfix">
                                         <div class="thumb data-effect-item has-effect-icon">
-                                            <img src="{{ asset('assets/images/blog/planting-flowers-thumb.jpg')}}" alt="Image">
+                                            <img src="{{ asset('images/blog/planting-flowers-thumb.jpg')}}" alt="Image">
                                             <div class="elm-link">
                                                 <a href="page-blog-single.html" class="icon-2"></a>
                                             </div>
@@ -255,7 +255,7 @@
                             <!-- /.widget_lastest -->
                             <div class="widgets-contact-info">
                                 <div class="contact-info-img">
-                                    <img src="{{ asset('assets/images/blog/young-beautiful-florist-watering-flowers.jpg')}}" alt="image">
+                                    <img src="{{ asset('images/blog/young-beautiful-florist-watering-flowers.jpg')}}" alt="image">
                                 </div>
                                 <div class="contact-info-box">
                                     <div class="contact-info-content">

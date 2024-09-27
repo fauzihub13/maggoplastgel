@@ -673,7 +673,7 @@
                     <div class="row">
                         <div class="content-left">
                             <div class="tag-logo">
-                                <img src="" alt="images">
+                                <img src="{{ asset('images/logo/Logo-x.png') }}" alt="images">
                             </div>
                         </div>
                     </div>

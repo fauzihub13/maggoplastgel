@@ -6,3 +6,18 @@
 .mb-2 {
     margin-bottom: 2rem;
 }
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.vertical-center {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.space-header{
+    padding-top: 70px;
+    background-color: var(--primary-color2);
+    opacity: 0.8;
+}

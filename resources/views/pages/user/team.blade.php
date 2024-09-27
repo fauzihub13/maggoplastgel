@@ -10,7 +10,7 @@
 
 
     <!-- page title -->
-    <div class="page-title">
+    <div class="page-title space-header">
         <div class="container-fluid">
             <div class="row">
                 <div class="inner-title">
@@ -49,12 +49,12 @@
                                         <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
-                                <img src="{{asset('assets/images/team/staff1.png')}}" alt="images">
+                                <img src="{{asset('images/team/wiwi.webp')}}" alt="images">
                                 <a class="icon-top" href="#"></a>
                             </div>
                             <div class="info-staff">
-                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Doris Jordan </h3>
-                                <p class="section-desc-2"> Design Expert </p>
+                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Neng Wiwi W </h3>
+                                <p class="section-desc-2"> CEO </p>
                             </div>
                         </div>
                     </div>
@@ -69,12 +69,12 @@
                                         <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
-                                <img src="{{asset('assets/images/team/staff2.png')}}" alt="images">
+                                <img src="{{asset('images/team/fahrizal.webp')}}" alt="images">
                                 <a class="icon-top" href="#"></a>
                             </div>
                             <div class="info-staff">
-                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Johnny Ramirez </h3>
-                                <p class="section-desc-2"> Design Expert </p>
+                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Ir. Fahrizal Hazra, M.Sc </h3>
+                                <p class="section-desc-2"> Dosen Pendamping </p>
                             </div>
                         </div>
                     </div>
@@ -89,12 +89,12 @@
                                         <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
-                                <img src="{{asset('assets/images/team/staff3.png')}}" alt="images">
+                                <img src="{{asset('images/team/renhard.webp')}}" alt="images">
                                 <a class="icon-top" href="#"></a>
                             </div>
                             <div class="info-staff">
-                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Diana Wagner </h3>
-                                <p class="section-desc-2"> Design Expert </p>
+                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Renhard Al Rasyid </h3>
+                                <p class="section-desc-2"> CTO </p>
                             </div>
                         </div>
                     </div>
@@ -109,12 +109,12 @@
                                         <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
-                                <img src="{{asset('assets/images/team/staff1.png')}}" alt="images">
+                                <img src="{{asset('images/team/novia.webp')}}" alt="images">
                                 <a class="icon-top" href="#"></a>
                             </div>
                             <div class="info-staff">
-                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Doris Jordan </h3>
-                                <p class="section-desc-2"> Design Expert </p>
+                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Novia Miftakhul </h3>
+                                <p class="section-desc-2"> CFO </p>
                             </div>
                         </div>
                     </div>
@@ -129,12 +129,12 @@
                                         <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
-                                <img src="{{asset('assets/images/team/staff2.png')}}" alt="images">
+                                <img src="{{asset('images/team/suci.webp')}}" alt="images">
                                 <a class="icon-top" href="#"></a>
                             </div>
                             <div class="info-staff">
-                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Johnny Ramirez </h3>
-                                <p class="section-desc-2"> Design Expert </p>
+                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Suci Meyditia </h3>
+                                <p class="section-desc-2"> CMO </p>
                             </div>
                         </div>
                     </div>
@@ -149,12 +149,12 @@
                                         <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
-                                <img src="{{asset('assets/images/team/staff3.png')}}" alt="images">
+                                <img src="{{asset('images/team/seni.webp')}}" alt="images">
                                 <a class="icon-top" href="#"></a>
                             </div>
                             <div class="info-staff">
-                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Diana Wagner </h3>
-                                <p class="section-desc-2"> Design Expert </p>
+                                <h3 class="section-heading-rubik-size20 text-pri2-color"> Seni Fitriani </h3>
+                                <p class="section-desc-2"> CPO </p>
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,7 @@
 <div class="boxed blog">
 
         <!-- page title -->
-        <div class="page-title">
+        <div class="page-title space-header">
             <div class="container-fluid">
                 <div class="row">
                     <div class="inner-title">
@@ -42,8 +42,8 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="about-post center bd-radius-50-image">
-                            <img class="main-post-about" src="{{asset('assets/images/home/the-girl-in-the-glasses.jpg')}}" alt="images">
-                            <img class="circel-inside" src="{{asset('assets/images/home/circle-about.png')}}" alt="images">
+                            <img class="main-post-about" src="{{asset('images/home/the-girl-in-the-glasses.jpg')}}" alt="images">
+                            <img class="circel-inside" src="{{asset('images/home/circle-about.png')}}" alt="images">
                             <div class="about-count-box themesflat-counter">
                                 <div class="box">
                                     <div class="inner-about-count-box">
@@ -89,7 +89,7 @@
                                     </div>
                                 </div>
                                 <div class="image-desc">
-                                    <img class="image" src="{{asset('assets/images/home/box-flowers-green-garden.jpg')}}" alt="images">
+                                    <img class="image" src="{{asset('images/home/box-flowers-green-garden.jpg')}}" alt="images">
                                 </div>
                             </div>
                             <div class="button hover-up">
@@ -110,7 +110,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="image-about-home2">
-                        <img src="{{asset('assets/images/home/close-up-planting-flowers-pot.jpg')}}" alt="images">
+                        <img src="{{asset('images/home/close-up-planting-flowers-pot.jpg')}}" alt="images">
                     </div>
                     <div class="container">
                         <div class="row">
@@ -270,7 +270,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="counter-content-left wow fadeInLeft">
-                            <img class="background-counter" src="{{asset('assets/images/Counter/the-man-working-tree.jpg')}}" alt="images">
+                            <img class="background-counter" src="{{asset('images/Counter/the-man-working-tree.jpg')}}" alt="images">
                             <div class="content-left-box">
                                 <h2 class="title-main">We are nice people with a lot of experience.</h2>
                                 <p class="section-desc">Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph</p>
@@ -319,7 +319,7 @@
                     </div>
                     <div class="col-md-7">
                         <div class="testimonials-content-right wow fadeInRight">
-                            <img src="{{asset('assets/images/testimonials/young-beautiful-florist-watering-flowers.jpg')}}" alt="images">
+                            <img src="{{asset('images/testimonials/young-beautiful-florist-watering-flowers.jpg')}}" alt="images">
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -329,7 +329,7 @@
                                     <div class="testimonials-author-box bd-radius-8">
                                         <div class="testimonials-author">
                                             <div class="testimonials-author-img">
-                                                <img src="{{asset('assets/images/team/staff-box1.jpg')}}" class="bd-radius-50" alt="images">
+                                                <img src="{{asset('images/team/staff-box1.jpg')}}" class="bd-radius-50" alt="images">
                                             </div>
                                             <div class="testimonials-author-text">
                                                 <h4 class="section-desc-heading">Eugene Freeman</h4>
@@ -345,7 +345,7 @@
                                     <div class="testimonials-author-box box-2 bd-radius-8">
                                         <div class="testimonials-author">
                                             <div class="testimonials-author-img">
-                                                <img src="{{asset('assets/images/team/staff-box2.jpg')}}" class="bd-radius-50" alt="images">
+                                                <img src="{{asset('images/team/staff-box2.jpg')}}" class="bd-radius-50" alt="images">
                                             </div>
                                             <div class="testimonials-author-text">
                                                 <h4 class="section-desc-heading">Kelly Coleman</h4>
@@ -361,7 +361,7 @@
                                     <div class="testimonials-author-box bd-radius-8">
                                         <div class="testimonials-author">
                                             <div class="testimonials-author-img">
-                                                <img src="{{asset('assets/images/team/staff-box1.jpg')}}" class="bd-radius-50" alt="images">
+                                                <img src="{{asset('images/team/staff-box1.jpg')}}" class="bd-radius-50" alt="images">
                                             </div>
                                             <div class="testimonials-author-text">
                                                 <h4 class="section-desc-heading">Eugene Freeman</h4>
@@ -377,7 +377,7 @@
                                     <div class="testimonials-author-box box-2 bd-radius-8">
                                         <div class="testimonials-author">
                                             <div class="testimonials-author-img">
-                                                <img src="{{asset('assets/images/team/staff-box2.jpg')}}" class="bd-radius-50" alt="images">
+                                                <img src="{{asset('images/team/staff-box2.jpg')}}" class="bd-radius-50" alt="images">
                                             </div>
                                             <div class="testimonials-author-text">
                                                 <h4 class="section-desc-heading">Kelly Coleman</h4>

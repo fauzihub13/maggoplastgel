@@ -12,7 +12,7 @@
     <div class="boxed blog">
 
         <!-- page title -->
-        <div class="page-title">
+        <div class="page-title space-header">
             <div class="container-fluid">
                 <div class="row">
                     <div class="inner-title">
@@ -45,7 +45,7 @@
                             <article class="article-1">
                                 <div class="image-box">
                                     <div class="image">
-                                        <img src="{{asset('assets/images/blog/close-up-picture-hand-holding-wooden-tray-which-full-pots-plants.jpg')}}" alt="image">
+                                        <img src="{{asset('images/blog/close-up-picture-hand-holding-wooden-tray-which-full-pots-plants.jpg')}}" alt="image">
                                     </div>
                                     <div class="date-image">
                                         <p>28 JANUARY, 2021</p>
@@ -91,7 +91,7 @@
                             <article class="article-2">
                                 <div class="image-box">
                                     <div class="image">
-                                        <img src="{{asset('assets/images/blog/planting-flowers-pots.jpg')}}" alt="image">
+                                        <img src="{{asset('images/blog/planting-flowers-pots.jpg')}}" alt="image">
                                     </div>
                                     <div class="date-image">
                                         <p>28 JANUARY, 2021</p>
@@ -136,7 +136,7 @@
                             <article class="article-3">
                                 <div class="image-box">
                                     <div class="image">
-                                        <img src="{{asset('assets/images/blog/plants-pot-with-watering-can.jpg')}}" alt="image">
+                                        <img src="{{asset('images/blog/plants-pot-with-watering-can.jpg')}}" alt="image">
                                     </div>
                                     <div class="date-image">
                                         <p>28 JANUARY, 2021</p>
@@ -181,7 +181,7 @@
                             <article class="article-4">
                                 <div class="image-box">
                                     <div class="image">
-                                        <img src="{{asset('assets/images/blog/portrait-smiling-young-woman-holding-colorful-petunias-wooden-crate.jpg')}}" alt="image">
+                                        <img src="{{asset('images/blog/portrait-smiling-young-woman-holding-colorful-petunias-wooden-crate.jpg')}}" alt="image">
                                     </div>
                                     <div class="date-image">
                                         <p>28 JANUARY, 2021</p>
@@ -271,7 +271,7 @@
                                 <ul class="lastest-posts data-effect clearfix">
                                     <li class="clearfix">
                                         <div class="thumb data-effect-item has-effect-icon">
-                                            <img src="{{asset('assets/images/blog/medium-shot-woman-holding-plant-pot.jpg')}}" alt="Image">
+                                            <img src="{{asset('images/blog/medium-shot-woman-holding-plant-pot.jpg')}}" alt="Image">
                                         </div>
                                         <div class="text">
                                             <h3><a href="{{ route('user.blog.detail') }}" class="title-thumb">Integer at faucibus urna. Nullam condimentum</a></h3>
@@ -280,7 +280,7 @@
                                     </li>
                                     <li class="clearfix">
                                         <div class="thumb data-effect-item has-effect-icon">
-                                           <img src="{{asset('assets/images/blog/close-up-picture-hand-holding-wo.jpg')}}" alt="Image">
+                                           <img src="{{asset('images/blog/close-up-picture-hand-holding-wo.jpg')}}" alt="Image">
                                         </div>
                                         <div class="text">
                                             <h3><a href="{{ route('user.blog.detail') }}" class="title-thumb">Nunc scelerisque tincidunt estibulum</a></h3>
@@ -289,7 +289,7 @@
                                     </li>
                                     <li class="clearfix">
                                         <div class="thumb data-effect-item has-effect-icon">
-                                            <img src="{{asset('assets/images/blog/planting-flowers-thumb.jpg')}}" alt="Image">
+                                            <img src="{{asset('images/blog/planting-flowers-thumb.jpg')}}" alt="Image">
                                         </div>
                                         <div class="text">
                                             <h3><a href="{{ route('user.blog.detail') }}" class="title-thumb">Cras eu elit congue, plac erat duicidunt nisl</a></h3>
@@ -301,7 +301,7 @@
                             <!-- /.widget_lastest -->
                             <div class="widgets-contact-info">
                                 <div class="contact-info-img">
-                                    <img src="{{asset('assets/images/blog/young-beautiful-florist-watering-flowers.jpg')}}" alt="image">
+                                    <img src="{{asset('images/blog/young-beautiful-florist-watering-flowers.jpg')}}" alt="image">
                                 </div>
                                 <div class="contact-info-box">
                                     <div class="contact-info-content">
@@ -316,7 +316,7 @@
                                             <div class="icon-our-mail"></div>
                                             <div class="content-our-mail">
                                                 <h4 class="heading-16px-rubik">Our Mail</h4>
-                                                <h4 class="heading-16px-rubik">yourname@mail.com</h4>
+                                                <h4 class="heading-16px-rubik">maggoplastgel@mail.com</h4>
                                             </div>
                                         </div>
                                     </div>

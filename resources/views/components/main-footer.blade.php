@@ -6,7 +6,7 @@
                         <div class="top-footer wow fadeInDown">
                             <div class="top-footer-left">
                                 <div class="logo-footer">
-                                    <a href="#"><img src="{{ asset('icon/logo-light.png') }}" alt="images"></a>
+                                    <a href="#"><img src="{{ asset('images/logo/Logo-x.png') }}" alt="images"></a>
                                 </div>
                             </div>
                             <div class="top-footer-right">
@@ -14,16 +14,15 @@
                                     <div class="footer-info-item">
                                         <div class="location">
                                             <div class="icon-location"></div>
-                                            <div class="content-location">
-                                                <div class="heading-16px-rubik">66 broklyant, new York India 3269 road.</div>
+                                            <div class="content-location vertical-center">
+                                                <div class="heading-16px-rubik">Jalan Malabar Ujung No. 53, Bogor Tengah</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="footer-info-item">
                                         <div class="phone-call">
                                             <div class="icon-phone-call"></div>
-                                            <div class="content-phone-call">
-                                                <div class="heading-16px-rubik">012 345 678 9101</div>
+                                            <div class="content-phone-call vertical-center">
                                                 <div class="heading-16px-rubik">012 345 678 9101</div>
                                             </div>
                                         </div>
@@ -31,9 +30,8 @@
                                     <div class="footer-info-items">
                                         <div class="email">
                                             <div class="icon-email"></div>
-                                            <div class="content-email">
-                                                <div class="heading-16px-rubik">yourmail.@gmail.com</div>
-                                                <div class="heading-16px-rubik">yourgmail.@gmail.com</div>
+                                            <div class="content-email vertical-center">
+                                                <div class="heading-16px-rubik">maggoplastgel@gmail.com</div>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +117,7 @@
                         <div class="col-md-12">
                             <div class="copyright link-style4">
                                 <p class="copyright-text">
-                                    copyright 2021 by themesflat
+                                    copyright @2024 by maggoplastgel
                                 </p>
                             </div>
 

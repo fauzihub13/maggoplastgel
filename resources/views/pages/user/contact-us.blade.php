@@ -12,7 +12,7 @@
 <div class="boxed blog">
 
         <!-- page title -->
-        <div class="page-title">
+        <div class="page-title space-header">
             <div class="container-fluid">
                 <div class="row">
                     <div class="inner-title">
