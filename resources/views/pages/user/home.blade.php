@@ -470,7 +470,7 @@
         <div class="container">
             <div class="row">
                 <div class="list-team">
-                    <div class="item-three-column">
+                    <div class="item-three-column mb-2">
                         <div class="team-box wow fadeInUp">
                             <div class="image-staff">
                                 <div class="backround-overlay"></div>
@@ -484,12 +484,12 @@
                                 <img src="{{ asset('images/team/wiwi.webp') }}" alt="images">
                             </div>
                             <div class="info-staff link-style4">
-                                <h3 class="section-heading-rubik-size20"> Doris Jordan </h3>
-                                <p class="section-desc-2 white"> Design Expert </p>
+                                <h3 class="section-heading-rubik-size20"> Neng Wiwi W </h3>
+                                <p class="section-desc-2 white"> CEO </p>
                             </div>
                         </div>
                     </div>
-                    <div class="item-three-column">
+                    <div class="item-three-column mb-2">
                         <div class="team-box wow fadeInUp">
                             <div class="image-staff">
                                 <div class="backround-overlay"></div>
@@ -500,15 +500,15 @@
                                         <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
-                                <img src="{{ asset('images/team/staff2.png') }}" alt="images">
+                                <img src="{{ asset('images/team/fahrizal.webp') }}" alt="images">
                             </div>
                             <div class="info-staff link-style4">
-                                <h3 class="section-heading-rubik-size20"> Johnny Ramirez </h3>
-                                <p class="section-desc-2 white"> Design Expert </p>
+                                <h3 class="section-heading-rubik-size20"> Ir. Fahrizal Hazra, M.Sc </h3>
+                                <p class="section-desc-2 white"> Dosen Pendamping </p>
                             </div>
                         </div>
                     </div>
-                    <div class="item-three-column">
+                    <div class="item-three-column mb-2">
                         <div class="team-box wow fadeInUp">
                             <div class="image-staff">
                                 <div class="backround-overlay"></div>
@@ -519,113 +519,78 @@
                                         <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
-                                <img src="{{ asset('images/team/staff3.png') }}" alt="images">
+                                <img src="{{ asset('images/team/renhard.webp') }}" alt="images">
                             </div>
                             <div class="info-staff link-style4">
-                                <h3 class="section-heading-rubik-size20"> Diana Wagner </h3>
-                                <p class="section-desc-2 white"> Design Expert </p>
+                                <h3 class="section-heading-rubik-size20"> Renhard Al Rasyid </h3>
+                                <p class="section-desc-2 white"> CTO </p>
                             </div>
                         </div>
                     </div>
+                    <div class="item-three-column mb-2">
+                        <div class="team-box wow fadeInUp">
+                            <div class="image-staff">
+                                <div class="backround-overlay"></div>
+                                <div class="list-icon-hidden">
+                                    <ul class="widgets-nav-social link-style3">
+                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                                <img src="{{ asset('images/team/novia.webp') }}" alt="images">
+                            </div>
+                            <div class="info-staff link-style4">
+                                <h3 class="section-heading-rubik-size20"> Novia Miftakhul </h3>
+                                <p class="section-desc-2 white"> CFO </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-three-column mb-2">
+                        <div class="team-box wow fadeInUp">
+                            <div class="image-staff">
+                                <div class="backround-overlay"></div>
+                                <div class="list-icon-hidden">
+                                    <ul class="widgets-nav-social link-style3">
+                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                                <img src="{{ asset('images/team/suci.webp') }}" alt="images">
+                            </div>
+                            <div class="info-staff link-style4">
+                                <h3 class="section-heading-rubik-size20"> Suci Meyditia </h3>
+                                <p class="section-desc-2 white"> CMO </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-three-column mb-2">
+                        <div class="team-box wow fadeInUp">
+                            <div class="image-staff">
+                                <div class="backround-overlay"></div>
+                                <div class="list-icon-hidden">
+                                    <ul class="widgets-nav-social link-style3">
+                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                                <img src="{{ asset('images/team/seni.webp') }}" alt="images">
+                            </div>
+                            <div class="info-staff link-style4">
+                                <h3 class="section-heading-rubik-size20"> Seni Fitriani </h3>
+                                <p class="section-desc-2 white"> CPO </p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
     <!-- /Our team -->
 
-    <!-- our-profolio -->
-    <section class="flat-profolio">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="item-four-column">
-                    <div class="list-box-profolio wow fadeInUp">
-                        <div class="image-profolio bd-radius-8-image">
-                            <img src="{{ asset('images/profolio/home1-item1.jpg') }}" alt="images">
-                            <div class="profolio-show">
-                                <div class="profolio-info">
-                                    <div class="info">
-                                        <a href="case-details.html">
-                                            <h3 class="section-heading-jost-size20">
-                                                Finished Work</h3>
-                                        </a>
-                                        <p class="desc-box">Dummy text of free available</p>
-                                    </div>
-                                    <div class="button-next">
-                                        <a class="profolio-btn" href="case-details.html"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-four-column">
-                    <div class="list-box-profolio wow fadeInDown">
-                        <div class="image-profolio bd-radius-8-image">
-                            <img src="{{ asset('images/profolio/home1-item2.jpg') }}" alt="images">
-                            <div class="profolio-show active">
-                                <div class="profolio-info">
-                                    <div class="info">
-                                        <a href="case-details.html">
-                                            <h3 class="section-heading-jost-size20">
-                                                Finished Work</h3>
-                                        </a>
-                                        <p class="desc-box">Dummy text of free available</p>
-                                    </div>
-                                    <div class="button-next">
-                                        <a class="profolio-btn" href="case-details.html"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-four-column">
-                    <div class="list-box-profolio wow fadeInUp">
-                        <div class="image-profolio bd-radius-8-image">
-                            <img src="{{ asset('images/profolio/home1-item3.jpg') }}" alt="images">
-                            <div class="profolio-show">
-                                <div class="profolio-info">
-                                    <div class="info">
-                                        <a href="case-details.html">
-                                            <h3 class="section-heading-jost-size20">
-                                                Finished Work</h3>
-                                        </a>
-                                        <p class="desc-box">Dummy text of free available</p>
-                                    </div>
-                                    <div class="button-next">
-                                        <a class="profolio-btn" href="case-details.html"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-four-column">
-                    <div class="list-box-profolio wow fadeInDown">
-                        <div class="image-profolio bd-radius-8-image">
-                            <img src="{{ asset('images/profolio/home1-item4.jpg')}}" alt="images">
-                            <div class="profolio-show">
-                                <div class="profolio-info">
-                                    <div class="info">
-                                        <a href="case-details.html">
-                                            <h3 class="section-heading-jost-size20">
-                                                Finished Work</h3>
-                                        </a>
-                                        <p class="desc-box">Dummy text of free available</p>
-                                    </div>
-                                    <div class="button-next">
-                                        <a class="profolio-btn" href="case-details.html"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <!-- /our profolio -->
 
     <!-- Testimonials -->
     <section class="flat-testimonials">
