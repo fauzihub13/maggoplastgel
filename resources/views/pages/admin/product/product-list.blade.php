@@ -28,49 +28,6 @@
                 <p class="section-lead">
                     Anda dapat mengelola semua produk, seperti mengedit, menghapus, dan lainnya.
                 </p>
-
-                {{-- <div class="row">
-                    <div class="col-12">
-                        <div class="card mb-0">
-                            <div class="card-body">
-                                <ul class="nav nav-pills">
-                                    <li class="nav-item">
-                                        <a class="nav-link active"
-                                            data-toggle="tab"
-                                            href="#all"
-                                            role="tab"
-                                            aria-controls="all"
-                                            aria-selected="true">All <span class="badge badge-white">{{ $articles->count() }}</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link"
-                                            data-toggle="tab"
-                                            href="#draft"
-                                            role="tab"
-                                            aria-controls="draft"
-                                            aria-selected="false">Draft <span class="badge badge-primary">{{ $draft->count() }}</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link"
-                                            data-toggle="tab"
-                                            href="#pending"
-                                            role="tab"
-                                            aria-controls="pending"
-                                            aria-selected="false">Pending <span class="badge badge-primary">{{ $pending->count() }}</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link"
-                                            data-toggle="tab"
-                                            href="#trash"
-                                            role="tab"
-                                            aria-controls="trash"
-                                            aria-selected="false">Trash <span class="badge badge-primary">{{ $trash->count() }}</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
@@ -78,20 +35,14 @@
                                 <h4>Semua Artikel</h4>
                             </div>
                             <div class="card-body tab-content">
-                                <div class="float-left">
-                                    <select class="form-control selectric">
-                                        <option>Action For Selected</option>
-                                        <option>Move to Draft</option>
-                                        <option>Move to Pending</option>
-                                        <option>Delete Pemanently</option>
-                                    </select>
-                                </div>
                                 <div class="float-right">
-                                    <form>
+                                    <form method="get">
                                         <div class="input-group">
                                             <input type="text"
+                                                name="search"
                                                 class="form-control"
-                                                placeholder="Search">
+                                                placeholder="Search"
+                                                value="{{ request()->search ?? '' }}">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -104,43 +55,29 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th>
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox"
-                                                        data-checkboxes="mygroup"
-                                                        data-checkbox-role="dad"
-                                                        class="custom-control-input"
-                                                        id="checkbox-all">
-                                                    <label for="checkbox-all"
-                                                        class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </th>
                                             <th>Produk</th>
                                             <th>Harga</th>
                                             <th>Berat</th>
                                             <th>Stok</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th class="text-center">Status</th>
+                                            <th></th>
                                         </tr>
                                         @foreach ($products as $product)
                                         <tr>
-                                            <td class="p-0 text-center">
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox"
-                                                        data-checkboxes="mygroup"
-                                                        class="custom-control-input"
-                                                        id="checkbox-1">
-                                                    <label for="checkbox-1"
-                                                        class="custom-control-label">&nbsp;</label>
+                                            <td class="d-flex">
+                                                <figure class="rounded border mr-2">
+                                                    <img src="/storage/{{ $product->productImages()->first()->path ?? '' }}" class="product-image" alt="...">
+                                                </figure>
+                                                <div>
+                                                    {{ $product->name }}
+                                                    <div class="table-links">
+                                                        <a href="#">View</a>
+                                                        <div class="bullet"></div>
+                                                        <a href="/produk/edit-produk/{{ $product->id }}">Edit</a>
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <figure class="avatar avatar-md mr-2">
-                                                    <img src="/storage/{{ $product->productImages()->first()->path ?? '' }}" alt="...">
-                                                </figure>
-                                                {{ $product->name }}
-                                            </td>
-                                            <td class="align-middle currency">
+                                            <td class="align-middle rupiah">
                                                 {{ $product->price }}
                                             </td>
                                             <td>
@@ -150,16 +87,39 @@
                                                 {{ $product->stock }}
                                             </td>
                                             <td>
-                                                <div class="badge badge-{{ $product->status ? "success" : "danger" }}">{{ $product->status ? "Aktif" : "Non-aktif" }}</div>
+                                                {{-- <div class="badge badge-{{ $product->status ? "success" : "danger" }}">{{ $product->status ? "Aktif" : "Non-aktif" }}</div> --}}
+                                                <label class="custom-switch mt-2">
+                                                    <input type="checkbox" 
+                                                        name="custom-switch-checkbox" 
+                                                        class="custom-switch-input" 
+                                                        @checked($product->status)
+                                                        onchange="
+                                                            event.preventDefault();
+                                                            document.getElementById('status-product').action = '/produk/{{ $product->status ? 'nonaktif' : 'aktif' }}-produk/{{ $product->id }}';
+                                                            document.getElementById('status-product').submit();"
+                                                        >
+                                                    <span class="custom-switch-indicator"></span>
+                                                    <span class="custom-switch-description">{{ $product->status ? "Aktif" : "Non-aktif" }}</span>
+                                                </label>
                                             </td>
-                                            <td><a href="#"
-                                                    class="btn btn-primary">Detail</a></td>
+                                            <td>
+                                                <div class="dropdown d-inline">
+                                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Aksi
+                                                    </button>
+                                                    <div class="dropdown-menu" style="">
+                                                        <a class="dropdown-item has-icon" href="/produk/edit-produk/{{ $product->id }}"><i class="fas fa-pen"></i> Edit</a>
+                                                        <a class="dropdown-item has-icon" href="#"><i class="fas fa-eye"></i> Lihat</a>
+                                                        <a class="dropdown-item has-icon text-danger remove-product" href="#" data-id="{{ $product->id }}"><i class="fas fa-trash"></i> Hapus</a>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </table>
                                 </div>
 
-                                <div class="float-right">
+                                {{-- <div class="float-right">
                                     <nav>
                                         <ul class="pagination">
                                             <li class="page-item disabled">
@@ -192,14 +152,25 @@
                                             </li>
                                         </ul>
                                     </nav>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </div> 
+    </div>
+    
+    <form id="status-product" action="" method="post"
+        style="display: none;">
+        @csrf
+        @method('PUT')
+   </form>   
+    <form id="delete-product-form" action="" method="post"
+          style="display: none;">
+          @csrf
+          @method('DELETE')
+     </form>
 @endsection
 
 @push('scripts')
@@ -207,13 +178,31 @@
     <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
     <script src="{{ asset('library/cleave.js/dist/cleave.min.js') }}"></script>
     <script src="{{ asset('library/sweetalert/dist/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('library/sweetalert/dist/sweetalert.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/features-posts.js') }}"></script>
+    <script src="{{ asset('js/rupiah.js') }}"></script>
     <script>
-        var cleaveC = new Cleave(".currency", {
-            numeral: true,
-            numeralThousandsGroupStyle: "thousand",
+
+        $(".remove-product").click(function(e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            swal({
+                title: 'Apakah Anda yakin?',
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        document.getElementById('delete-product-form').action = '/produk/hapus-produk/' + id;
+                        document.getElementById('delete-product-form').submit();
+                    } else {
+                        swal('Produk batal dihapus');
+                    }
+                }
+            );
         });
     </script>
     

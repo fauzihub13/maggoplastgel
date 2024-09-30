@@ -21,7 +21,7 @@
                     <a href="features-posts.html"
                         class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
                 </div>
-                <h1>{{ isset($product) ? "Edit Artikel" : "Tambah Produk Baru" }}</h1>
+                <h1>{{ isset($product) ? "Edit Produk" : "Tambah Produk Baru" }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Produk</a></div>
@@ -65,56 +65,37 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto Produk</label>
                                     <div class="col-sm-12 col-md-7 d-flex justify-content-start flex-wrap">
-                                        <div id="image-preview-1"
-                                            class="image-preview image-preview-product" style="{{ isset($article) ? "background-image: url('/storage/$article->thumbnail'); background-size: cover; background-position: center" : ""}}">
-                                            <label for="image-upload-1"
-                                                id="image-label">Foto 1</label>
-                                            <input type="file"
-                                                name="images[]"
-                                                id="image-upload-1" 
-                                                accept="image/png, image/gif, image/jpeg, image/jpg"
-                                                {{ isset($article) ? "" : "required" }}/>
-                                        </div>
-                                        <div id="image-preview-2"
-                                            class="image-preview image-preview-product" style="{{ isset($article) ? "background-image: url('/storage/$article->thumbnail'); background-size: cover; background-position: center" : ""}}">
-                                            <label for="image-upload-2"
-                                                id="image-label">Foto 2</label>
-                                            <input type="file"
-                                                name="images[]"
-                                                id="image-upload-2" 
-                                                accept="image/png, image/gif, image/jpeg, image/jpg"/>
-                                                {{-- {{ isset($article) ? "" : "required" }}/> --}}
-                                        </div>
-                                        <div id="image-preview-3"
-                                            class="image-preview image-preview-product" style="{{ isset($article) ? "background-image: url('/storage/$article->thumbnail'); background-size: cover; background-position: center" : ""}}">
-                                            <label for="image-upload-3"
-                                                id="image-label">Foto 3</label>
-                                            <input type="file"
-                                                name="images[]"
-                                                id="image-upload-3" 
-                                                accept="image/png, image/gif, image/jpeg, image/jpg"/>
-                                                {{-- {{ isset($article) ? "" : "required" }}/> --}}
-                                        </div>
-                                        <div id="image-preview-4"
-                                            class="image-preview image-preview-product" style="{{ isset($article) ? "background-image: url('/storage/$article->thumbnail'); background-size: cover; background-position: center" : ""}}">
-                                            <label for="image-upload-4"
-                                                id="image-label">Foto 4</label>
-                                            <input type="file"
-                                                name="images[]"
-                                                id="image-upload-4" 
-                                                accept="image/png, image/gif, image/jpeg, image/jpg"/>
-                                                {{-- {{ isset($article) ? "" : "required" }}/> --}}
-                                        </div>
-                                        <div id="image-preview-5"
-                                            class="image-preview image-preview-product" style="{{ isset($article) ? "background-image: url('/storage/$article->thumbnail'); background-size: cover; background-position: center" : ""}}">
-                                            <label for="image-upload-5"
-                                                id="image-label">Foto 5</label>
-                                            <input type="file"
-                                                name="images[]"
-                                                id="image-upload-5" 
-                                                accept="image/png, image/gif, image/jpeg, image/jpg"/>
-                                                {{-- {{ isset($article) ? "" : "required" }}/> --}}
-                                        </div>
+                                        
+                                        @if (isset($product))
+                                            @foreach ($product->productImages as $index => $image)
+                                                <div id="image-preview-{{ $index + 1 }}" class="image-preview image-preview-product position-relative"
+                                                style="background-image: url('/storage/{{ $image->path }}'); background-size: cover; background-position: center;">
+                                                    <button type="button" class="btn btn-light position-absolute z-15 top-50 start-50 delete-prev-image"><i class="fas fa-trash"></i></button>
+                                                    <label for="image-upload-{{ $index + 1 }}" id="image-label">Foto {{ $index + 1 }}</label>
+                                                    <input type="file" name="images[{{ $image->id }}]" class="change-image" id="image-upload-{{ $index + 1 }}" 
+                                                        accept="image/png, image/gif, image/jpeg, image/jpg"/>
+                                                    <input type="checkbox" class="delete-image-list" name="delete_images[]" value="{{ $image->id }}" id="">
+                                                </div>
+                                            @endforeach
+
+                                            {{-- Slot kosong jika gambar kurang dari 5 --}}
+                                            @for ($i = $product->productImages()->count() + 1; $i <= 5; $i++)
+                                                <div id="image-preview-{{ $i }}" class="image-preview image-preview-product">
+                                                    <label for="image-upload-{{ $i }}" id="image-label">Foto {{ $i }}</label>
+                                                    <input type="file" name="new_images[]" id="image-upload-{{ $i }}" 
+                                                        accept="image/png, image/gif, image/jpeg, image/jpg"/>
+                                                </div>
+                                            @endfor
+                                        @else
+                                            {{-- Jika create, tampilkan form untuk upload gambar baru --}}
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                <div id="image-preview-{{ $i }}" class="image-preview image-preview-product">
+                                                    <label for="image-upload-{{ $i }}" id="image-label">Foto {{ $i }}</label>
+                                                    <input type="file" name="images[]" id="image-upload-{{ $i }}" 
+                                                        accept="image/png, image/gif, image/jpeg, image/jpg"/>
+                                                </div>
+                                            @endfor
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
@@ -123,7 +104,7 @@
                                         <textarea class="form-control"
                                             data-height="150"
                                             name="description"
-                                            required=""></textarea>
+                                            required="">{{ isset($product) ? $product->description : "" }}</textarea>
                                         @error('description')
                                         <div class="invalid-feedback">
                                             Nama produk tidak valid
@@ -142,11 +123,12 @@
                                             </div>
                                             <input type="text"
                                                 class="form-control currency"
-                                                name="price">
+                                                name="price"
+                                                value="{{ isset($product) ? $product->price : "" }}">
                                         </div>
                                         @error('price')
                                         <div class="invalid-feedback">
-                                            Nama produk tidak valid
+                                            Harga produk tidak valid
                                         </div>
                                         @enderror
                                     </div>
@@ -162,7 +144,7 @@
                                             required>
                                         @error('stock')
                                         <div class="invalid-feedback">
-                                            Nama produk tidak valid
+                                            Stok produk tidak valid
                                         </div>
                                         @enderror
                                     </div>
@@ -174,7 +156,8 @@
                                             <input type="number"
                                                 class="form-control"
                                                 name="weight"
-                                                min="1">
+                                                min="1"
+                                                value="{{ isset($product) ? $product->weight : "" }}">
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     gram
@@ -183,7 +166,7 @@
                                         </div>
                                         @error('weight')
                                         <div class="invalid-feedback">
-                                            Nama produk tidak valid
+                                            Berat produk tidak valid
                                         </div>
                                         @enderror
                                     </div>
@@ -195,7 +178,8 @@
                                             <input type="number"
                                                 class="form-control"
                                                 placeholder="Panjang"
-                                                name="length">
+                                                name="length"
+                                                value="{{ isset($product) ? $product->length : "" }}">
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     cm
@@ -203,7 +187,7 @@
                                             </div>
                                             @error('length')
                                             <div class="invalid-feedback">
-                                                Nama produk tidak valid
+                                                Panjang produk tidak valid
                                             </div>
                                             @enderror
                                         </div>
@@ -213,7 +197,8 @@
                                             <input type="number"
                                                 class="form-control"
                                                 placeholder="Lebar"
-                                                name="width">
+                                                name="width"
+                                                value="{{ isset($product) ? $product->width : "" }}">
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     cm
@@ -221,7 +206,7 @@
                                             </div>
                                             @error('width')
                                             <div class="invalid-feedback">
-                                                Nama produk tidak valid
+                                                Lebar produk tidak valid
                                             </div>
                                             @enderror
                                         </div>
@@ -232,7 +217,8 @@
                                             <input type="number"
                                                 class="form-control"
                                                 placeholder="Tinggi"
-                                                name="height">
+                                                name="height"
+                                                value="{{ isset($product) ? $product->height : "" }}">
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     cm
@@ -240,7 +226,7 @@
                                             </div>
                                             @error('height')
                                             <div class="invalid-feedback">
-                                                Nama produk tidak valid
+                                                Tinggi produk tidak valid
                                             </div>
                                             @enderror
                                         </div>
@@ -254,13 +240,17 @@
                                                 name="status"
                                                 class="custom-switch-input"
                                                 value="1"
-                                                checked>
+                                                @if (isset($product))
+                                                    @checked($product->status)
+                                                @else
+                                                    @checked(true)
+                                                @endif>
                                             <span class="custom-switch-indicator"></span>
-                                            <span class="custom-switch-description">Aktif</span>
+                                            <span class="custom-switch-description"></span>
                                         </label>
                                         @error('status')
                                         <div class="invalid-feedback">
-                                            Nama produk tidak valid
+                                            Status produk tidak valid
                                         </div>
                                         @enderror
                                     </div>
@@ -349,6 +339,18 @@
 
             // Set nilai input ke raw value (tanpa format) sebelum form dikirim
             input.value = cleaveC.getRawValue();
+        });
+
+        $('.delete-prev-image').on('click', function(){
+            $(this).parent().css("background-image", "none")
+            $(this).hide()
+            $(this).siblings('.delete-image-list').prop('checked', true)
+        });
+
+        $('.change-image').on('change', function(){
+            if($(this).val() != ''){
+                $(this).siblings('.delete-image-list').prop('checked', false)
+            }
         });
     </script>
 @endpush

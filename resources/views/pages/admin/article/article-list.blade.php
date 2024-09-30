@@ -78,20 +78,14 @@
                                 <h4>Semua Artikel</h4>
                             </div>
                             <div class="card-body tab-content">
-                                <div class="float-left">
-                                    <select class="form-control selectric">
-                                        <option>Action For Selected</option>
-                                        <option>Move to Draft</option>
-                                        <option>Move to Pending</option>
-                                        <option>Delete Pemanently</option>
-                                    </select>
-                                </div>
                                 <div class="float-right">
-                                    <form>
+                                    <form method="get">
                                         <div class="input-group">
                                             <input type="text"
+                                                name="search"
                                                 class="form-control"
-                                                placeholder="Search">
+                                                placeholder="Search"
+                                                value="{{ request('search') ?? '' }}">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -107,17 +101,6 @@
                                         aria-labelledby="home-tab3">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th class="pt-2 text-center">
-                                                <div class="custom-checkbox custom-checkbox-table custom-control">
-                                                    <input type="checkbox"
-                                                        data-checkboxes="mygroup"
-                                                        data-checkbox-role="dad"
-                                                        class="custom-control-input"
-                                                        id="checkbox-all">
-                                                    <label for="checkbox-all"
-                                                        class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </th>
                                             <th>Judul</th>
                                             <th>Kategori</th>
                                             <th>Author</th>
@@ -126,16 +109,6 @@
                                         </tr>
                                         @foreach ($articles as $article)
                                         <tr>
-                                            <td>
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox"
-                                                        data-checkboxes="mygroup"
-                                                        class="custom-control-input"
-                                                        id="checkbox-2">
-                                                    <label for="checkbox-2"
-                                                        class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </td>
                                             <td>{{ $article->title }}
                                                 <div class="table-links">
                                                     <a href="/artikel/{{ $article->slug }}">View</a>
@@ -181,17 +154,6 @@
                                         aria-labelledby="draft">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th class="pt-2 text-center">
-                                                <div class="custom-checkbox custom-checkbox-table custom-control">
-                                                    <input type="checkbox"
-                                                        data-checkboxes="mygroup"
-                                                        data-checkbox-role="dad"
-                                                        class="custom-control-input"
-                                                        id="checkbox-all">
-                                                    <label for="checkbox-all"
-                                                        class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </th>
                                             <th>Judul</th>
                                             <th>Kategori</th>
                                             <th>Author</th>
@@ -200,16 +162,6 @@
                                         </tr>
                                         @foreach ($draft as $article)
                                         <tr>
-                                            <td>
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox"
-                                                        data-checkboxes="mygroup"
-                                                        class="custom-control-input"
-                                                        id="checkbox-2">
-                                                    <label for="checkbox-2"
-                                                        class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </td>
                                             <td>{{ $article->title }}
                                                 <div class="table-links">
                                                     <a href="/artikel/{{ $article->slug }}">View</a>
@@ -255,17 +207,6 @@
                                         aria-labelledby="pending">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th class="pt-2 text-center">
-                                                <div class="custom-checkbox custom-checkbox-table custom-control">
-                                                    <input type="checkbox"
-                                                        data-checkboxes="mygroup"
-                                                        data-checkbox-role="dad"
-                                                        class="custom-control-input"
-                                                        id="checkbox-all">
-                                                    <label for="checkbox-all"
-                                                        class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </th>
                                             <th>Judul</th>
                                             <th>Kategori</th>
                                             <th>Author</th>
@@ -274,16 +215,6 @@
                                         </tr>
                                         @foreach ($pending as $article)
                                         <tr>
-                                            <td>
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox"
-                                                        data-checkboxes="mygroup"
-                                                        class="custom-control-input"
-                                                        id="checkbox-2">
-                                                    <label for="checkbox-2"
-                                                        class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </td>
                                             <td>{{ $article->title }}
                                                 <div class="table-links">
                                                     <a href="/artikel/{{ $article->slug }}">View</a>
@@ -329,17 +260,6 @@
                                         aria-labelledby="trash">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th class="pt-2 text-center">
-                                                <div class="custom-checkbox custom-checkbox-table custom-control">
-                                                    <input type="checkbox"
-                                                        data-checkboxes="mygroup"
-                                                        data-checkbox-role="dad"
-                                                        class="custom-control-input"
-                                                        id="checkbox-all">
-                                                    <label for="checkbox-all"
-                                                        class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </th>
                                             <th>Judul</th>
                                             <th>Kategori</th>
                                             <th>Author</th>
@@ -348,16 +268,6 @@
                                         </tr>
                                         @foreach ($trash as $article)
                                         <tr>
-                                            <td>
-                                                <div class="custom-checkbox custom-control">
-                                                    <input type="checkbox"
-                                                        data-checkboxes="mygroup"
-                                                        class="custom-control-input"
-                                                        id="checkbox-2">
-                                                    <label for="checkbox-2"
-                                                        class="custom-control-label">&nbsp;</label>
-                                                </div>
-                                            </td>
                                             <td>{{ $article->title }}
                                                 <div class="table-links">
                                                     <a href="/artikel/{{ $article->slug }}">View</a>
@@ -371,7 +281,7 @@
                                                         >Restore</a>
                                                     <div class="bullet"></div>
                                                     <a href="#"
-                                                        class="text-danger confirm-delete">Delete</a>
+                                                        class="text-danger confirm-delete" data-id="{{ $article->id }}">Delete</a>
                                                 </div>
                                             </td>
                                             <td>
@@ -469,6 +379,7 @@
     <!-- Script Fort This page -->
     <script>
         $(".confirm-delete").click(function() {
+            var id = $(this).data('id');
             swal({
                 title: 'Apakah Anda yakin?',
                 text: 'Setelah dihapus, data artikel tidak dapat dikembalikan!',
@@ -478,7 +389,7 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        document.getElementById('delete-article').action = '/artikel/hapus-permanen-artikel/{{ $article->id }}';
+                        document.getElementById('delete-article').action = '/artikel/hapus-permanen-artikel/' + id;
                         document.getElementById('delete-article').submit();
                     } else {
                         swal('Artikel batal dihapus');

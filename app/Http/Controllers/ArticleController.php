@@ -83,10 +83,10 @@ class ArticleController extends Controller
         // Mengembalikan view dengan artikel perkategori
         return view('pages.admin.article.article-list', [
             'type_menu' => 'article',
-            'articles' => Article::latest()->withoutContent()->notInTrash()->get(),
-            'pending' => Article::latest()->withoutContent()->pending()->get(),
-            'draft' => Article::latest()->withoutContent()->draft()->get(),
-            'trash' => Article::latest()->withoutContent()->trash()->get()
+            'articles' => Article::filter(request(['search']))->latest()->withoutContent()->notInTrash()->get(),
+            'pending' => Article::filter(request(['search']))->latest()->withoutContent()->pending()->get(),
+            'draft' => Article::filter(request(['search']))->latest()->withoutContent()->draft()->get(),
+            'trash' => Article::filter(request(['search']))->latest()->withoutContent()->trash()->get()
         ]);
     }
 

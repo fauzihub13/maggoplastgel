@@ -81,4 +81,11 @@ class Article extends Model
     public function scopeTrash($query) {
         return $query->whereNotNull('deleted_at');
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('title', 'LIKE', '%' . $search . '%');
+        });
+    }
 }

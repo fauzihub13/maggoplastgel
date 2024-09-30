@@ -55,7 +55,12 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
         Route::controller(ProductController::class)->group(function(){
             Route::get('/produk/tambah-produk', 'createIndex');
             Route::get('/produk/daftar-produk', 'list');
+            Route::get('/produk/edit-produk/{product}', 'updateIndex');
             Route::post('/produk/tambah-produk', 'store');
+            Route::put('/produk/nonaktif-produk/{product}', 'deactivate');
+            Route::put('/produk/aktif-produk/{product}', 'activate');
+            Route::put('/produk/edit-produk/{product}', 'update');
+            Route::delete('/produk/hapus-produk/{product}', 'delete');
         });
     });
 
