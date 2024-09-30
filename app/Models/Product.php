@@ -18,6 +18,9 @@ class Product extends Model
 
     ];
 
+    /**
+     * Atribut yang akan diubah menjadi tipe data tertentu
+     */
     protected $dates = [
         'deleted_at'
     ];
@@ -31,6 +34,13 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
+    /**
+     * Filter pencarian produk
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param array $filters
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
