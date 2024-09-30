@@ -80,13 +80,19 @@ class ArticleController extends Controller
      * @return \Illuminate\View\View
      */
     public function list() {
+        // Mentur jumlah data per halaman
+        $num_data = 8;
+
+        // Mendapatkan nilai parameter search
+        $search = request('search');
+
         // Mengembalikan view dengan artikel perkategori
         return view('pages.admin.article.article-list', [
             'type_menu' => 'article',
-            'articles' => Article::filter(request(['search']))->latest()->withoutContent()->notInTrash()->get(),
-            'pending' => Article::filter(request(['search']))->latest()->withoutContent()->pending()->get(),
-            'draft' => Article::filter(request(['search']))->latest()->withoutContent()->draft()->get(),
-            'trash' => Article::filter(request(['search']))->latest()->withoutContent()->trash()->get()
+            'articles' => Article::filter(request(['search']))->latest()->withoutContent()->notInTrash()->paginate($num_data)->appends(['search' => $search]),
+            'pending' => Article::filter(request(['search']))->latest()->withoutContent()->pending()->paginate($num_data)->appends(['search' => $search]),
+            'draft' => Article::filter(request(['search']))->latest()->withoutContent()->draft()->paginate($num_data)->appends(['search' => $search]),
+            'trash' => Article::filter(request(['search']))->latest()->withoutContent()->trash()->paginate($num_data)->appends(['search' => $search])
         ]);
     }
 

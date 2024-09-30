@@ -40,7 +40,7 @@
                                             href="#all"
                                             role="tab"
                                             aria-controls="all"
-                                            aria-selected="true">All <span class="badge badge-white">{{ $articles->count() }}</span></a>
+                                            aria-selected="true">All <span class="badge badge-white">{{ $articles->total() }}</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"
@@ -48,7 +48,7 @@
                                             href="#draft"
                                             role="tab"
                                             aria-controls="draft"
-                                            aria-selected="false">Draft <span class="badge badge-primary">{{ $draft->count() }}</span></a>
+                                            aria-selected="false">Draft <span class="badge badge-primary">{{ $draft->total() }}</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"
@@ -56,7 +56,7 @@
                                             href="#pending"
                                             role="tab"
                                             aria-controls="pending"
-                                            aria-selected="false">Pending <span class="badge badge-primary">{{ $pending->count() }}</span></a>
+                                            aria-selected="false">Pending <span class="badge badge-primary">{{ $pending->total() }}</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"
@@ -64,7 +64,7 @@
                                             href="#trash"
                                             role="tab"
                                             aria-controls="trash"
-                                            aria-selected="false">Trash <span class="badge badge-primary">{{ $trash->count() }}</span></a>
+                                            aria-selected="false">Trash <span class="badge badge-primary">{{ $trash->total() }}</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -309,7 +309,7 @@
                                 </div>
 
                                 <div class="float-right">
-                                    <nav>
+                                    {{-- <nav>
                                         <ul class="pagination">
                                             <li class="page-item disabled">
                                                 <a class="page-link"
@@ -340,7 +340,8 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </nav>
+                                    </nav> --}}
+                                    {{ $articles->links('pagination::bootstrap-5') }}
                                 </div>
                             </div>
                         </div>
