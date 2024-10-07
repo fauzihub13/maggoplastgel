@@ -17,10 +17,10 @@
                     <div class="overlay-image"></div>
                     <div class="banner-title">
                         <div class="page-title-heading">
-                            Team Member
+                            Tim Kami
                         </div>
                         <div class="page-title-content link-style6">
-                            <span><a class="home" href="{{ route('user.home') }}">Home</a></span><span class="page-title-content-inner">Team Member</span>
+                            <span><a class="home" href="{{ route('user.home') }}">Beranda</a></span><span class="page-title-content-inner">Tim Kami</span>
                         </div>
                     </div>
                 </div>
@@ -44,9 +44,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/nengwiwi19/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                                 <img src="{{asset('images/team/wiwi.webp')}}" alt="images">
@@ -64,9 +62,8 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/senifitriani_/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
                                     </ul>
                                 </div>
                                 <img src="{{asset('images/team/fahrizal.webp')}}" alt="images">
@@ -84,9 +81,8 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/renhardbker/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
                                     </ul>
                                 </div>
                                 <img src="{{asset('images/team/renhard.webp')}}" alt="images">
@@ -104,9 +100,8 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/noviaqisthi/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
                                     </ul>
                                 </div>
                                 <img src="{{asset('images/team/novia.webp')}}" alt="images">
@@ -124,9 +119,8 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/sucimeyditiaa/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
                                     </ul>
                                 </div>
                                 <img src="{{asset('images/team/suci.webp')}}" alt="images">
@@ -144,9 +138,8 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/senifitriani_/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+
                                     </ul>
                                 </div>
                                 <img src="{{asset('images/team/seni.webp')}}" alt="images">

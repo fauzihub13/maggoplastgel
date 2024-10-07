@@ -938,7 +938,7 @@
 ---------------------------------------*/
 .flat-work-process {
     padding: 120px 0 67px 0;
-    background-image: url(../images/mask-back-ground/mask-wp.png);
+    background-image: url(../images/background/half-section.png);
     background-repeat: no-repeat;
     background-position: right;
 }
@@ -1652,7 +1652,7 @@ textarea {
 ---------------------------------------*/
 .flat-testimonials-home2 {
     position: relative;
-    background-image: url(../images/mask-back-ground/mark-leaf-testimonials.png);
+    background-image: url(../images/product/maggot.png);
     background-repeat: no-repeat;
     background-position: -8.5% 111%;
 }

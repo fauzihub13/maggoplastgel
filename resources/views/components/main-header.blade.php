@@ -53,30 +53,21 @@
                                     <div class="nav-wrap ">
                                         <nav id="mainnav" class="mainnav">
                                             <ul class="menu">
-                                                <li class="">
-                                                    <a href="{{ route('user.home') }}" title="">Home</a>
-                                                    <!-- /.sub-menu -->
-                                                </li>
-                                                <li class="menu-item-has-children">
-                                                    <a href="{{ route('user.about-us') }}" title="">About</a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="{{ route('user.about-us') }}" title="">About Us</a></li>
-                                                        <li><a href="{{ route('user.faq') }}" title="">Faq</a></li>
-                                                    </ul>
-                                                    <!-- /.sub-menu -->
-                                                </li>
-
-                                                <li class="">
-                                                    <a href="{{ route('user.team') }}" title="">Team</a>
-
-                                                    <!-- /.sub-menu -->
-                                                </li>
-                                                <li class="">
-                                                    <a href="{{ route('user.blog') }}" title="">Blog</a>
-                                                    <!-- /.sub-menu -->
+                                                <li>
+                                                    <a href="{{ route('user.home') }}" class="{{ Route::is('/') ? 'active' : '' }}" title="">Beranda</a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.contact-us') }}" title="">Contact Us</a>
+                                                    <a href="{{ route('user.about-us') }}" class="{{ Route::is('about-us') ? 'active' : '' }}" title="">Tentang Kami</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('user.team') }}" class="{{ Route::is('team') ? 'active' : '' }}" title="">Tim</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('user.blog') }}" class="{{ Route::is('blog') ? 'active' : '' }}" title="">Artikel</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="{{ route('user.contact-us') }}" class="{{ Route::is('contact-us') ? 'active' : ' '  }} " title="">Kontak Kami</a>
                                                 </li>
                                             </ul>
                                         </nav>

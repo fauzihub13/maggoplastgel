@@ -19,10 +19,10 @@
                         <div class="overlay-image"></div>
                         <div class="banner-title">
                             <div class="page-title-heading">
-                                Blog
+                                Artikel
                             </div>
                             <div class="page-title-content link-style6">
-                                <span><a class="home" href="{{ route('user.home') }}">Home</a></span><span class="page-title-content-inner">Blog</span>
+                                <span><a class="home" href="{{ route('user.home') }}">Beranda</a></span><span class="page-title-content-inner">Artikel</span>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,9 @@
                     </div>
                     <div class="col-md-8">
                         <div class="post-wrap">
-                            <article class="article-1">
+
+                            <!-- start art -->
+                            <article class="article-1 mb-1">
                                 <div class="image-box">
                                     <div class="image">
                                         <img src="{{asset('images/blog/close-up-picture-hand-holding-wooden-tray-which-full-pots-plants.jpg')}}" alt="image">
@@ -52,25 +54,7 @@
                                     </div>
                                 </div>
                                 <div class="content-box">
-                                    <div class="post-content-inner">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="text-decs">
-													By admin
-												</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="line text-decs">
-													Gardening
-												</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="text-decs">
-													0 comments
-												</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+
                                     <div class="content-art">
                                         <a href="{{ route('user.blog.detail') }}" class="section-heading-jost-size28">
                                         Social media-driven trading frenzy for GameStop, AMC Entertainment sparks calls for scrutiny
@@ -80,104 +64,15 @@
                                         </p>
                                         <div class="link-style2">
                                             <a href="{{ route('user.blog.detail') }}" class="read-more">
-											Read More<i class="fas fa-long-arrow-alt-right"></i>
+											Selengkapnya<i class="fas fa-long-arrow-alt-right"></i>
 										</a>
                                         </div>
                                     </div>
 
                                 </div>
                             </article>
-                            <!-- end art1-->
-                            <article class="article-2">
-                                <div class="image-box">
-                                    <div class="image">
-                                        <img src="{{asset('images/blog/planting-flowers-pots.jpg')}}" alt="image">
-                                    </div>
-                                    <div class="date-image">
-                                        <p>28 JANUARY, 2021</p>
-                                    </div>
-                                </div>
-                                <div class="content-box fadeInDown">
-                                    <div class="post-content-inner">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="text-decs">
-													By admin
-												</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="line text-decs">
-													Gardening
-												</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="text-decs">
-													0 Comments
-												</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="content-art">
-                                        <a href="{{ route('user.blog.detail') }}" class="section-heading-jost-size28">
-                                        Social media-driven trading frenzy for GameStop, AMC Entertainment sparks calls for scrutiny
-									</a>
-                                        <p class="desc-content-box text-decs">
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-                                        </p>
-                                        <div class="link-style2">
-                                            <a href="{{ route('user.blog.detail') }}" class="read-more">
-											Read More<i class="fas fa-long-arrow-alt-right"></i>
-										</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <!-- end art1-->
-                            <article class="article-3">
-                                <div class="image-box">
-                                    <div class="image">
-                                        <img src="{{asset('images/blog/plants-pot-with-watering-can.jpg')}}" alt="image">
-                                    </div>
-                                    <div class="date-image">
-                                        <p>28 JANUARY, 2021</p>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="post-content-inner">
-                                        <ul>
-                                            <li>
-                                                <a href="#" class="text-decs">
-													By admin
-												</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="line text-decs">
-													Gardening
-												</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="text-decs">
-													0 Comments
-												</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="content-art">
-                                        <a href="{{ route('user.blog.detail') }}" class="section-heading-jost-size28">
-                                        Social media-driven trading frenzy for GameStop, AMC Entertainment sparks calls for scrutiny
-									</a>
-                                        <p class="desc-content-box text-decs">
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-                                        </p>
-                                        <div class="link-style2">
-                                            <a href="{{ route('user.blog.detail') }}" class="read-more">
-											Read More<i class="fas fa-long-arrow-alt-right"></i>
-										</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <!-- end art1-->
+                            <!-- end art -->
+
                             <article class="article-4">
                                 <div class="image-box">
                                     <div class="image">
@@ -245,29 +140,18 @@
                         <div class="side-bar">
                             <div class="widgets-search">
                                 <h3 class="widgets-side-bar-title">
-                                    Search
+                                    Cari
                                 </h3>
                                 <div class="widgets-input">
                                     <form method="get" role="search" class="search-form">
-                                        <input type="search" class="search-field" placeholder="Search here" value="" name="s" title="Search for">
+                                        <input type="search" class="search-field" placeholder="Ketik disini.." value="" name="s" title="Search for">
                                         <button class="search-submit" type="submit" title="Search"></button>
                                     </form>
                                 </div>
                             </div>
-                            <div class="widgets-category">
-                                <h3 class="widgets-side-bar-title">
-                                    Category
-                                </h3>
-                                <ul class="list-category">
-                                    <li><a href="#">Tempor lorem interdum</a></li>
-                                    <li><a href="#">Auctor mattis lacus </a></li>
-                                    <li><a href="#">Dolor proin </a></li>
-                                    <li><a href="#">Pharetra amet </a></li>
-                                    <li><a href="#">Nullam dolor gravida </a> </li>
-                                </ul>
-                            </div>
+
                             <div class="widget widget_lastest">
-                                <h2 class="widgets-side-bar-title"><span>Recent News</span></h2>
+                                <h2 class="widgets-side-bar-title"><span>Artikel Terbaru</span></h2>
                                 <ul class="lastest-posts data-effect clearfix">
                                     <li class="clearfix">
                                         <div class="thumb data-effect-item has-effect-icon">
@@ -299,29 +183,7 @@
                                 </ul>
                             </div>
                             <!-- /.widget_lastest -->
-                            <div class="widgets-contact-info">
-                                <div class="contact-info-img">
-                                    <img src="{{asset('images/blog/young-beautiful-florist-watering-flowers.jpg')}}" alt="image">
-                                </div>
-                                <div class="contact-info-box">
-                                    <div class="contact-info-content">
-                                        <div class="call-us">
-                                            <div class="icon-call-us"></div>
-                                            <div class="content-call-us">
-                                                <h4 class="heading-16px-rubik">Call Us</h4>
-                                                <h4 class="heading-16px-rubik">360-779-22289</h4>
-                                            </div>
-                                        </div>
-                                        <div class="our-mail">
-                                            <div class="icon-our-mail"></div>
-                                            <div class="content-our-mail">
-                                                <h4 class="heading-16px-rubik">Our Mail</h4>
-                                                <h4 class="heading-16px-rubik">maggoplastgel@mail.com</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                         <!-- /.col-md-4 -->
                     </div>

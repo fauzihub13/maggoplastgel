@@ -19,10 +19,10 @@
                         <div class="overlay-image"></div>
                         <div class="banner-title">
                             <div class="page-title-heading">
-                                Blog Details
+                                Detail Artikel
                             </div>
                             <div class="page-title-content link-style6">
-                                <span><a class="home" href="{{ route('user.blog') }}">Home</a></span><span class="page-title-content-inner">Blog Details</span>
+                                <span><a class="home" href="{{ route('user.blog') }}">Beranda</a></span><span class="page-title-content-inner">Detail Artikel</span>
                             </div>
                         </div>
                     </div>

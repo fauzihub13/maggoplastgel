@@ -23,7 +23,7 @@
                                         <div class="phone-call">
                                             <div class="icon-phone-call"></div>
                                             <div class="content-phone-call vertical-center">
-                                                <div class="heading-16px-rubik">012 345 678 9101</div>
+                                                <div class="heading-16px-rubik">0895 2938 1083</div>
                                             </div>
                                         </div>
                                     </div>
