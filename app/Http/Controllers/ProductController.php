@@ -45,7 +45,6 @@ class ProductController extends Controller
             'height' => 'integer',
             'stock' => 'required|integer',
             'status' => 'nullable|boolean',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000',
         ]);
 
         // Membuat slug berdasarkan nama produk
@@ -169,8 +168,6 @@ class ProductController extends Controller
             'height' => 'integer',
             'stock' => 'required|integer',
             'status' => 'boolean',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10000',
-            'new_images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10000',
         ]);
 
         // Validasi jika terdapat gambar yang dihapus
