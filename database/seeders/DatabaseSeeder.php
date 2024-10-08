@@ -33,10 +33,10 @@ class DatabaseSeeder extends Seeder
             'phone_number' => '08123456789',
         ]);
 
-        // ArticleCategory::create([
-        //     'id' => '7d08582d-0b84-4862-91a5-fd9581490c20',
-        //     'name' => 'Kesehatan',
-        // ]);
+        ArticleCategory::create([
+            'id' => '7d08582d-0b84-4862-91a5-fd9581490c20',
+            'name' => 'Kesehatan',
+        ]);
 
         $this->call(ArticleSeeder::class);
     }
