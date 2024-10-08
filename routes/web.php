@@ -56,7 +56,7 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
 
         // Kategori Artikel
         Route::controller(ArticleCategoryController::class)->group(function(){
-            Route::post('/kategori-artikel', 'create');
+            Route::post('/kategori-artikel', 'store');
         });
 
         // Produk

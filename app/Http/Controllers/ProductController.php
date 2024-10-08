@@ -191,7 +191,7 @@ class ProductController extends Controller
             }
         }
 
-        // Validasi jika terdapat gambar yang diubah
+        // Validasi jika terdapat gambar yang pdiubah
         if ($request->has('images')) {
             // Looping setiap gambar yang diubah
             foreach ($request->images as $imageId => $file) {
