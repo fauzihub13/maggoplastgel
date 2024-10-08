@@ -83,6 +83,7 @@
                                 </div>
                             </div>
                             <div class="button">
+                                <a href="{{ route ('user.checkout') }}" class="btn btn-left mb-1">Test Checkout</a>
                                 <button type="submit" class=" btn btn-left">Beli Sekarang</button>
                             </div>
                         </div>

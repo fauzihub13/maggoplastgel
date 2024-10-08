@@ -38,4 +38,8 @@ class GeneralController extends Controller
     public function product() {
         return view('pages.user.product');
     }
+
+    public function checkoutPage() {
+        return view('pages.user.checkout');
+    }
 }
