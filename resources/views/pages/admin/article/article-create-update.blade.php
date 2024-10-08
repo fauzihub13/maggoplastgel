@@ -59,10 +59,11 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <select class="form-control selectric" name="article_category_id">
+                                        <select class="form-control selectric" name="article_category_id" id="category-select">
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}" @selected(isset($article) && $article->article_category_id == $category->id)>{{ $category->name }}</option>
                                             @endforeach
+                                            <option value="new">+ Tambah Kategori Baru</option>
                                         </select>
                                     </div>
                                 </div>
@@ -119,6 +120,34 @@
             </div>
         </section>
     </div>
+
+    <div class="modal fade" tabindex="-1" id="new-category-modal" aria-modal="true" role="dialog">       
+        <div class="modal-dialog modal-md modal-dialog-centered" role="document">         
+            <div class="modal-content">           
+                <div class="modal-header">             
+                    <h5 class="modal-title">Tambah Kategori</h5>             
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">               
+                        <span aria-hidden="true">×</span>             
+                    </button>           
+                </div>           
+                <div class="modal-body">           
+                    <form class="" >
+                        <p>Tambahkan kategori baru.</p>
+                        <div class="form-group">
+                            <label>Nama kategori</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="" id="new-category" name="name">
+                            </div>
+                        </div>
+                        <button class="d-none" id="fire-modal-5-submit"></button>
+                    </form>
+                </div>           
+                <div class="modal-footer bg-whitesmoke">           
+                    <button type="submit" class="btn btn-primary btn-shadow" id="add-category-btn">Simpan</button>
+                </div>         
+            </div>       
+        </div>    
+    </div>
 @endsection
 
 @push('scripts')
@@ -130,4 +159,59 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/features-post-create.js') }}"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Ketika user memilih "Tambah Kategori Baru"
+            $('#category-select').change(function() {
+                if ($(this).val() == 'new') {
+                    $('#new-category-modal').modal('show'); // Tampilkan input kategori baru
+                } else {
+                    $('#new-category-modal').modal('hide'); // Sembunyikan jika tidak memilih kategori baru
+                }
+            });
+    
+            // Ketika tombol "Tambahkan Kategori" ditekan
+            $('#add-category-btn').click(function(e) {
+                e.preventDefault();
+                console.log('aww saya ditekan');
+                
+                var newCategory = $('#new-category').val();
+                if (newCategory.trim() === '') {
+                    alert('Nama kategori tidak boleh kosong.');
+                    return;
+                }
+    
+                // Kirim kategori baru via AJAX
+                $.ajax({
+                    url: "/kategori-artikel", // route untuk menambahkan kategori
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        name: newCategory
+                    },
+                    success: function(response) {
+                        // Tambahkan kategori baru ke select option
+                        var newOption = $('<option></option>')
+                            .attr('value', response.data.id)
+                            .text(response.data.name);
+                        $('#category-select').append(newOption);
+
+                        // Refresh Selectric untuk memperbarui tampilan dropdown
+                        $('#category-select').selectric('refresh');
+    
+                        // Pilih kategori yang baru ditambahkan
+                        $('#category-select').val(response.data.id).selectric('refresh');
+    
+                        // Sembunyikan modal dan kosongkan input
+                        $('#new-category-modal').modal('hide');
+                        $('#new-category').val('');
+                    },
+                    error: function() {
+                        alert('Gagal menambahkan kategori baru.');
+                    }
+                });
+            });
+        });
+    </script>
 @endpush

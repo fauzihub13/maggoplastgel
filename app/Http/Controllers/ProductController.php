@@ -45,6 +45,7 @@ class ProductController extends Controller
             'height' => 'integer',
             'stock' => 'required|integer',
             'status' => 'nullable|boolean',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000',
         ]);
 
         // Membuat slug berdasarkan nama produk
@@ -58,6 +59,9 @@ class ProductController extends Controller
 
         // Simpan slug
         $data['slug'] = $slug;
+
+        // Menghapus 'images' dari array data yang akan disimpan
+        $data = collect($data)->except('images')->toArray();
 
         // Simpan produk baru ke dalam database
         $product = Product::create($data);
@@ -168,6 +172,8 @@ class ProductController extends Controller
             'height' => 'integer',
             'stock' => 'required|integer',
             'status' => 'boolean',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10000',
+            'new_images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10000',
         ]);
 
         // Validasi jika terdapat gambar yang dihapus
@@ -185,7 +191,7 @@ class ProductController extends Controller
             }
         }
 
-        // Validasi jika terdapat gambar yang diubah
+        // Validasi jika terdapat gambar yang pdiubah
         if ($request->has('images')) {
             // Looping setiap gambar yang diubah
             foreach ($request->images as $imageId => $file) {
@@ -205,6 +211,9 @@ class ProductController extends Controller
                 }
             }
         }
+
+        // Menghapus 'images' dan 'new_images' dari array data yang akan disimpan
+        $data = collect($data)->except(['images', 'new_images'])->toArray();
 
         // Update data produk pada database
         $product->update($data);

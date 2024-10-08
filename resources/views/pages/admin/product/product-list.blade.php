@@ -32,7 +32,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Semua Artikel</h4>
+                                <h4>Semua Produk</h4>
                             </div>
                             <div class="card-body tab-content">
                                 <div class="float-right">
