@@ -223,4 +223,23 @@ class ArticleController extends Controller
             'article' => $article
         ]);
     }
+
+    /**
+     * Menampilkan halaman daftar artikel untuk user
+     * 
+     * @return \Illuminate\View\View
+     */
+    public function index() {
+        // Mentur jumlah data per halaman
+        $num_data = 8;
+
+        // Mendapatkan nilai parameter search
+        $search = request('search');
+
+        // Mengembalikan view dengan artikel perkategori
+        return view('pages.user.article.index', [
+            'articles' => Article::with('articleCategory')->filter(request(['search']))->latest()->publish()->notInTrash()->paginate($num_data)->appends(['search' => $search]),
+            'newest_articles' => Article::latest()->publish()->notInTrash()->withoutContent()->limit(3)->get()
+        ]);
+    }
 }

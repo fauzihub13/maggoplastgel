@@ -25,6 +25,10 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
         Route::get('/blog/detail', 'blogDetail')->name('user.blog.detail');
     });
 
+    Route::controller(ArticleController::class)->group(function(){
+        Route::get('/artikel', 'index');
+    });
+
     Route::controller(CheckoutController::class)->group(function() {
         Route::get('/product', 'productPage')->name('user.product');
         Route::post('/checkout', 'checkoutPage')->name('user.checkout')->middleware('isUserLogin');
