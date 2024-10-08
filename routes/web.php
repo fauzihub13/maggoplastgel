@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralController;
@@ -51,6 +52,11 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
             Route::put('/artikel/hapus-artikel/{article}', 'delete');
             Route::put('/artikel/hapus-permanen-artikel/{article}', 'destroy');
             Route::put('/artikel/restore-artikel/{article}', 'restore');
+        });
+
+        // Kategori Artikel
+        Route::controller(ArticleCategoryController::class)->group(function(){
+            Route::post('/kategori-artikel', 'create');
         });
 
         // Produk
