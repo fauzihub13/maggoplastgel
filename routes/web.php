@@ -20,24 +20,25 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
         Route::get('/contact-us', 'contactUs')->name('user.contact-us');
         Route::get('/blog', 'blog')->name('user.blog');
         Route::get('/blog/detail', 'blogDetail')->name('user.blog.detail');
+        Route::get('/product', 'product')->name('user.product');
     });
 });
 
 // Admin Only
 Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
-    
+
     Route::get('/login', function(){
         return view('pages.admin.auth.auth-login', ['type_menu' => 'login']);
     })->name('login')->middleware('guest');
 
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/logout', [AuthController::class, 'logout']);
-    
+
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/', function(){
             return view('pages.admin.dashboard-general-dashboard', ['type_menu' => 'dashboard']);
         });
-        
+
         // Artikel
         Route::controller(ArticleController::class)->group(function() {
             Route::get('/artikel/tambah-artikel', 'createIndex');

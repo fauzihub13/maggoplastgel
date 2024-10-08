@@ -30,8 +30,12 @@ class GeneralController extends Controller
     public function blog() {
         return view('pages.user.blog.index');
     }
-    
+
     public function blogDetail() {
         return view('pages.user.blog.detail');
+    }
+
+    public function product() {
+        return view('pages.user.product');
     }
 }

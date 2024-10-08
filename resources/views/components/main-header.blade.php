@@ -3,30 +3,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                {{-- <div class="container">
-                    <div class="row">
-                        <div class="top-header1">
-                            <div class="top-header-inner">
-                                <div class="top-bar-left">
-                                    <span class="top-location">Jalan Malabar Ujung No. 53</span>
-                                    <span class="top-mail">maggoplastgel@gmail.com</span>
-                                </div>
-                                <div class="top-bar-right">
-                                    <ul class="widgets-nav-social">
-                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
 
                 <!-- header -->
                 <header id="header" class="header bg-color mt-2">
@@ -76,8 +52,12 @@
                                 <div class="col-md-1">
                                     <div class="site-header-right">
                                         <div class="cart">
-                                            <a href="#" class="cart-btn"><i
+                                            <a href="{{ route('user.product') }}" class="cart-btn"><i
                                                     class="fa fa-shopping-cart"></i></a>
+                                        </div>
+                                        <div class="cart">
+                                            <a href="#" class="cart-btn"><i
+                                                    class="fa fa-user"></i></a>
                                         </div>
                                     </div>
                                     <!-- header right -->

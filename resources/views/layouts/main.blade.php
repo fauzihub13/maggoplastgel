@@ -48,11 +48,7 @@
         @yield('main')
 
         <!-- btn go top -->
-        <div class="button-go-top">
-            <a href="#" title="" class="go-top">
-                <i class="fa fa-chevron-up"></i>
-            </a>
-        </div>
+        @include('components.scroll-up')
         <!-- / btn go top -->
 
         @include('components.main-footer')
@@ -77,6 +73,7 @@
         <script src="{{ asset('rev-slider/js/jquery.themepunch.revolution.min.js') }}"></script>
         <script src="{{ asset('rev-slider/js/jquery.themepunch.tools.min.js') }}"></script>
         <script src="{{ asset('javascript/rev-slider.js') }}"></script>
+        <script src="{{ asset('javascript/custom.js') }}"></script>
 
         <!-- Load Extensions only on Local File Systems ! The following part can be removed on Server for On Demand Loading -->
         <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.actions.min.js') }}"></script>
