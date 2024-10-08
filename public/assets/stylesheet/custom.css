@@ -222,6 +222,7 @@ table tr {
 }
 .row-product-subtotal td {
     padding-top: 20px !important;
+    padding-bottom: 20px !important;
 }
 
 .product-small {
@@ -258,11 +259,32 @@ table tr {
 }
 
 .vertical-center {
-
     align-items: center;
     align-content: center;
 }
 
+.total-payment .row {
+    margin-bottom: 6px;
+}
+
+.wrap-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-custom-primary {
+    color: white;
+    padding: 12px 0px;
+    font-size: 18px;
+    width: 60%;
+    background-color: var(--primary-color2);
+    border: 0px;
+    color: #ffff;
+}
+
+.button-custom-primary:hover{
+    color: white;
+}
 
 @media (max-width: 576px) {
 

@@ -3,8 +3,10 @@
 use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\User\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -21,9 +23,18 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
         Route::get('/contact-us', 'contactUs')->name('user.contact-us');
         Route::get('/blog', 'blog')->name('user.blog');
         Route::get('/blog/detail', 'blogDetail')->name('user.blog.detail');
-        Route::get('/product', 'product')->name('user.product');
-        Route::get('/checkout', 'checkoutPage')->name('user.checkout');
     });
+
+    Route::controller(CheckoutController::class)->group(function() {
+        Route::get('/product', 'productPage')->name('user.product');
+        Route::post('/checkout', 'checkoutPage')->name('user.checkout')->middleware('isUserLogin');
+    });
+    Route::controller(UserAuthController::class)->group(function() {
+        Route::get('/login', 'loginPage')->name('user.login.index');
+        Route::post('/login', 'login')->name('user.login.post');
+    });
+
+
 });
 
 // Admin Only
