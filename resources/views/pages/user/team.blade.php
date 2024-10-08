@@ -13,8 +13,8 @@
     <div class="page-title space-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="inner-title">
-                    <div class="overlay-image"></div>
+                <div class="">
+                    <div class=""></div>
                     <div class="banner-title">
                         <div class="page-title-heading">
                             Tim Kami

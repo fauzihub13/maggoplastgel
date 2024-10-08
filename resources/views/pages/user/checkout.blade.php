@@ -15,8 +15,8 @@
         <div class="page-title space-header">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="inner-title">
-                        <div class="overlay-image"></div>
+                    <div class="">
+                        {{-- <div class="overlay-image"></div> --}}
                         <div class="banner-title">
                             <div class="page-title-heading">
                                 Checkout
@@ -60,8 +60,8 @@
             </div>
         </section>
 
-        <!-- Product -->
-        <section class="large-view-product">
+        <!-- Desktop View -->
+        <section class="large-view-product ">
             <div class="container chekcout-section box-shadow wow fadeInUp">
                 <div class="row mb-1">
                     <div class="col-12">
@@ -76,10 +76,10 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th><strong>Produk</strong></th>
-                                <th><strong>Harga Satuan</strong></th>
-                                <th><strong>Jumlah</strong></th>
-                                <th><strong>Subtotal</strong></th>
+                                <th class="text-center"><strong>Produk</strong></th>
+                                <th class="text-center"><strong>Harga Satuan</strong></th>
+                                <th class="text-center"><strong>Jumlah</strong></th>
+                                <th class="text-center"><strong>Subtotal</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,18 +89,18 @@
                                         <div class="product-small">
                                             <img src="{{asset('images/testimonials/young-beautiful-florist-watering-flowers.jpg')}}" alt="images">
                                         </div>
-                                        <p>Maggoplastgel ahuy</p>
+                                        <p class="vertical-center">Maggoplastgel ahuy</p>
                                     </div>
                                 </td>
-                                <td>Rp30.000</td>
-                                <td>5</td>
-                                <td>Rp150.000</td>
+                                <td class="vertical-center text-center">Rp30.000</td>
+                                <td class="vertical-center text-center">5</td>
+                                <td class="vertical-center text-center">Rp150.000</td>
                             </tr>
-                            <tr class="row-product">
+                            <tr class="row-product-subtotal">
                                 <td colspan="3" class="text-right">
                                     <strong>Total Produk (5)</strong>
                                 </td>
-                                <td>Rp150.000</td>
+                                <td class="text-center">Rp150.000</td>
 
                             </tr>
                         </tbody>
@@ -111,6 +111,7 @@
             </div>
         </section>
 
+        {{-- Mobile View --}}
         <section class="small-view-product  box-shadow">
             <div class="container  wow fadeInUp">
                 <div class="row mb-1">
