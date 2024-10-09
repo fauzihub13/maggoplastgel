@@ -133,7 +133,7 @@
                             <p class="text-custom-primary text-right"><strong>Total Ongkos Kirim</strong></p>
                         </div>
                         <div class="col-md-4">
-                            <p class="text-custom-primary text-right rupiah">15000</p>
+                            <p class="text-custom-primary text-right rupiah">{{ $courierRates }}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -155,7 +155,7 @@
                         </div>
                         <div class="col-md-4">
                             <p class="text-custom-primary text-right section-custom-medium "><strong>
-                                <span class="rupiah">{{ ($product->price) * ($quantity) + $uniqueCode }}</span>
+                                <span class="rupiah">{{ ($product->price) * ($quantity) + $uniqueCode + $courierRates }}</span>
                             </strong></p>
                         </div>
                     </div>

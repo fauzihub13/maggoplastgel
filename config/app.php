@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'api_key_biteship' => env('API_KEY_BITESHIP', ''),
+
 ];
