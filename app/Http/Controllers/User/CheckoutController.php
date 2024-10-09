@@ -4,13 +4,19 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ShipmentItemsResource;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\Transaction;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Str;
 
 class CheckoutController extends Controller
 {
@@ -68,15 +74,15 @@ class CheckoutController extends Controller
 
             } else {
 
-                return redirect()->route('user.product');
+                return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
             }
         }
-
-
 
     }
 
     public function payment(Request $request){
+
+        Carbon::setLocale('id');
 
         $validator = Validator::make($request->all(), [
             'quantity'=> 'required|integer',
@@ -86,6 +92,27 @@ class CheckoutController extends Controller
         $quantity = $request->quantity;
         $uniqueCode = $request->uniqueCode;
         $product = Product::first();
+
+        // Check ShippingRates
+        $shippingInfo = $this->shippingInfo($request, $quantity);
+
+        DB::beginTransaction();
+
+        // Pastikan $shippingInfo tidak null
+        if ($shippingInfo === null) {
+            return null;
+        } else {
+            // Mengambil data asli dari JsonResponse
+            $shippingInfo = $shippingInfo->getData(true); // true untuk mendapatkan data dalam bentuk array
+
+            // Memeriksa apakah status adalah true
+            if (isset($shippingInfo['status']) && $shippingInfo['status'] === true) {
+                $courierRates = $shippingInfo['price'];
+            } else {
+                return redirect()->route('user.product');
+
+            }
+        }
 
 
         // Jika validasi tidak berhasil, kembali ke halaman sebelumnya dengan pesan error
@@ -101,7 +128,7 @@ class CheckoutController extends Controller
             return redirect()->route('user.product')->with('error', 'Kode unik tidak sesuai.');
         }
 
-        $totalPayment = ($product->price * $quantity) + $uniqueCode;
+        $totalPayment = ($product->price * $quantity) + $uniqueCode + $courierRates;
 
         // Midtrans Integration
         // Set your Merchant Server Key
@@ -113,9 +140,11 @@ class CheckoutController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
+        $orderId = $this->generateOrderId();
+
         $params = array(
             'transaction_details' => array(
-                'order_id' => rand(),
+                'order_id' => $orderId,
                 'gross_amount' => $totalPayment,
             ),
             'customer_details' => array(
@@ -126,16 +155,54 @@ class CheckoutController extends Controller
             ),
         );
 
-        $auth = base64_encode(Config::get('app.midtrans_server_key'));
+        // $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-        $response = Http::withHeaders([
-            'content-type' => 'application/json',
-            'authorization' => 'Basic '.$auth,
-        ])->post("https://app.sandbox.midtrans.com/snap/v1/transactions", $params);
+        try {
+            //code...
+            // Save to order table
+            $order = new Order();
+            $order->user_id = Auth::user()->id;
+            $order->order_number = $orderId;
+            $order->status = "pending";
+            $order->shipping_cost = $courierRates;
+            $order->save();
 
-        $response = json_decode($response->body());
+            // Save to order items table
+            $orderItems = new OrderItem();
+            $orderItems->order_id = $order->id;
+            $orderItems->product_id = $product->id ;
+            $orderItems->quantity = $quantity;
+            $orderItems->price = $product->price;
+            $orderItems->save();
 
-        return $response;
+            // Request payment midtrans
+            $auth = base64_encode(Config::get('app.midtrans_server_key').":");
+
+            $response = Http::withHeaders([
+                'content-type' => 'application/json',
+                'authorization' => 'Basic '.$auth,
+            ])->post("https://app.sandbox.midtrans.com/snap/v1/transactions", $params);
+
+            $response = json_decode($response->body());
+            $snapToken = $response->token;
+
+            // Save to transaction table
+            $transaction = new Transaction();
+            $transaction->order_id = $order->id;
+            $transaction->transaction_id = $orderId;
+            $transaction->gross_amount = $totalPayment;
+            $transaction->transaction_time = Carbon::now();
+            $transaction->midtrans_response = $snapToken;
+            $transaction->save();
+
+            DB::commit();
+
+            return view('pages.user.payment', compact('totalPayment', 'snapToken'));
+
+        } catch (\Throwable $th) {
+
+            DB::rollBack();
+        }
 
     }
 
@@ -212,5 +279,18 @@ class CheckoutController extends Controller
                 'message' => 'Gagal mengecek ongkos kirim.',
             ], 201);
         }
+    }
+
+    function generateOrderId() {
+        // Generate 3 random uppercase letters
+        $letters = strtoupper(Str::random(3));
+
+        // Generate 8 random numbers
+        $numbers = rand(10000000, 99999999);
+
+        $result = $letters ."-". $numbers;
+
+        // Combine the letters and numbers
+        return $result;
     }
 }

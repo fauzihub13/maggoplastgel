@@ -6,7 +6,6 @@
 
 @endpush
 
-
 @section('main')
 
 <div class="boxed blog">
@@ -233,4 +232,5 @@
 
 @push('scripts')
     <script src="{{ asset('js/rupiah.js') }}"></script>
+
 @endpush

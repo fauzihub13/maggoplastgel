@@ -11,6 +11,10 @@
     color: var(--primary-color) !important;
 }
 
+.w-100 {
+    width: 100% !important;
+}
+
 .text-custom-grey {
     color: var(--primary-color4) !important;
     opacity: 0.5;
