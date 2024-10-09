@@ -87,7 +87,7 @@
                                     <div class=" d-flex">
                                         @if (isset($product))
                                             <div class="product-small">
-                                                <img src="{{('storage/'.$product->productImages[0]->path)}}" alt="Maggoplastgel">
+                                                <img src="{{('/storage/'.$product->productImages[0]->path)}}" alt="Maggoplastgel">
                                             </div>
                                         @else
                                             <div class="product-small">
@@ -167,7 +167,16 @@
                     </div>
                     <div class="col-md-4">
                         <div class="wrap-button">
-                            <button class="btn button-custom-primary">Bayar</button>
+                            <button class="btn button-custom-primary" onclick="event.preventDefault(); document.getElementById('checkoutForm').submit()">Bayar</button>
+                            <form action="{{ route('user.checkout.store') }}"
+                                method="POST"
+                                id="checkoutForm"
+                                style="display:none">
+                                    @csrf
+                                    @method('POST')
+                                    <input type="number" name="quantity" value="{{ $quantity }}">
+                                    <input type="number" name="uniqueCode" value="{{ $uniqueCode }}">
+                            </form>
                         </div>
                     </div>
                 </div>

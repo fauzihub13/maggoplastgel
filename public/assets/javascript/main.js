@@ -648,17 +648,17 @@
         var retina = window.devicePixelRatio > 1 ? true : false;
         if (retina) {
             $(".logo-header").find("img").attr({
-                src: "./assets/images/logo/Logo-x.png",
+                src: "../assets/images/logo/Logo-x.png",
                 width: "172.7",
                 height: "59.96",
             });
             $(".logo-footer-style2").find("img").attr({
-                src: "./assets/images/logo/Logo-x.png",
+                src: "../assets/images/logo/Logo-x.png",
                 width: "172.7",
                 height: "59.96",
             });
             $(".logo-footer").find("img").attr({
-                src: "./assets/images/logo/Logo-x.png",
+                src: "../assets/images/logo/Logo-x.png",
                 width: "172.7",
                 height: "59.96",
             });

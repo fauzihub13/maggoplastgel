@@ -36,10 +36,11 @@ class CheckoutController extends Controller
 
         $quantity = $request->quantity;
 
+
         // Jika validasi tidak berhasil, kembali ke halaman sebelumnya dengan pesan error
         if ($validator->fails() || $quantity <= 0) {
             return redirect()->route('user.product')->with('error', 'Jumlah produk tidak sesuai.');
-            
+
         }
 
         $product = Product::with('productImages')->first();
@@ -47,6 +48,108 @@ class CheckoutController extends Controller
 
         $product->quantity = $quantity;
         // dd($product);
+
+        // Check ShippingRates
+        $shippingInfo = $this->shippingInfo($request, $quantity);
+
+        // Pastikan $shippingInfo tidak null
+        if ($shippingInfo === null) {
+            return null;
+        } else {
+            // Mengambil data asli dari JsonResponse
+            $shippingInfo = $shippingInfo->getData(true); // true untuk mendapatkan data dalam bentuk array
+
+            // Memeriksa apakah status adalah true
+            if (isset($shippingInfo['status']) && $shippingInfo['status'] === true) {
+
+                $courierRates = $shippingInfo['price'];
+
+                return view('pages.user.checkout', compact('quantity', 'product', 'courierRates'));
+
+            } else {
+
+                return redirect()->route('user.product');
+            }
+        }
+
+
+
+    }
+
+    public function payment(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'quantity'=> 'required|integer',
+            'uniqueCode'=> 'required|integer'
+        ]);
+
+        $quantity = $request->quantity;
+        $uniqueCode = $request->uniqueCode;
+        $product = Product::first();
+
+
+        // Jika validasi tidak berhasil, kembali ke halaman sebelumnya dengan pesan error
+        if ($validator->fails() || $quantity <= 0) {
+            return redirect()->route('user.product')->with('error', 'Jumlah produk tidak sesuai.');
+        }
+
+        if ($quantity >= $product->stock) {
+            return redirect()->route('user.product')->with('error', 'Jumlah produk melebihi stok yang tersedia.');
+        }
+
+        if ($uniqueCode <= 100) {
+            return redirect()->route('user.product')->with('error', 'Kode unik tidak sesuai.');
+        }
+
+        $totalPayment = ($product->price * $quantity) + $uniqueCode;
+
+        // Midtrans Integration
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = Config::get('app.midtrans_server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $totalPayment,
+            ),
+            'customer_details' => array(
+                'first_name' => Auth::user()->name,
+                'last_name' => '',
+                'email' => Auth::user()->email,
+                'phone' => Auth::user()->phone_number,
+            ),
+        );
+
+        $auth = base64_encode(Config::get('app.midtrans_server_key'));
+
+        $response = Http::withHeaders([
+            'content-type' => 'application/json',
+            'authorization' => 'Basic '.$auth,
+        ])->post("https://app.sandbox.midtrans.com/snap/v1/transactions", $params);
+
+        $response = json_decode($response->body());
+
+        return $response;
+
+    }
+
+    public function shippingInfo(Request $request, int $quantity){
+
+        // Jika validasi tidak berhasil, kembali ke halaman sebelumnya dengan pesan error
+        if ( $quantity <= 0) {
+            return redirect()->route('user.product')->with('error', 'Jumlah produk tidak sesuai.');
+        }
+
+        $product = Product::first();
+        $apiKeyBiteship = Config::get('app.api_key_biteship');
+
+        $product->quantity = $quantity;
 
         $items = (new ShipmentItemsResource($product))->toArray($request);
 
@@ -93,31 +196,21 @@ class CheckoutController extends Controller
             ]);
 
             $courierOptions = json_decode($courierOptions);
-            $courierRates = $courierOptions->pricing[0]->price;
+            $courier = $courierOptions->pricing[0]->price;
 
-            return view('pages.user.checkout', compact('quantity', 'product', 'courierRates'));
+            return response()->json([
+                'status' => true,
+                'message' => 'Berhasil mengecek ongkos kirim.',
+                'price' => ($courier)
+            ], 200);
 
 
         } catch (\Throwable $th) {
-            return "oiiii, errorrr kawannn". $th->getMessage();
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Gagal mengecek ongkos kirim.',
+            ], 201);
         }
-
-
-
-
-
-        // return $quantity."";
-
-    }
-
-    public function shippingRate(Request $request){
-
-        $validator = Validator::make($request->all(), [
-            'quantity'=> 'required|integer'
-        ]);
-
-        $product = Product::first();
-
-        // Config::get('app.api_key_biteship');
     }
 }

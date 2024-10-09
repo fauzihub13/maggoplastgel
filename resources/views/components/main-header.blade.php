@@ -12,8 +12,9 @@
                                 <div class="col-md-2 ">
                                     <div class="inner-header">
                                         <div class="logo-header">
-                                            <a href="index.html" title="">
-                                                <img src="{{ asset('images/logo/Logo-x.png') }}" alt="images">
+                                            <a href="{{ route('user.home')  }}" title="">
+                                                <img src="" alt="images">
+                                                {{-- <img src="{{ u('/images/logo/Logo-x.png') }}" alt="images"> --}}
                                             </a>
                                         </div>
                                         <!-- /logo -->
@@ -49,29 +50,6 @@
                                         </nav>
                                     </div>
                                 </div>
-
-                                {{-- <div class="col-md-2">
-                                    <div class="site-header-right ">
-                                        <div class="header-cart">
-                                            <a href="{{ route('user.product') }}" class="cart-btn icon-header ">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-
-                                        @if (!Auth::user())
-                                            <div class="button ">
-                                                <a href="{{ route('user.login.index') }}" class="btn ">Masuk</a>
-                                            </div>
-                                        @else
-                                            <div class="header-profile ">
-                                                <a href="#" class="cart-btn icon-header"><i class="fa fa-user"></i></a>
-                                                <p class="text-custom-primary">{{ Auth::user()->name }}</p>
-                                            </div>
-                                        @endif
-
-                                    </div>
-                                    <!-- header right -->
-                                </div> --}}
 
                                 <div class="col-md-2">
                                     <div class="site-header-right ">
