@@ -200,9 +200,54 @@ class CheckoutController extends Controller
             return view('pages.user.payment', compact('totalPayment', 'snapToken'));
 
         } catch (\Throwable $th) {
-
             DB::rollBack();
+            return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
+
         }
+
+    }
+
+    public function webhookPayment(Request $request) {
+        // Request payment midtrans
+        $auth = base64_encode(Config::get('app.midtrans_server_key').":");
+
+        $response = Http::withHeaders([
+            'content-type' => 'application/json',
+            'authorization' => 'Basic '.$auth,
+        ])->get("	https://api.sandbox.midtrans.com/v2/$request->order_id/status", );
+
+        $response = json_decode($response->body());
+
+        $transactionStatuses = ['capture', 'settlement', 'pending', 'cancel', 'expired'];
+
+        $transactionId = $response->order_id;
+        $transactionStatus = $response->status;
+
+        try {
+
+            $transactionInfo = Transaction::where('transaction_id', $transactionId)->firstOrFail();
+            $orderInfo = Order::where('order_number', $transactionId)->firstOrFail();
+
+            if(in_array($transactionStatus, $transactionStatuses) && $transactionStatus !== 'pending'){
+                $transactionInfo->transaction_status = $transactionStatus;
+                $transactionInfo->save();
+
+            }
+
+            if($transactionStatus === 'settlement' || $transactionStatus === 'capture') {
+                $orderInfo->status = 'paid';
+                $orderInfo->save();
+                return "Sukses melakukan pembayaran";
+                
+            } else {
+                return "Belum sukses melakukan pembayaran, statusnya: ".$transactionStatus;
+            }
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return "erorrrr kawann ->  ".$th->getMessage();
+        }
+
 
     }
 

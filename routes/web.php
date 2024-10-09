@@ -32,9 +32,11 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
     Route::controller(CheckoutController::class)->group(function() {
         Route::get('/product', 'productPage')->name('user.product');
         Route::post('/product/checkout', 'checkoutPage')->name('user.checkout')->middleware('isUserLogin');
-        Route::post('/product/checkout/order', 'payment')->name('user.checkout.store')->middleware('isUserLogin');
+        Route::post('/product/checkout/payment', 'payment')->name('user.checkout.store')->middleware('isUserLogin');
+        Route::post('/product/checkout/payment/status', 'webhookPayment')->name('user.payment-status');
+        // Route::get('/product/checkout/payment/status', 'webhookPayment')->name('user.payment-success');
     });
-    
+
     Route::controller(UserAuthController::class)->group(function() {
         Route::get('/login', 'loginPage')->name('user.login.index');
         Route::post('/login', 'login')->name('user.login.post');
