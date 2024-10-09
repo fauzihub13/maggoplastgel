@@ -17,10 +17,16 @@ class isUserLogin
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        if($user){
+
+        // Jika user sudah login, lanjutkan request
+        if ($user) {
             return $next($request);
         }
-        return redirect()->route('user.login.index');
 
+        // Jika user belum login, redirect ke halaman login dan simpan URL tujuan
+        // return redirect()->guest(route('user.login.index'))->with('url.intended', $request->url());
+        // Simpan URL tujuan ke session secara otomatis oleh Laravel
+        return redirect()->guest(route('user.login.index'));
     }
+
 }

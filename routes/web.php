@@ -36,6 +36,7 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
     Route::controller(UserAuthController::class)->group(function() {
         Route::get('/login', 'loginPage')->name('user.login.index');
         Route::post('/login', 'login')->name('user.login.post');
+        Route::post('/logout', 'logout')->name('user.logout');
     });
 
 

@@ -140,7 +140,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
-    line-height: 108px;
+    line-height: 100px;
     padding-right: 3%;
 }
 #header .header-wrap-home1 .inner-header {

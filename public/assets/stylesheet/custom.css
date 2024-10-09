@@ -3,10 +3,6 @@
     justify-content: center;
 }
 
-.m-0 {
-    margin: 0 !important;
-}
-
 .text-custom-primary {
     color: var(--primary-color2) !important;
 }
@@ -24,12 +20,24 @@
     color: var(--primary-color2) !important;
 }
 
+.m-0 {
+    margin: 0 !important;
+}
+
 .mb-2 {
     margin-bottom: 2rem;
 }
 
 .mt-2 {
     margin-top: 2rem;
+}
+
+.me-1 {
+    margin-right: 1rem;
+}
+
+.ms-1 {
+    margin-left: 1rem;
 }
 
 .mt-5 {
@@ -285,6 +293,41 @@ table tr {
 .button-custom-primary:hover{
     color: white;
 }
+
+.icon-header{
+    font-size: 30px;
+    margin-bottom: 0 !important;
+    align-content: center;
+}
+
+.header-profile{
+    display: flex;
+    gap: 10px;
+    margin-left: 1rem;
+}
+
+.header-cart{
+    margin-bottom: 0px !important;
+}
+
+.header-user-name{
+    width: 60px;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.profile-dropdown{
+    border: none;
+}
+
+.profile-dropdown:hover {
+    border: none;
+    background-color: white;
+    color: var(--primary-color2);
+}
+
 
 @media (max-width: 576px) {
 

@@ -9,7 +9,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="header-wrap-home1">
-                                <div class="col-md-3 ">
+                                <div class="col-md-2 ">
                                     <div class="inner-header">
                                         <div class="logo-header">
                                             <a href="index.html" title="">
@@ -49,16 +49,66 @@
                                         </nav>
                                     </div>
                                 </div>
-                                <div class="col-md-1">
-                                    <div class="site-header-right">
-                                        <div class="cart">
-                                            <a href="{{ route('user.product') }}" class="cart-btn"><i
-                                                    class="fa fa-shopping-cart"></i></a>
+
+                                {{-- <div class="col-md-2">
+                                    <div class="site-header-right ">
+                                        <div class="header-cart">
+                                            <a href="{{ route('user.product') }}" class="cart-btn icon-header ">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
                                         </div>
-                                        <div class="cart">
-                                            <a href="#" class="cart-btn"><i
-                                                    class="fa fa-user"></i></a>
+
+                                        @if (!Auth::user())
+                                            <div class="button ">
+                                                <a href="{{ route('user.login.index') }}" class="btn ">Masuk</a>
+                                            </div>
+                                        @else
+                                            <div class="header-profile ">
+                                                <a href="#" class="cart-btn icon-header"><i class="fa fa-user"></i></a>
+                                                <p class="text-custom-primary">{{ Auth::user()->name }}</p>
+                                            </div>
+                                        @endif
+
+                                    </div>
+                                    <!-- header right -->
+                                </div> --}}
+
+                                <div class="col-md-2">
+                                    <div class="site-header-right ">
+                                        <div class="header-profile me-1">
+                                            <a href="{{ route('user.product') }}" class="cart-btn icon-header"><i class="fa fa-shopping-cart"></i></a>
                                         </div>
+                                        @if (!Auth::user())
+                                            <div class="button ">
+                                                <a href="{{ route('user.login.index') }}" class="btn ">Masuk</a>
+                                            </div>
+                                        @else
+                                            {{-- <div class="header-profile ">
+                                                <a href="#" class="cart-btn icon-header"><i class="fa fa-user"></i></a>
+                                                <p class="text-custom-primary header-user-name">{{ Auth::user()->name }}</p>
+                                            </div> --}}
+                                            <div class="dropdown">
+                                                <button class="btn btn-default dropdown-toggle no-border profile-dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <p class="text-custom-primary header-user-name">Hi, {{ Auth::user()->name }}<span class="caret" style="margin-left: 10px"></span></p>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                    <li><a href="#">Profil</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>
+                                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
+                                                    </li>
+                                                    <form id="logout-form"
+                                                        action="{{ route('user.logout') }}"
+                                                        method="POST" style="display: none">
+                                                        @csrf
+                                                        @method('POST')
+                                                        <button type="submit">Logout</button>
+                                                    </form>
+                                                </ul>
+                                            </div>
+
+                                        @endif
+
                                     </div>
                                     <!-- header right -->
                                 </div>

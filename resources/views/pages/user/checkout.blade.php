@@ -46,11 +46,11 @@
 
                 <div class="row">
                     <div class="col-md-3 mb-1">
-                       <strong><h3 class="text-custom-primary section-custom-medium">Fauzi Adi Saputra <br>(0123213313123)</h3></strong>
+                       <strong><h3 class="text-custom-primary section-custom-medium">{{ Auth::user()->name }} <br>({{ Auth::user()->phone_number }})</h3></strong>
                     </div>
                     <div class="col-md-7 mb-1">
                         <p class="desc-box text-custom-primary">
-                            Jl. Kumbang No.14, RT.02/RW.06, Babakan, Kecamatan Bogor Tengah, Kota Bogor, Jawa Barat 16128
+                            {{ Auth::user()->address_detail }}
                         </p>
                     </div>
                     <div class="col-md-2">
