@@ -6,6 +6,7 @@
     <script type="text/javascript"
         src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="{{ Config::get('app.midtrans_client_key') }}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 @endpush
 
@@ -41,12 +42,15 @@
                     <div class="col-12 text-center">
                         <h3 class="section-heading-rubik-size20 text-custom-primary">Total Tagihan</h3>
                         <h3 class="section-heading-rubik-size20 text-custom-primary mb-2 rupiah">{{ $totalPayment }}</h3>
-                        <button id="pay-button" class="btn button-custom-primary mb-2 w-100">Bayar</button>
+                        {{-- <button id="pay-button"  onclick="event.prevent.defaul; document.getElementById('placeOrderForm').submit()" class="btn button-custom-primary mb-2 w-100">Bayar</button> --}}
+                        <button id="pay-button"  class="btn button-custom-primary mb-2 w-100">Bayar</button>
+                        {{-- <form action="{{ route ('user.payment-status') }}" method="POST" style="display: none" id="placeOrderForm">
+
+                        </form> --}}
                         <p class="text-custom-grey text-center">Dengan melanjutkan pembayaran, Anda setuju dengan ketentuan yang berlaku.</p>
 
                     </div>
                 </div>
-
 
             </div>
         </section>

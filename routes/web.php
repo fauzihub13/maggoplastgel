@@ -3,9 +3,10 @@
 use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\User\AuthController as UserAuthController;
+// use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,8 +34,7 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
         Route::get('/product', 'productPage')->name('user.product');
         Route::post('/product/checkout', 'checkoutPage')->name('user.checkout')->middleware('isUserLogin');
         Route::post('/product/checkout/payment', 'payment')->name('user.checkout.store')->middleware('isUserLogin');
-        Route::post('/product/checkout/payment/status', 'webhookPayment')->name('user.payment-status');
-        // Route::get('/product/checkout/payment/status', 'webhookPayment')->name('user.payment-success');
+
     });
 
     Route::controller(UserAuthController::class)->group(function() {

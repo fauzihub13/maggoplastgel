@@ -17,40 +17,41 @@ class AuthController extends Controller
     }
 
     public function login(Request $request) {
-    // Validasi input credentials user
-    $credentials = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required'
-    ]);
+        // Validasi input credentials user
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-    // Validasi credentials
-    if (Auth::attempt($credentials)) {
+        // Validasi credentials
+        if (Auth::attempt($credentials)) {
 
-        $user = Auth::user();
+            $user = Auth::user();
 
-        // Periksa jika role user adalah 'user'
-        if ($user->role === 'user') {
-            // Regenerasi session untuk keamanan
-            $request->session()->regenerate();
+            // Periksa jika role user adalah 'user'
+            if ($user->role === 'user') {
+                // Regenerasi session untuk keamanan
+                $request->session()->regenerate();
+                // return Auth::user();
 
-            // dd(session()->get('url.intended'));
+                // dd(session()->get('url.intended'));
 
-            // Jika ada URL tujuan dari middleware, redirect ke sana
-            return redirect()->intended('/'); // Fallback ke '/' jika tidak ada URL tujuan
-        } else {
-            // Logout jika role bukan 'user'
-            Auth::logout();
-            return back()->withErrors([
-                'email' => 'You do not have permission to access this application.',
-            ])->onlyInput('email');
+                // Jika ada URL tujuan dari middleware, redirect ke sana
+                return redirect()->intended('/'); // Fallback ke '/' jika tidak ada URL tujuan
+            } else {
+                // Logout jika role bukan 'user'
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'You do not have permission to access this application.',
+                ])->onlyInput('email');
+            }
         }
-    }
 
-    // Jika credentials tidak valid, kembali ke halaman login dengan pesan error
-    return back()->withErrors([
-        'email' => 'The provided credentials do not match our records.',
-    ])->onlyInput('email');
-}
+        // Jika credentials tidak valid, kembali ke halaman login dengan pesan error
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    }
 
 
 

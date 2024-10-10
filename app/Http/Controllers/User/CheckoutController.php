@@ -73,6 +73,7 @@ class CheckoutController extends Controller
                 return view('pages.user.checkout', compact('quantity', 'product', 'courierRates'));
 
             } else {
+                return "api bitehip lemot";
 
                 return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
             }
@@ -83,6 +84,8 @@ class CheckoutController extends Controller
     public function payment(Request $request){
 
         Carbon::setLocale('id');
+        // dd($request->all());
+
 
         $validator = Validator::make($request->all(), [
             'quantity'=> 'required|integer',
@@ -96,7 +99,6 @@ class CheckoutController extends Controller
         // Check ShippingRates
         $shippingInfo = $this->shippingInfo($request, $quantity);
 
-        DB::beginTransaction();
 
         // Pastikan $shippingInfo tidak null
         if ($shippingInfo === null) {
@@ -158,7 +160,8 @@ class CheckoutController extends Controller
         // $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         try {
-            //code...
+            DB::beginTransaction();
+
             // Save to order table
             $order = new Order();
             $order->user_id = Auth::user()->id;
@@ -166,6 +169,7 @@ class CheckoutController extends Controller
             $order->status = "pending";
             $order->shipping_cost = $courierRates;
             $order->save();
+            // return $order->order_number."";
 
             // Save to order items table
             $orderItems = new OrderItem();
@@ -174,6 +178,7 @@ class CheckoutController extends Controller
             $orderItems->quantity = $quantity;
             $orderItems->price = $product->price;
             $orderItems->save();
+
 
             // Request payment midtrans
             $auth = base64_encode(Config::get('app.midtrans_server_key').":");
@@ -200,7 +205,7 @@ class CheckoutController extends Controller
             return view('pages.user.payment', compact('totalPayment', 'snapToken'));
 
         } catch (\Throwable $th) {
-            DB::rollBack();
+            // DB::rollBack();
             return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
 
         }
@@ -208,20 +213,24 @@ class CheckoutController extends Controller
     }
 
     public function webhookPayment(Request $request) {
+        // return "asda";
+        // dd($request->all());
         // Request payment midtrans
         $auth = base64_encode(Config::get('app.midtrans_server_key').":");
 
         $response = Http::withHeaders([
             'content-type' => 'application/json',
             'authorization' => 'Basic '.$auth,
-        ])->get("	https://api.sandbox.midtrans.com/v2/$request->order_id/status", );
+        ])->get("https://api.sandbox.midtrans.com/v2/$request->order_id/status", );
 
         $response = json_decode($response->body());
+        // dd($response);
+
 
         $transactionStatuses = ['capture', 'settlement', 'pending', 'cancel', 'expired'];
 
         $transactionId = $response->order_id;
-        $transactionStatus = $response->status;
+        $transactionStatus = $response->transaction_status;
 
         try {
 
@@ -238,7 +247,7 @@ class CheckoutController extends Controller
                 $orderInfo->status = 'paid';
                 $orderInfo->save();
                 return "Sukses melakukan pembayaran";
-                
+
             } else {
                 return "Belum sukses melakukan pembayaran, statusnya: ".$transactionStatus;
             }

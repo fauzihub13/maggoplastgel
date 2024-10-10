@@ -19,11 +19,11 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'id' => '9d08582d-0b84-4862-91a5-fd9581490c17',
-            'name' => 'Ali',
-            'email' => 'admin@gmail.com',
+            'id' => '7d08582d-0b84-4862-91a5-fd9581490c13',
+            'name' => 'Fauzi Adi',
+            'email' => 'fauzi@gmail.com',
             'password' => 'root123',
-            'role' => 'admin',
+            'role' => 'user',
             'kelurahan' => 'Kebon Jeruk',
             'kecamatan' => 'Kebon Jeruk',
             'city' => 'Jakarta Barat',

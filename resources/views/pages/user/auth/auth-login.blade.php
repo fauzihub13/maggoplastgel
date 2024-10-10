@@ -11,7 +11,7 @@
 @section('main')
     <div class="card card-primary">
         <div class="card-header">
-            <h4>Login</h4>
+            <h4>User Login</h4>
             @auth
                 Saya sudah login
             @endauth

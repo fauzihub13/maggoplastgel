@@ -21,7 +21,7 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => "9d08582d-0b84-4862-91a5-fd9581490c17",
+            'user_id' => "9d08582d-0b84-4862-91a5-fd9581490c12",
             'article_category_id' => "7d08582d-0b84-4862-91a5-fd9581490c20",
             'title' => fake()->realText($maxNbChars = 200, $indexSize = 2),
             'slug' => fake()->slug(),
