@@ -3,7 +3,7 @@
 @section('title', 'Blog Detail')
 
 @push('style')
-
+<link rel="stylesheet" href="{{ asset('stylesheet/article.css') }}">
 @endpush
 
 
@@ -22,7 +22,7 @@
                                 Detail Artikel
                             </div>
                             <div class="page-title-content link-style6">
-                                <span><a class="home" href="{{ route('user.blog') }}">Beranda</a></span><span class="page-title-content-inner">Detail Artikel</span>
+                                <span><a class="home" href="{{ route('user.article') }}">Beranda</a></span><span class="page-title-content-inner">Detail Artikel</span>
                             </div>
                         </div>
                     </div>
@@ -104,10 +104,22 @@
                                         <div class="social-share">
                                             <h3 class="title2 heading-16px-rubik">Share :</h3>
                                             <ul class="widgets-nav-social">
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                                <li>
+                                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" target="_blank">
+                                                        <i class="fa-brands fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://twitter.com/intent/tweet?url={{ Request::url() }}&text={{ $article->title }}" target="_blank">
+                                                        <i class="fa-brands fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://wa.me/?text={{ $article->title }}%20{{ Request::url() }}" target="_blank">
+                                                        <i class="fa-brands fa-whatsapp"></i>
+                                                    </a>
+                                                </li>
+                                                
                                             </ul>
                                         </div>
                                     </div>

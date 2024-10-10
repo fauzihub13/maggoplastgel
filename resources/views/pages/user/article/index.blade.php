@@ -3,35 +3,7 @@
 @section('title', 'Blog - ')
 
 @push('style')
-<style>
-    .article-description {
-        display: -webkit-box;
-        -webkit-line-clamp: 3; /* Menampilkan maksimal 3 baris */
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .article-title {
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* Menampilkan maksimal 3 baris */
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .article-thumbnail {
-        width: 100%;
-        aspect-ratio: 77 / 45;
-        object-fit: cover;
-    }
-
-    .newest-article-thumbnail {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('stylesheet/article.css') }}">
 @endpush
 
 
