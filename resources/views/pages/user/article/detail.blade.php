@@ -61,21 +61,7 @@
                                     <div class="article-body">
                                         {!! $article->body !!}
                                     </div>
-                                    <p class="desc-content-box text-decs">
-                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-                                        sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-                                        accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                                        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-                                    </p>
-                                    <div class="content-note-author">
-                                        <p class="desc-content-box text-decs">
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                                        </p>
-                                        <a href="#" class="author heading-16px-rubik">
-                                        Marilyn Gilbert
-                                    </a>
-
-                                    </div>
+                                    <
                                     {{-- <p class="desc-content-box text-decs">
                                         labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                                         sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
@@ -110,7 +96,7 @@
                                             @endphp
                                             <ul class="list-related">
                                                 @foreach ($tags as $tag)
-                                                <li><a href="#">{{ $tag }}.</a></li>
+                                                <li><a href="/artikel?tag={{ $tag }}">{{ $tag }}.</a></li>
                                                     
                                                 @endforeach
                                             </ul>
@@ -211,7 +197,7 @@
                                 </h3>
                                 <ul class="list-category">
                                     @foreach ($categories as $category)
-                                    <li><a href="#">{{ $category->name }}</a></li>
+                                    <li><a href="/artikel?kategori={{ $category->id }}">{{ $category->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -232,7 +218,7 @@
                                 </ul>
                             </div>
                             <!-- /.widget_lastest -->
-                            <div class="widgets-contact-info">
+                            {{-- <div class="widgets-contact-info">
                                 <div class="contact-info-img">
                                     <img src="{{ asset('images/blog/young-beautiful-florist-watering-flowers.jpg')}}" alt="image">
                                 </div>
@@ -256,7 +242,7 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!-- /.col-md-4 -->

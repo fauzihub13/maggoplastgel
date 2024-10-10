@@ -40,7 +40,7 @@
                                                     <a href="{{ route('user.team') }}" class="{{ Route::is('team') ? 'active' : '' }}" title="">Tim</a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.blog') }}" class="{{ Route::is('blog') ? 'active' : '' }}" title="">Artikel</a>
+                                                    <a href="{{ route('user.article') }}" class="{{ Route::is('artikel') ? 'active' : '' }}" title="">Artikel</a>
                                                 </li>
 
                                                 <li>

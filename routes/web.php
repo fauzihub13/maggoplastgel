@@ -27,8 +27,8 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
     });
 
     Route::controller(ArticleController::class)->group(function(){
-        Route::get('/artikel', 'index');
-        Route::get('/artikel/{article:slug}', 'detail');
+        Route::get('/artikel', 'index')->name('user.article');
+        Route::get('/artikel/{article:slug}', 'detail')->name('user.article.detail');
     });
 
     Route::controller(CheckoutController::class)->group(function() {

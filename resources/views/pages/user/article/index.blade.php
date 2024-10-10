@@ -71,7 +71,12 @@
                     <div class="col-md-8">
                         @if(request('kategori'))
                         <h3 class="widgets-side-bar-title">
-                            Kategori: {{ request('kategori') }}
+                            Kategori{{ ": " . $category_name }}
+                        </h3>
+                        @endif
+                        @if(request('tag'))
+                        <h3 class="widgets-side-bar-title">
+                            Tag: {{ request('tag') }}
                         </h3>
                         @endif
                         <div class="post-wrap">
@@ -160,7 +165,7 @@
                                     Cari
                                 </h3>
                                 <div class="widgets-input">
-                                    <form method="get" role="search" class="search-form">
+                                    <form method="get" role="search" class="search-form" action="">
                                         <input type="search" class="search-field" placeholder="Ketik disini.." value="{{ request('search') ?? '' }}" name="search" title="Search for">
                                         <button class="search-submit" type="submit" title="Search"></button>
                                     </form>
@@ -202,5 +207,17 @@
 
 
 @push('scripts')
+    <script>
+        $('.search-form').submit(function(e) {
+            e.preventDefault(); // Mencegah pindah halaman
+            
+            console.log("horray");
+            
 
+            var search = $('.search-field').val();
+            var currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.append('search', search);
+            window.location.href = currentUrl.toString();
+        })
+    </script>
 @endpush

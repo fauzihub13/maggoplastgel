@@ -236,10 +236,23 @@ class ArticleController extends Controller
         // Mendapatkan nilai parameter search
         $search = request('search');
 
+        // Mendapatkan artikel
+        $articles = Article::with('articleCategory')->filter(request(['search', 'kategori', 'tag']))->latest()->publish()->notInTrash()->paginate($num_data)->appends(['search' => $search]);
+
+        // Mendapatkan kategro artikel
+        $category_name = "";
+        if (request('kategori')) {
+            $category_name = ArticleCategory::where('id', request('kategori'))->first()->name ?? "Tidak ditemukan";
+        }
+
+        // Mendapatkan artikel terbaru
+        $newest_article = Article::latest()->publish()->notInTrash()->withoutContent()->limit(3)->get();
+
         // Mengembalikan view dengan artikel perkategori
         return view('pages.user.article.index', [
-            'articles' => Article::with('articleCategory')->filter(request(['search']))->latest()->publish()->notInTrash()->paginate($num_data)->appends(['search' => $search]),
-            'newest_articles' => Article::latest()->publish()->notInTrash()->withoutContent()->limit(3)->get()
+            'articles' => $articles,
+            'newest_articles' => $newest_article,
+            'category_name' => $category_name
         ]);
     }
 

@@ -54,8 +54,6 @@
 
         @include('components.main-footer')
 
-        @stack('scripts')
-
         <!-- Javascript -->
         <script type="text/javascript" src="{{ asset('javascript/jquery.min.js') }}"></script>
         <script src="{{ asset('owlcarousel/owl.carousel.min.js') }}"></script>
@@ -86,6 +84,8 @@
         <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.parallax.min.js') }}"></script>
         <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}"></script>
         <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
+        
+        @stack('scripts')
     </div>
 
 </body>
