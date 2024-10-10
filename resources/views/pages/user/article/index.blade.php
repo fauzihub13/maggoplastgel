@@ -4,7 +4,7 @@
 
 @push('style')
 <style>
-    .description {
+    .article-description {
         display: -webkit-box;
         -webkit-line-clamp: 3; /* Menampilkan maksimal 3 baris */
         -webkit-box-orient: vertical;
@@ -22,7 +22,7 @@
 
     .article-thumbnail {
         width: 100%;
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 77 / 45;
         object-fit: cover;
     }
 
@@ -69,6 +69,11 @@
                         <div class="themesflat-spacer clearfix" data-desktop="47" data-mobile="0" data-smobile="0"></div>
                     </div>
                     <div class="col-md-8">
+                        @if(request('kategori'))
+                        <h3 class="widgets-side-bar-title">
+                            Kategori: {{ request('kategori') }}
+                        </h3>
+                        @endif
                         <div class="post-wrap">
 
                             <!-- start art -->
@@ -98,14 +103,14 @@
                                         </ul>
                                     </div>
                                     <div class="content-art">
-                                        <a href="{{ route('user.blog.detail') }}" class="section-heading-jost-size28">
+                                        <a href="/artikel/{{ $article->slug }}" class="section-heading-jost-size28">
                                             {{ $article->title }}
                                         </a>
-                                        <p class="desc-content-box text-decs description">
+                                        <p class="desc-content-box text-decs article-description">
                                             {{ strip_tags($article->body) }}
                                         </p>
                                         <div class="link-style2">
-                                            <a href="{{ route('user.blog.detail') }}" class="read-more">
+                                            <a href="/artikel/{{ $article->slug }}" class="read-more">
                                                 Read More<i class="fas fa-long-arrow-alt-right"></i>
                                             </a>
                                         </div>
@@ -171,7 +176,7 @@
                                             <img src="/storage/{{ $article->thumbnail }}" alt="Image" class="newest-article-thumbnail">
                                         </div>
                                         <div class="text">
-                                            <h3><a href="{{ route('user.blog.detail') }}" class="title-thumb article-title">{{ $article->title }}</a></h3>
+                                            <h3><a href="/artikel/{{ $article->slug }}" class="title-thumb article-title">{{ $article->title }}</a></h3>
                                             <a href="#" class="date">{{ $article->created_at->format('d F') }}</a>
                                         </div>
                                     </li>

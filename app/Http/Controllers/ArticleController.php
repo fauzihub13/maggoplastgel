@@ -242,4 +242,14 @@ class ArticleController extends Controller
             'newest_articles' => Article::latest()->publish()->notInTrash()->withoutContent()->limit(3)->get()
         ]);
     }
+
+    public function detail(Article $article){
+
+        // Mengembalikan view dengan data artikel
+        return view('pages.user.article.detail', [
+            'article' => $article,
+            'newest_articles' => Article::latest()->publish()->notInTrash()->withoutContent()->limit(3)->get(),
+            'categories' => ArticleCategory::all()
+        ]);
+    }
 }

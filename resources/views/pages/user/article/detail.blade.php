@@ -45,21 +45,22 @@
                             <div class="content-blog-detail">
                                 <div class="image-box">
                                     <div class="image">
-                                        <img src="{{ asset('images/blog/young-workers-greenhouse-feed-flowers-concept-caring-plants.jpg')}}" alt="image">
+                                        <img src="/storage/{{ $article->thumbnail }}" alt="image" class="article-thumbnail">
                                     </div>
                                 </div>
                                 <div class="content mg-top-15">
                                     <span class="content-info"><a href="#" class="user">
 									BY ADMIN
 								</a><a href="#" class="date">
-									28 JANUARY, 2020
+									{{ $article->created_at->format('d F, Y') }}
 								</a></span>
                                     <div class="heading-content-box">
                                         <a href="#">
-									Social media-driven trading frenzy for GameStop, AMC Entertainment sparks calls for scrutiny
+									{{ $article->title }}
 								</a></div>
-
-
+                                    <div class="article-body">
+                                        {!! $article->body !!}
+                                    </div>
                                     <p class="desc-content-box text-decs">
                                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
                                         sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
@@ -75,7 +76,7 @@
                                     </a>
 
                                     </div>
-                                    <p class="desc-content-box text-decs">
+                                    {{-- <p class="desc-content-box text-decs">
                                         labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                                         sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
                                     </p>
@@ -98,15 +99,20 @@
                                         <li><a href="#" class="tick">sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</a></li>
                                         <li><a href="#" class="tick">Stet clita kasd gubergren, no sea takimata sanctus</a></li>
                                         <li><a href="#" class="tick">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</a></li>
-                                    </ul>
+                                    </ul> --}}
+
                                     <hr>
                                     <div class="bottom-content">
                                         <div class="related-tag">
                                             <h3 class="title heading-16px-rubik">Related Tags :</h3>
+                                            @php
+                                                $tags = explode(',', $article->tags);
+                                            @endphp
                                             <ul class="list-related">
-                                                <li><a href="#">Business.</a></li>
-                                                <li><a href="#">Corporate.</a></li>
-                                                <li><a href="#">Agency</a></li>
+                                                @foreach ($tags as $tag)
+                                                <li><a href="#">{{ $tag }}.</a></li>
+                                                    
+                                                @endforeach
                                             </ul>
                                         </div>
                                         <div class="social-share">
@@ -119,7 +125,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="widgets-comment">
+                                    {{-- <div class="widgets-comment">
                                         <div class="widgets-title-comment">
                                             Comments
                                         </div>
@@ -161,10 +167,10 @@
 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <!-- comments -->
                                     <!-- input comment -->
-                                    <div class="widgets-post-comment">
+                                    {{-- <div class="widgets-post-comment">
                                         <div class="widgets-title-comment">
                                             Leave a Reply
                                         </div>
@@ -176,7 +182,7 @@
                                                 <a href="#" class="tf-button">Post Comment</a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -193,63 +199,36 @@
                                     Search
                                 </h3>
                                 <div class="widgets-input">
-                                    <form method="get" role="search" class="search-form">
-                                        <input type="search" class="search-field" placeholder="Search here" value="" name="s" title="Search for">
+                                    <form method="get" role="search" class="search-form" action="/artikel">
+                                        <input type="search" class="search-field" placeholder="Search here" value="" name="search" title="Search for">
                                         <button class="search-submit" type="submit" title="Search"></button>
                                     </form>
                                 </div>
                             </div>
                             <div class="widgets-category">
                                 <h3 class="widgets-side-bar-title">
-                                    Category
+                                    Kategori
                                 </h3>
                                 <ul class="list-category">
-                                    <li><a href="#">Tempor lorem interdum</a></li>
-                                    <li><a href="#">Auctor mattis lacus </a></li>
-                                    <li><a href="#">Dolor proin </a></li>
-                                    <li><a href="#">Pharetra amet </a></li>
-                                    <li><a href="#">Nullam dolor gravida </a> </li>
+                                    @foreach ($categories as $category)
+                                    <li><a href="#">{{ $category->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="widget widget_lastest">
-                                <h2 class="widgets-side-bar-title"><span>Recent News</span></h2>
+                                <h2 class="widgets-side-bar-title"><span>Artikel Terbaru</span></h2>
                                 <ul class="lastest-posts data-effect clearfix">
+                                    @foreach ($newest_articles as $article)
                                     <li class="clearfix">
                                         <div class="thumb data-effect-item has-effect-icon">
-                                            <img src="{{ asset('images/blog/medium-shot-woman-holding-plant-pot.jpg')}}" alt="Image">
-                                            <div class="elm-link">
-                                                <a href="page-blog-single.html" class="icon-2"></a>
-                                            </div>
+                                            <img src="/storage/{{ $article->thumbnail }}" alt="Image" class="newest-article-thumbnail">
                                         </div>
                                         <div class="text">
-                                            <h3><a href="#" class="title-thumb">Integer at faucibus urna. Nullam condimentum</a></h3>
-                                            <a href="#" class="date">15 October</a>
+                                            <h3><a href="/artikel/{{ $article->slug }}" class="title-thumb article-title">{{ $article->title }}</a></h3>
+                                            <a href="#" class="date">{{ $article->created_at->format('d F') }}</a>
                                         </div>
                                     </li>
-                                    <li class="clearfix">
-                                        <div class="thumb data-effect-item has-effect-icon">
-                                            <img src="{{ asset('images/blog/close-up-picture-hand-holding-wo.jpg')}}" alt="Image">
-                                            <div class="elm-link">
-                                                <a href="page-blog-single.html" class="icon-2"></a>
-                                            </div>
-                                        </div>
-                                        <div class="text">
-                                            <h3><a href="#" class="title-thumb">Nunc scelerisque tincidunt estibulum</a></h3>
-                                            <a href="#" class="date">15 October</a>
-                                        </div>
-                                    </li>
-                                    <li class="clearfix">
-                                        <div class="thumb data-effect-item has-effect-icon">
-                                            <img src="{{ asset('images/blog/planting-flowers-thumb.jpg')}}" alt="Image">
-                                            <div class="elm-link">
-                                                <a href="page-blog-single.html" class="icon-2"></a>
-                                            </div>
-                                        </div>
-                                        <div class="text">
-                                            <h3><a href="#" class="title-thumb">Cras eu elit congue, plac erat duicidunt nisl</a></h3>
-                                            <a href="#" class="date">15 October</a>
-                                        </div>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <!-- /.widget_lastest -->
