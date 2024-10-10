@@ -69,7 +69,7 @@
                                                     <img src="/storage/{{ $product->productImages()->first()->path ?? '' }}" class="product-image" alt="...">
                                                 </figure>
                                                 <div>
-                                                    {{ $product->name }}
+                                                    <span class="fw-bold">{{ $product->name }}</span>
                                                     <div class="table-links">
                                                         <a href="#">View</a>
                                                         <div class="bullet"></div>

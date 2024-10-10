@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 // use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\CheckoutController;
@@ -90,6 +91,11 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
             Route::put('/produk/aktif-produk/{product}', 'activate');
             Route::put('/produk/edit-produk/{product}', 'update');
             Route::delete('/produk/hapus-produk/{product}', 'delete');
+        });
+
+        // Order
+        Route::controller(OrderController::class)->group(function() {
+           Route::get('/pesanan', 'index'); 
         });
     });
 

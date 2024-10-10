@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id');
             $table->string('order_number')->unique();
-            $table->enum('status', ['pending', 'paid', 'shipped'])->default('pending');
+            $table->enum('status', ['pending', 'paid', 'shipped', 'arrived'])->default('pending');
             $table->integer('shipping_cost')->nullable();
             $table->string('tracking_number')->nullable();
             $table->timestamps();

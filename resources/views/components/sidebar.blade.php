@@ -51,6 +51,11 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-header">Pesanan</li>
+            <li class="{{ Request::is('pesanan') ? 'active' : '' }}">
+                <a class="nav-link"
+                    href="/pesanan"><i class="far fa-square"></i> <span>Daftar Pesanan</span></a>
+            </li>
             <li class="menu-header">Starter</li>
             <li class="nav-item dropdown {{ $type_menu === 'layout' ? 'active' : '' }}">
                 <a href="#"
