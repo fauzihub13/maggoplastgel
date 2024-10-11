@@ -167,7 +167,7 @@
                     <div class="col-md-4">
                         <div class="wrap-button">
                             <button class="btn button-custom-primary" onclick="event.preventDefault(); document.getElementById('checkoutForm').submit()">Bayar</button>
-                            <form action="{{ route('user.checkout.store') }}"
+                            <form action="{{ route('user.checkout.store', encrypt($uniqueCode) ) }}"
                                 method="POST"
                                 id="checkoutForm"
                                 style="display:none">

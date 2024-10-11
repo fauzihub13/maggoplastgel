@@ -35,7 +35,7 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
     Route::controller(CheckoutController::class)->group(function() {
         Route::get('/product', 'productPage')->name('user.product');
         Route::post('/product/checkout', 'checkoutPage')->name('user.checkout')->middleware('isUserLogin');
-        Route::post('/product/checkout/payment', 'payment')->name('user.checkout.store')->middleware('isUserLogin');
+        Route::post('/product/checkout/payment/{orderId}', 'payment')->name('user.checkout.store')->middleware('isUserLogin');
 
     });
 
@@ -95,7 +95,7 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
 
         // Order
         Route::controller(OrderController::class)->group(function() {
-           Route::get('/pesanan', 'index'); 
+           Route::get('/pesanan', 'index');
         });
     });
 

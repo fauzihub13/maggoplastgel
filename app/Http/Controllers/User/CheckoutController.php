@@ -73,7 +73,7 @@ class CheckoutController extends Controller
                 return view('pages.user.checkout', compact('quantity', 'product', 'courierRates'));
 
             } else {
-                return "api bitehip lemot";
+                // return "api bitehip lemot";
 
                 return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
             }
@@ -85,7 +85,6 @@ class CheckoutController extends Controller
 
         Carbon::setLocale('id');
         // dd($request->all());
-
 
         $validator = Validator::make($request->all(), [
             'quantity'=> 'required|integer',
@@ -160,6 +159,23 @@ class CheckoutController extends Controller
         // $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         try {
+
+            // Request payment midtrans
+            $auth = base64_encode(Config::get('app.midtrans_server_key').":");
+
+            $response = Http::withHeaders([
+                'content-type' => 'application/json',
+                'authorization' => 'Basic '.$auth,
+            ])->post("https://app.sandbox.midtrans.com/snap/v1/transactions", $params);
+
+            $response = json_decode($response->body());
+            $snapToken = $response->token;
+
+            // Redirect if midtrans not integrated
+            if(!isset($snapToken) || empty($snapToken)){
+                return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
+            }
+
             DB::beginTransaction();
 
             // Save to order table
@@ -178,18 +194,6 @@ class CheckoutController extends Controller
             $orderItems->quantity = $quantity;
             $orderItems->price = $product->price;
             $orderItems->save();
-
-
-            // Request payment midtrans
-            $auth = base64_encode(Config::get('app.midtrans_server_key').":");
-
-            $response = Http::withHeaders([
-                'content-type' => 'application/json',
-                'authorization' => 'Basic '.$auth,
-            ])->post("https://app.sandbox.midtrans.com/snap/v1/transactions", $params);
-
-            $response = json_decode($response->body());
-            $snapToken = $response->token;
 
             // Save to transaction table
             $transaction = new Transaction();
