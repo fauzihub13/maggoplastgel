@@ -96,6 +96,9 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
         // Order
         Route::controller(OrderController::class)->group(function() {
            Route::get('/pesanan', 'index');
+           Route::put('/pesanan/kirim/{order}', 'sent');
+           Route::put('/pesanan/selesai/{order}', 'finish');
+           Route::get('/pesanan/lacak/{order}', 'track');
         });
     });
 

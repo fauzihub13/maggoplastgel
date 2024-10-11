@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('order_number')->unique();
             $table->enum('status', ['pending', 'paid', 'shipped', 'arrived'])->default('pending');
             $table->integer('shipping_cost')->nullable();
+            $table->string('courier')->nullable();
             $table->string('tracking_number')->nullable();
             $table->timestamps();
         });
