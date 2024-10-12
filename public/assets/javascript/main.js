@@ -597,6 +597,8 @@
                 $(".bottom-btn").addClass("show");
             } else {
                 $(".bottom-btn").removeClass("show");
+                // $("#popUpChat").hide();
+
             }
         });
 

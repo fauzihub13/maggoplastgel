@@ -32,6 +32,10 @@
     margin-bottom: 2rem;
 }
 
+.mt-1 {
+    margin-top: 1rem;
+}
+
 .mt-2 {
     margin-top: 2rem;
 }
@@ -55,6 +59,11 @@
 .mb-5 {
     margin-bottom: 5rem;
 }
+
+.py-1{
+    padding: 0 1rem;
+}
+
 
 .vertical-center {
     margin-top: auto;
@@ -338,9 +347,7 @@ table tr {
 .bottom-btn {
     position: fixed;
     right: -40px;
-    /* Posisi awal saat tombol disembunyikan */
     bottom: -40px;
-    /* Posisi awal saat tombol disembunyikan */
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -400,8 +407,119 @@ table tr {
     color: #ffff;
 }
 
+/* Pop Up Chat */
+.chat-card {
+    z-index: 999;
+    position: fixed;
+    right: 16px;
+    bottom: 80px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    padding: 0 !important;
+}
 
+.adiv {
+    background: var(--primary-color2);
+    border-radius: 15px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    font-size: 12px;
+    height: 46px;
+}
 
+.chat {
+    border: none;
+    /* background: var(--primary-color2); */
+    /* font-size: 10px; */
+    font-size: 14px !important;
+    font-family: 'Rubik', sans-serif !important;
+    border-radius: 20px;
+}
+
+.bg-white {
+    border: 1px solid #E7E7E9;
+    font-size: 10px;
+    border-radius: 20px;
+}
+
+.myvideo img {
+    border-radius: 20px
+}
+
+.dot {
+    font-weight: bold;
+}
+
+.form-control {
+    height: 200px;
+    border-radius: 12px;
+    border: 1px solid #F0F0F0;
+    font-size: 16px !important;
+    font-family: 'Rubik', sans-serif !important;
+
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 2px solid var(--primary-color);
+}
+
+.form-control::placeholder {
+    color: #C4C4C4;
+    font-size: 16px !important;
+    font-family: 'Rubik', sans-serif !important;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px !important;
+    font-family: 'Rubik', sans-serif !important;
+}
+
+.room-chat{
+    padding: 1rem;
+    gap: 20px;
+}
+
+.chat-row {
+    margin-bottom: 12px;
+}
+
+.chat-text{
+    padding: 8px 10px;
+}
+
+.chat-profile{
+    width: 40px;
+    height: 40px;
+}
+
+.right-chat {
+    background-color: white;
+    color: var(--primary-color2);
+}
+
+.left-chat {
+    background-color:  var(--primary-color2);
+    color:white ;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.icon-send-message {
+    color: var(--primary-color2);
+    padding: 0 12px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.no-bg{
+    background-color: transparent;
+}
 
 @media (max-width: 576px) {
 
@@ -428,5 +546,10 @@ table tr {
 
     .product-small {
         margin-right: 10px;
+    }
+
+    .chat-card {
+        right: 0px;
+
     }
 }

@@ -41,4 +41,16 @@
         }, 300); // Waktu sesuai dengan durasi transisi (0.5 detik)
     });
 
+
+    // Pop Up ChatAI
+    $("#popUpChat").hide(); // Sembunyikan pop-up chat saat halaman pertama kali dimuat
+
+    $("#btnChatAi").click(function (event) {
+        event.preventDefault(); // Mencegah action default dari anchor <a>
+
+        // Toggle visibility dari pop-up chat
+        $("#popUpChat").toggle(); // Menampilkan atau menyembunyikan chat box
+        return false;
+    });
+
 })(jQuery);
