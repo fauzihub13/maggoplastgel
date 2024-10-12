@@ -73,7 +73,10 @@ class CheckoutController extends Controller
                 return view('pages.user.checkout', compact('quantity', 'product', 'courierRates'));
 
             } else {
-                // return "api bitehip lemot";
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Biteship API not responding.',
+                ]);
 
                 return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
             }
@@ -81,7 +84,9 @@ class CheckoutController extends Controller
 
     }
 
-    public function payment(Request $request){
+    public function payment(Request $request, string $encryptedUniqueCode){
+
+        $decryptedUniqueCode = decrypt($encryptedUniqueCode);
 
         Carbon::setLocale('id');
         // dd($request->all());
@@ -93,15 +98,31 @@ class CheckoutController extends Controller
 
         $quantity = $request->quantity;
         $uniqueCode = $request->uniqueCode;
+
+        // Validate unique code from request and parameter
+        if($decryptedUniqueCode != $uniqueCode) {
+            // return response()->json([
+            //     'status' => false,
+            //     'message' => $decryptedUniqueCode." != ".$uniqueCode,
+            // ]);
+
+            return redirect()->route('user.product')->with('error', 'Kode unik tidak sesuai.');
+        }
+
         $product = Product::first();
 
         // Check ShippingRates
         $shippingInfo = $this->shippingInfo($request, $quantity);
 
-
         // Pastikan $shippingInfo tidak null
         if ($shippingInfo === null) {
-            return null;
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Biteship API not responding.',
+            ]);
+
+            return redirect()->route('user.product')->with('error', 'Terjadi kesalahan API Biteship.');
         } else {
             // Mengambil data asli dari JsonResponse
             $shippingInfo = $shippingInfo->getData(true); // true untuk mendapatkan data dalam bentuk array
@@ -110,7 +131,7 @@ class CheckoutController extends Controller
             if (isset($shippingInfo['status']) && $shippingInfo['status'] === true) {
                 $courierRates = $shippingInfo['price'];
             } else {
-                return redirect()->route('user.product');
+                return redirect()->route('user.product')->with('error', 'Gagal mendapatkan ongkir.');
 
             }
         }
@@ -206,10 +227,22 @@ class CheckoutController extends Controller
 
             DB::commit();
 
-            return view('pages.user.payment', compact('totalPayment', 'snapToken'));
+            // Validation order status
+            $orderStatus = $order->status;
+            $isPaid = false;
+
+            if(in_array($orderStatus, ['capture','settlement'])){
+                $isPaid = true;
+            }
+
+            return view('pages.user.payment', compact('totalPayment', 'snapToken','isPaid'));
 
         } catch (\Throwable $th) {
             // DB::rollBack();
+            return response()->json([
+                'status' => false,
+                'message' => 'Midtrans API not responding.',
+            ]);
             return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
 
         }

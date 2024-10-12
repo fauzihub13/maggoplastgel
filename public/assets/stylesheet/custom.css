@@ -51,6 +51,7 @@
 .mb-1 {
     margin-bottom: 1rem;
 }
+
 .mb-5 {
     margin-bottom: 5rem;
 }
@@ -217,7 +218,7 @@
     color: var(--primary-color);
 }
 
-table.table{
+table.table {
     margin-bottom: 0 !important;
 }
 
@@ -225,13 +226,14 @@ table,
 table th,
 table td,
 table tr {
-    color : var(--primary-color2)
+    color: var(--primary-color2)
 }
 
 .row-product td {
     padding-top: 20px !important;
     padding-bottom: 20px !important;
 }
+
 .row-product-subtotal td {
     padding-top: 20px !important;
     padding-bottom: 20px !important;
@@ -294,27 +296,27 @@ table tr {
     color: #ffff;
 }
 
-.button-custom-primary:hover{
+.button-custom-primary:hover {
     color: white;
 }
 
-.icon-header{
+.icon-header {
     font-size: 30px;
     margin-bottom: 0 !important;
     align-content: center;
 }
 
-.header-profile{
+.header-profile {
     display: flex;
     gap: 10px;
     margin-left: 1rem;
 }
 
-.header-cart{
+.header-cart {
     margin-bottom: 0px !important;
 }
 
-.header-user-name{
+.header-user-name {
     width: 60px;
 }
 
@@ -322,7 +324,7 @@ table tr {
     border: none !important;
 }
 
-.profile-dropdown{
+.profile-dropdown {
     border: none;
 }
 
@@ -331,6 +333,74 @@ table tr {
     background-color: white;
     color: var(--primary-color2);
 }
+
+/* Bottom Button */
+.bottom-btn {
+    position: fixed;
+    right: -40px;
+    /* Posisi awal saat tombol disembunyikan */
+    bottom: -40px;
+    /* Posisi awal saat tombol disembunyikan */
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+    filter: alpha(opacity=0);
+    opacity: 0;
+    visibility: hidden;
+    /* Menyembunyikan tombol saat tidak aktif */
+    z-index: 9999;
+}
+
+.bottom-btn.show {
+    right: 15px;
+    /* Posisi saat tombol muncul */
+    bottom: 15px;
+    /* Posisi saat tombol muncul */
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+    filter: alpha(opacity=100);
+    opacity: 1;
+    visibility: visible;
+    /* Tombol terlihat */
+}
+
+.bottom-btn div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Adds space between the buttons */
+}
+
+.btn-scroll-up,
+.btn-another {
+    background-color: var(--primary-color2);
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 30px;
+    /* Vertically center the icon */
+}
+
+.btn-scroll-up:hover,
+.btn-another:hover,
+.btn-scroll-up:active,
+.btn-another:active {
+    background-color: var(--primary-color);
+    color: #ffff;
+}
+
+.btn-scroll-up:focus,
+.btn-another:focus {
+    color: #ffff;
+}
+
+
 
 
 @media (max-width: 576px) {
@@ -348,7 +418,7 @@ table tr {
         margin-top: 1rem;
     }
 
-    .large-view-product{
+    .large-view-product {
         display: none;
     }
 

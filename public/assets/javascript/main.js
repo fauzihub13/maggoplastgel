@@ -594,14 +594,22 @@
     var goTop = function () {
         $(window).scroll(function () {
             if ($(this).scrollTop() > 800) {
-                $(".go-top").addClass("show");
+                $(".bottom-btn").addClass("show");
             } else {
-                $(".go-top").removeClass("show");
+                $(".bottom-btn").removeClass("show");
             }
         });
 
-        $(".go-top").on("click", function () {
-            $("html, body").animate({ scrollTop: 0 }, 1000, "easeInOutExpo");
+        $(".bottom-btn").on("click", function () {
+            $("html, body").animate(
+                { scrollTop: 0 },
+                1000,
+                "easeInOutExpo",
+                function () {
+                    // Kelas 'show' dihapus setelah animasi scroll selesai
+                    $(".bottom-btn").removeClass("show");
+                }
+            );
             return false;
         });
     };

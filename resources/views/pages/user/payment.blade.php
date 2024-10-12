@@ -41,12 +41,14 @@
                     <div class="col-12 text-center">
                         <h3 class="section-heading-rubik-size20 text-custom-primary">Total Tagihan</h3>
                         <h3 class="section-heading-rubik-size20 text-custom-primary mb-2 rupiah">{{ $totalPayment }}</h3>
-                        {{-- <button id="pay-button"  onclick="event.prevent.defaul; document.getElementById('placeOrderForm').submit()" class="btn button-custom-primary mb-2 w-100">Bayar</button> --}}
-                        <button id="pay-button"  class="btn button-custom-primary mb-2 w-100">Bayar</button>
-                        {{-- <form action="{{ route ('user.payment-status') }}" method="POST" style="display: none" id="placeOrderForm">
 
-                        </form> --}}
-                        <p class="text-custom-grey text-center">Dengan melanjutkan pembayaran, Anda setuju dengan ketentuan yang berlaku.</p>
+                        @if ($isPaid === false )
+                            <button id="pay-button" class="btn button-custom-primary mb-2 w-100">Bayar</button>
+                            <p class="text-custom-grey text-center">Dengan melanjutkan pembayaran, Anda setuju dengan ketentuan yang berlaku.</p>
+                        @else
+                            <a href="{{ route('user.home') }}" class="btn button-custom-primary mb-2 w-100">Kembali</a>
+                            <p class="text-custom-grey text-center">Pesanan sudah dibayar.</p>
+                        @endif
 
                     </div>
                 </div>

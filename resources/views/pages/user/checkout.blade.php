@@ -214,6 +214,65 @@
                         <h3 class="section-custom-medium text-custom-primary"><strong>Total Produk (5)</strong></h3>
                         <p class="text-custom-primary text-right">Rp150.000</p>
                     </div>
+                </div>
+                <div class="row">
+                    <hr>
+                    <div class="mobile-subtotal-product">
+                        <h3 class="section-custom-medium text-custom-primary"><strong>Total Pesanan</strong></h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mobile-subtotal-product">
+                        <p class="text-custom-primary text-left"><strong>Subtotal untuk Produk</strong></p>
+                        <p class="text-custom-primary text-right rupiah">{{ ($product->price) * ($quantity) }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mobile-subtotal-product">
+                        <p class="text-custom-primary text-left"><strong>Total Ongkos Kirim</strong></p>
+                        <p class="text-custom-primary text-right rupiah">{{ $courierRates }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mobile-subtotal-product">
+                        <p class="text-custom-primary text-left"><strong>Kode Unik</strong></p>
+                        <p class="text-custom-primary text-right rupiah">
+                            @php
+                                $uniqueCode = rand(100, 999);
+                                echo $uniqueCode;
+                            @endphp
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mobile-subtotal-product">
+                        <p class="text-custom-primary text-left"><strong>Total Pembayaran</strong></p>
+                        <p class="text-custom-primary text-right section-custom-medium "><strong>
+                            <span class="rupiah">{{ ($product->price) * ($quantity) + $uniqueCode + $courierRates }}</span>
+                        </strong></p>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row mb-1">
+
+                    <div class="wrap-button">
+                        <button class="btn button-custom-primary w-100 mb-1" onclick="event.preventDefault(); document.getElementById('checkoutForm').submit()">Bayar</button>
+                        <form action="{{ route('user.checkout.store', encrypt($uniqueCode) ) }}"
+                            method="POST"
+                            id="checkoutForm"
+                            style="display:none">
+                                @csrf
+                                @method('POST')
+                                <input type="number" name="quantity" value="{{ $quantity }}">
+                                <input type="number" name="uniqueCode" value="{{ $uniqueCode }}">
+                        </form>
+                    </div>
+
+                    <p class="text-custom-grey text-center">Dengan melanjutkan pembayaran, Anda setuju dengan ketentuan yang berlaku.</p>
+
 
                 </div>
 
