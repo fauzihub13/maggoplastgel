@@ -8,6 +8,7 @@ use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
+use App\Http\Controllers\User\ChatBotController;
 use App\Http\Controllers\User\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,10 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
         Route::get('/login', 'loginPage')->name('user.login.index');
         Route::post('/login', 'login')->name('user.login.post');
         Route::post('/logout', 'logout')->name('user.logout');
+    });
+
+    Route::controller(ChatBotController::class)->group(function() {callback:
+        Route::post('/chatbot/ai', 'sendMessage')->name('chatbot.send');
     });
 
 

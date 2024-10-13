@@ -53,4 +53,8 @@
         return false;
     });
 
+    $("#closeChat").click(function() {
+        $("#popUpChat").hide(); // Menampilkan atau menyembunyikan chat box
+    });
+
 })(jQuery);

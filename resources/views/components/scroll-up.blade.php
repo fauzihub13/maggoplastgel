@@ -12,33 +12,21 @@
         <div class="d-flex p-3 adiv text-white chat-header py-1">
             <i class=""></i>
             <span class="pb-3 text-center ">MinAI</span>
-            <i class="fas fa-times"></i>
+            <i class="fas fa-times" id="closeChat"></i>
         </div>
-        <div class=" room-chat">
-            <div class="d-flex chat-row">
+        <div class="room-chat" id="roomChat">
+            <div class="d-flex chat-row left-chat">
                 <img class="chat-profile" src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7.png" >
-                <div class="left-chat chat chat-text">Hello and thankyou for visiting birdlymind. Please click the video above</div>
+                <div class=" chat chat-text">Haii! Salam kenal, aku <strong>MinAI</strong>, asisten kamu yang siap menjawab semua pertanyaan dengan cepat. Yuk, tanya-tanya apa saja! </div>
             </div>
 
-            <div class="d-flex chat-row">
-                <div class="right-chat chat chat-text">Hello and thankyou for visiting birdlymind. Please click the video above - Hello and thankyou for visiting birdlymind. Please click the video above</div>
-                <img class="chat-profile" src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" >
-            </div>
 
-            <div class="d-flex chat-row">
-                <img class="chat-profile" src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7.png" >
-                <div class="left-chat chat chat-text">Hello and thankyou for visiting birdlymind. Please click the video above</div>
-            </div>
 
-            <div class="d-flex chat-row">
-                <div class="right-chat chat chat-text">Hello and thankyou for visiting birdlymind. Please click the video above - Hello and thankyou for visiting birdlymind. Please click the video above</div>
-                <img class="chat-profile" src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" >
-            </div>
 
-            <div class="d-flex vertical-center  mt-1">
-                <textarea class="form-control m-0 " id="message" placeholder="Ketik pesan disini..."></textarea>
-                <div class="icon-send-message"><i class="fas fa-paper-plane" id="sendMessage"></i></div>
-            </div>
+        </div>
+        <div class="d-flex vertical-center mt-1 chat-input">
+            <textarea class="form-control m-0 " id="message" placeholder="Ketik pesan disini..." autofocus required></textarea>
+            <div class="icon-send-message" id="sendMessage"><i class="fas fa-paper-plane" ></i></div>
         </div>
     </div>
 </div>

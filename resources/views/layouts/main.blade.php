@@ -7,6 +7,7 @@
 <head>
     <!-- Basic Page Needs -->
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <title>@yield('title') Maggoplastgel</title>
 
@@ -66,6 +67,7 @@
         <script type="text/javascript" src="{{ asset('javascript/countto.js') }}"></script>
         <script type="text/javascript" src="{{ asset('javascript/wow.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('javascript/main.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('javascript/chat-ai.js') }}"></script>
         <!-- /javascript -->
 
         <!-- slider -->
@@ -84,7 +86,7 @@
         <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.parallax.min.js') }}"></script>
         <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}"></script>
         <script src="{{ asset('rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
-        
+
         @stack('scripts')
     </div>
 

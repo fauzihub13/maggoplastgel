@@ -433,7 +433,7 @@ table tr {
     /* font-size: 10px; */
     font-size: 14px !important;
     font-family: 'Rubik', sans-serif !important;
-    border-radius: 20px;
+
 }
 
 .bg-white {
@@ -479,8 +479,11 @@ table tr {
 }
 
 .room-chat{
+    max-height: 500px;
     padding: 1rem;
     gap: 20px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .chat-row {
@@ -497,13 +500,27 @@ table tr {
 }
 
 .right-chat {
-    background-color: white;
-    color: var(--primary-color2);
+    justify-content: flex-end;
 }
 
 .left-chat {
-    background-color:  var(--primary-color2);
-    color:white ;
+    justify-content: flex-start;
+}
+
+.right-chat > div {
+    background-color: white;
+    color: var(--primary-color2);
+    border-radius: 20px 0px 20px 20px;
+}
+
+.left-chat > div{
+    background-color: var(--primary-color2);
+    color: white;
+    border-radius: 20px 20px 20px 0px;
+}
+
+.chat-input{
+    padding: 1rem;
 }
 
 .gap-1 {
