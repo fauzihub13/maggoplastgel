@@ -26,64 +26,84 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-8 justify-content-center">
-                                    <div class="nav-wrap ">
-                                        <nav id="mainnav" class="mainnav">
+                                <div class="col-md-8 justify-content-center" style="">
+                                    <div class="" style="">
+                                        <nav id="mainnav" class="mainnav" style="">
                                             <ul class="menu">
                                                 <li>
                                                     <a href="{{ route('user.home') }}" class="{{ Route::is('/') ? 'active' : '' }}" title="">Beranda</a>
                                                 </li>
-                                                <li>
+                                                <li class="menu-item-has-children">
                                                     <a href="{{ route('user.about-us') }}" class="{{ Route::is('about-us') ? 'active' : '' }}" title="">Tentang Kami</a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="{{ route('user.about-us') }}" class="{{ Route::is('about-us') ? 'active' : '' }}" title="">Tentang Kami</a></li>
+                                                        <li><a href="{{ route('user.team') }}" class="{{ Route::is('team') ? 'active' : '' }}" title="">Tim</a></li>
+                                                    </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.team') }}" class="{{ Route::is('team') ? 'active' : '' }}" title="">Tim</a>
+                                                    <a href="{{ route('user.product') }}" class="{{ Route::is('product') ? 'active' : ' '  }} " title="">Produk</a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ route('user.article') }}" class="{{ Route::is('artikel') ? 'active' : '' }}" title="">Artikel</a>
                                                 </li>
-
                                                 <li>
                                                     <a href="{{ route('user.contact-us') }}" class="{{ Route::is('contact-us') ? 'active' : ' '  }} " title="">Kontak Kami</a>
                                                 </li>
+                                                @if (!Auth::user())
+                                                    <li class="profile-navbar">
+                                                        <a href="{{ route('user.login.index') }}" class="{{ Route::is('') ? 'active' : ' '  }} " title="">Masuk</a>
+                                                    </li>
+                                                @else
+                                                    <li class="menu-item-has-children profile-navbar">
+                                                        <a href="#" class="{{ Route::is('about-us') ? 'active' : '' }}" title="">Hi, {{ Auth::user()->name }}</a>
+                                                        <ul class="sub-menu">
+                                                            <li><a href="#" class="{{ Route::is('about-us') ? 'active' : '' }}" title="">Profile</a></li>
+                                                            <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a></li>
+                                                            <form id="logout-form"
+                                                                action="{{ route('user.logout') }}"
+                                                                method="POST" style="display: none">
+                                                                @csrf
+                                                                @method('POST')
+                                                                <button type="submit">Logout</button>
+                                                            </form>
+                                                        </ul>
+                                                    </li>
+                                                @endif
+
                                             </ul>
                                         </nav>
                                     </div>
                                 </div>
 
-                                <div class="col-md-2">
-                                    <div class="site-header-right ">
-                                        <div class="header-profile me-1">
-                                            <a href="{{ route('user.product') }}" class="cart-btn icon-header"><i class="fa fa-shopping-cart"></i></a>
-                                        </div>
+                                <div class="col-md-2 header-profile" >
+                                    <div class="site-header-right " >
                                         @if (!Auth::user())
-                                            <div class="button ">
-                                                <a href="{{ route('user.login.index') }}" class="btn ">Masuk</a>
+                                            <div class="button d-flex" >
+                                                <a href="{{ route('user.login.index') }}" class=" ">Masuk</a>
                                             </div>
                                         @else
-                                            {{-- <div class="header-profile ">
-                                                <a href="#" class="cart-btn icon-header"><i class="fa fa-user"></i></a>
-                                                <p class="text-custom-primary header-user-name">{{ Auth::user()->name }}</p>
-                                            </div> --}}
-                                            <div class="dropdown">
-                                                <button class="btn btn-default dropdown-toggle no-border profile-dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                    <p class="text-custom-primary header-user-name">Hi, {{ Auth::user()->name }}<span class="caret" style="margin-left: 10px"></span></p>
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                    <li><a href="#">Profil</a></li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>
-                                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
-                                                    </li>
-                                                    <form id="logout-form"
-                                                        action="{{ route('user.logout') }}"
-                                                        method="POST" style="display: none">
-                                                        @csrf
-                                                        @method('POST')
-                                                        <button type="submit">Logout</button>
-                                                    </form>
-                                                </ul>
+                                            <div class="button d-flex ">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-default dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="border: none">
+                                                        <p class="text-custom-primary header-user-name">Hi, {{ Auth::user()->name }}<span class="caret" style="margin-left: 10px"></span></p>
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                        <li><a href="#">Profil</a></li>
+                                                        <li role="separator" class="divider"></li>
+                                                        <li>
+                                                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
+                                                        </li>
+                                                        <form id="logout-form"
+                                                            action="{{ route('user.logout') }}"
+                                                            method="POST" style="display: none">
+                                                            @csrf
+                                                            @method('POST')
+                                                            <button type="submit">Logout</button>
+                                                        </form>
+                                                    </ul>
+                                                </div>
                                             </div>
+
 
                                         @endif
 

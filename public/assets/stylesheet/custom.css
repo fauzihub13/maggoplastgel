@@ -317,8 +317,9 @@ table tr {
 
 .header-profile {
     display: flex;
-    gap: 10px;
-    margin-left: 1rem;
+    justify-content: space-between;
+    /* gap: 10px; */
+    /* margin-left: 1rem; */
 }
 
 .header-cart {
@@ -333,15 +334,16 @@ table tr {
     border: none !important;
 }
 
-.profile-dropdown {
+#dropdownMenu1,
+#dropdownMenu1:hover,
+#dropdownMenu1:active,
+#dropdownMenu1:focus
+{
     border: none;
-}
-
-.profile-dropdown:hover {
-    border: none;
-    background-color: white;
+    background-color: transparent;
     color: var(--primary-color2);
 }
+
 
 /* Bottom Button */
 .bottom-btn {
@@ -527,11 +529,19 @@ table tr {
     gap: 1rem;
 }
 
+.justify-space-between {
+    justify-content: space-between !important;
+}
+
 .icon-send-message {
     color: var(--primary-color2);
     padding: 0 12px;
     font-size: 20px;
     cursor: pointer;
+}
+
+.profile-navbar{
+    display: none !important;
 }
 
 .no-bg{
@@ -568,5 +578,9 @@ table tr {
     .chat-card {
         right: 0px;
 
+    }
+
+    .profile-navbar{
+        display: block !important;
     }
 }

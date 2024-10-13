@@ -48,7 +48,7 @@ class ChatBotController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => 'Mohon maaf, '.$th->getMessage(),
+                'message' => 'Mohon maaf, MinAI sedang tidak tersedia untuk saat ini.',
             ]);
         }
 

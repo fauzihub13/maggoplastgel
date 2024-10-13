@@ -73,7 +73,7 @@
                         // Jika status dari response adalah true (berhasil)
                         $("#roomChat").append(
                             `<div class="d-flex chat-row left-chat">
-                                <img class="chat-profile" src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png">
+                                <img class="chat-profile" src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7.png">
                                 <div class="chat chat-text"></div>
                             </div>`
                         );
@@ -85,7 +85,19 @@
                         scrollToBottom();
 
                     } else {
-                        console.log(response.message); // Tampilkan pesan error jika ada
+                        // console.log(response.message); // Tampilkan pesan error jika ada
+                        $("#roomChat").append(
+                            `<div class="d-flex chat-row left-chat">
+                                <img class="chat-profile" src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7.png">
+                                <div class="chat chat-text"></div>
+                            </div>`
+                        );
+
+                        // Menambahkan HTML ke elemen yang baru dibuat
+                        $("#roomChat .chat-text")
+                            .last()
+                            .html(formattedResponse); // Tampilkan pesan error jika ada
+                        scrollToBottom();
                     }
                 },
                 error: function (xhr, status, error) {
