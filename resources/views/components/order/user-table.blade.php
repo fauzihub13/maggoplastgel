@@ -42,10 +42,10 @@
                     </div>
                     <hr>
                     <div class="row justify-content-end ">
-                        <div class="col-md-10 ">
+                        <div class="col-md-10 col-xs-6 mb-1">
                             <h6 class="mb-0 text-right"><strong>Total pesanan:</strong></h6>
                         </div>
-                        <div class="col-md-2 ">
+                        <div class="col-md-2 col-xs-6 ">
                             <h5 class="mb-0 text-right rupiah text-primary font-weight-bold">{{ $order->transaction->gross_amount }}</h5>
                         </div>
                     </div>
@@ -54,16 +54,38 @@
                             <button class="btn btn-outline-primary mr-2 tracking-button" data-id="{{ $order->id }}">
                                 Lacak
                             </button>
+                            <button class="btn btn-primary mr-2" >
+                                Beli Lagi
+                            </button>
+                        @elseif($order->status == 'pending')
+                            <button class="btn btn-outline-primary mr-2 " id="pay-button">
+                                Bayar Sekarang
+                            </button>
+                            @php
+                                $snapToken = $order->snap_token;
+                            @endphp
+
+                            <script type="text/javascript">
+                            // For example trigger on button clicked, or any time you need
+                                var payButton = document.getElementById('pay-button');
+                                payButton.addEventListener('click', function () {
+                                    // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+                                    window.snap.pay('{{ $snapToken }}');
+                                    // customer will be redirected after completing payment pop-up
+                                });
+
+                            </script>
                         @endif
-                        <button class="btn btn-primary mr-2" >
-                            Beli Lagi
-                        </button>
+
                     </div>
                 @endforeach
 
             </div>
         </div>
     </div>
+
+
+
 @endforeach
 
 

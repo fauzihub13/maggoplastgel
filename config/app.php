@@ -129,4 +129,11 @@ return [
     'midtrans_server_key' => env('MIDTRANS_SERVER_KEY', ''),
     'midtrans_client_key' => env('MIDTRANS_CLIENT_KEY', ''),
 
+    // Laravolt
+    // 'aliases' => [
+    //     'Indonesia' => Laravolt\Indonesia\Facade::class
+    // ],
+
+
+
 ];

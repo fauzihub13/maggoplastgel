@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 // use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\LaravoltController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
@@ -54,8 +55,9 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
     Route::middleware(['middleware' => 'isUserLogin'])->group(function () {
 
         Route::controller(ProfileController::class)->group(function() {callback:
-            Route::get('/user/profile', 'index')->name('user.profile');
-            Route::get('/user/profile/order', 'orderIndex')->name('user.profile.order');
+            Route::get('/user/profile', 'index')->name('user.profile')->middleware('isUserLogin');
+            Route::put('/user/profile/update', 'updateUser')->name('user.profile.update')->middleware('isUserLogin');
+            Route::get('/user/profile/order', 'orderIndex')->name('user.profile.order')->middleware('isUserLogin');
 
         });
         Route::controller(OrderController::class)->group(function() {
@@ -63,6 +65,14 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
            Route::get('/pesanan/lacak/{order}', 'track');
         });
     });
+
+    Route::controller(LaravoltController::class)->group(function() {
+        Route::get('/provinces', 'provinces')->name('provinces');
+        Route::get('/cities', 'cities')->name('cities');
+        Route::get('/districts', 'districts')->name('districts');
+        Route::get('/villages', 'villages')->name('villages');
+    });
+
 
 
 });

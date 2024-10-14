@@ -4,6 +4,9 @@
 
 @push('style')
     <!-- CSS Libraries -->
+    <script type="text/javascript"
+        src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ Config::get('app.midtrans_client_key') }}"></script>
 @endpush
 
 @section('main')
