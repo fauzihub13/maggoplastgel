@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\ChatBotController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -48,6 +49,19 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
 
     Route::controller(ChatBotController::class)->group(function() {callback:
         Route::post('/chatbot/ai', 'sendMessage')->name('chatbot.send');
+    });
+
+    Route::middleware(['middleware' => 'isUserLogin'])->group(function () {
+
+        Route::controller(ProfileController::class)->group(function() {callback:
+            Route::get('/user/profile', 'index')->name('user.profile');
+            Route::get('/user/profile/order', 'orderIndex')->name('user.profile.order');
+
+        });
+        Route::controller(OrderController::class)->group(function() {
+           Route::put('/pesanan/selesai/{order}', 'finish');
+           Route::get('/pesanan/lacak/{order}', 'track');
+        });
     });
 
 

@@ -57,7 +57,7 @@
                                                     <li class="menu-item-has-children profile-navbar">
                                                         <a href="#" class="{{ Route::is('about-us') ? 'active' : '' }}" title="">Hi, {{ Auth::user()->name }}</a>
                                                         <ul class="sub-menu">
-                                                            <li><a href="#" class="{{ Route::is('about-us') ? 'active' : '' }}" title="">Profile</a></li>
+                                                            <li><a href="{{ route('user.profile') }}" class="{{ Route::is('about-us') ? 'active' : '' }}" title="">Profile</a></li>
                                                             <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a></li>
                                                             <form id="logout-form"
                                                                 action="{{ route('user.logout') }}"
@@ -88,7 +88,7 @@
                                                         <p class="text-custom-primary header-user-name">Hi, {{ Auth::user()->name }}<span class="caret" style="margin-left: 10px"></span></p>
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                        <li><a href="#">Profil</a></li>
+                                                        <li><a href="{{ route('user.profile') }}">Profil</a></li>
                                                         <li role="separator" class="divider"></li>
                                                         <li>
                                                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>

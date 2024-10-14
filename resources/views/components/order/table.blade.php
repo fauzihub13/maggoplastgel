@@ -15,7 +15,7 @@
         'arrived' => 'success'
     ];
 @endphp
-                        
+
 <table class="table-fit table">
     <tbody>
         <tr>
@@ -54,8 +54,8 @@
                 <br>
                 {{ $user->address_detail }}
                 <br>
-                {{ "$user->kelurahan, $user->kecamatan, $user->city, $user->province" }} 
-                <br> 
+                {{ "$user->kelurahan, $user->kecamatan, $user->city, $user->province" }}
+                <br>
                 {{ $user->zip_code }}
             </td>
             <td>
@@ -72,7 +72,7 @@
                 <strong class="rupiah">{{ $order->orderItems->sum(function($item){
                 return $item->price * $item->quantity;
             }) }}</strong>
-            
+
             </td>
             <td colspan="3" align="right">
                 @if ($order->status == 'paid')
