@@ -50,9 +50,11 @@
                         </div>
                     </div>
                     <div class="row justify-content-end mt-3">
-                        <button class="btn btn-outline-primary mr-2 tracking-button" data-id="{{ $order->id }}">
-                            Lacak
-                        </button>
+                        @if ($order->status == 'shipped' || $order->status == 'arrived')
+                            <button class="btn btn-outline-primary mr-2 tracking-button" data-id="{{ $order->id }}">
+                                Lacak
+                            </button>
+                        @endif
                         <button class="btn btn-primary mr-2" >
                             Beli Lagi
                         </button>

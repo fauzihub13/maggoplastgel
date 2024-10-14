@@ -67,31 +67,6 @@
                 </div>
                 <div class="">
 
-                    {{-- <div class="order-history"
-                            id="pending"
-                            role="tabpanel"
-                            aria-labelledby="pending">
-                        <x-order.user-table :orders="$orders['pending'] ?? []"/>
-                    </div>
-                    <div class="order-history"
-                            id="paid"
-                            role="tabpanel"
-                            aria-labelledby="paid">
-                        <x-order.user-table :orders="$orders['paid'] ?? []"/>
-                    </div>
-                    <div class="order-history"
-                            id="shipped"
-                            role="tabpanel"
-                            aria-labelledby="shipped">
-                        <x-order.user-table :orders="$orders['shipped'] ?? []"/>
-                    </div>
-                    <div class="order-history"
-                            id="arrived"
-                            role="tabpanel"
-                            aria-labelledby="arrived">
-                        <x-order.user-table :orders="$orders['arrived'] ?? []"/>
-                    </div> --}}
-
                     <div class="table-responsive tab-pane fade show active"
 
                                     id="pending"
