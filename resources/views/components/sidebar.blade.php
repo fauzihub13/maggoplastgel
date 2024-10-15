@@ -9,24 +9,9 @@
             </div>
             <ul class="sidebar-menu">
                 <li class="menu-header">Dashboard</li>
-                <li class="nav-item dropdown {{ $type_menu === 'dashboard' ? 'active' : '' }}">
-                    <a href="#"
-                        class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                    <ul class="dropdown-menu">
-                        <li class='{{ Request::is('dashboard-general-dashboard') ? 'active' : '' }}'>
-                            <a class="nav-link"
-                                href="{{ url('dashboard-general-dashboard') }}">General Dashboard</a>
-                        </li>
-                        <li class="{{ Request::is('dashboard-ecommerce-dashboard') ? 'active' : '' }}">
-                            <a class="nav-link"
-                                href="{{ url('dashboard-ecommerce-dashboard') }}">Ecommerce Dashboard</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-header">Dashboard</li>
                 <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="/dashboard"><i class="far fa-square"></i> <span>Dashboard</span></a>
+                        href="/dashboard"><i class="fa fa-gauge"></i> <span>Dashboard</span></a>
                 </li>
                 <li class="menu-header">Konten</li>
                 <li class="nav-item dropdown {{ $type_menu === 'article' ? 'active' : '' }}">
@@ -60,9 +45,24 @@
                 <li class="menu-header">Pesanan</li>
                 <li class="{{ Request::is('pesanan') ? 'active' : '' }}">
                     <a class="nav-link"
-                        href="/pesanan"><i class="far fa-square"></i> <span>Daftar Pesanan</span></a>
+                        href="/pesanan"><i class="fa fa-shop"></i> <span>Daftar Pesanan</span></a>
                 </li>
-                <li class="menu-header">Starter</li>
+                <li class="menu-header">Dashboard</li>
+                <li class="nav-item dropdown {{ $type_menu === 'dashboard' ? 'active' : '' }}">
+                    <a href="#"
+                        class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                    <ul class="dropdown-menu">
+                        <li class='{{ Request::is('dashboard-general-dashboard') ? 'active' : '' }}'>
+                            <a class="nav-link"
+                                href="{{ url('dashboard-general-dashboard') }}">General Dashboard</a>
+                        </li>
+                        <li class="{{ Request::is('dashboard-ecommerce-dashboard') ? 'active' : '' }}">
+                            <a class="nav-link"
+                                href="{{ url('dashboard-ecommerce-dashboard') }}">Ecommerce Dashboard</a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- <li class="menu-header">Starter</li>
                 <li class="nav-item dropdown {{ $type_menu === 'layout' ? 'active' : '' }}">
                     <a href="#"
                         class="nav-link has-dropdown"
@@ -249,7 +249,7 @@
                                 href="{{ url('forms-validation') }}">Validation</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 {{-- <li class="nav-item dropdown">
                     <a href="#"
                         class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Google

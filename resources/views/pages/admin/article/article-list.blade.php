@@ -125,7 +125,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <a href="#">{{ $article->articleCategory->name }}</a>
+                                                <a href="#">{{ $article->articleCategory->name ?? '' ?? '' }}</a>
                                             </td>
                                             <td>
                                                 <a href="#">
@@ -135,7 +135,7 @@
                                                         width="35"
                                                         data-toggle="title"
                                                         title="">
-                                                    <div class="d-inline-block ml-1">{{ $article->user->name }}</div>
+                                                    <div class="d-inline-block ml-1">{{ $article->user->name ?? '' ?? '' }}</div>
                                                 </a>
                                             </td>
                                             <td>{{ $article->created_at->format('Y-m-d') }}</td>
@@ -178,7 +178,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <a href="#">{{ $article->articleCategory->name }}</a>
+                                                <a href="#">{{ $article->articleCategory->name ?? '' }}</a>
                                             </td>
                                             <td>
                                                 <a href="#">
@@ -188,7 +188,7 @@
                                                         width="35"
                                                         data-toggle="title"
                                                         title="">
-                                                    <div class="d-inline-block ml-1">{{ $article->user->name }}</div>
+                                                    <div class="d-inline-block ml-1">{{ $article->user->name ?? '' }}</div>
                                                 </a>
                                             </td>
                                             <td>{{ $article->created_at->format('Y-m-d') }}</td>
@@ -231,7 +231,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <a href="#">{{ $article->articleCategory->name }}</a>
+                                                <a href="#">{{ $article->articleCategory->name ?? '' }}</a>
                                             </td>
                                             <td>
                                                 <a href="#">
@@ -241,7 +241,7 @@
                                                         width="35"
                                                         data-toggle="title"
                                                         title="">
-                                                    <div class="d-inline-block ml-1">{{ $article->user->name }}</div>
+                                                    <div class="d-inline-block ml-1">{{ $article->user->name ?? '' }}</div>
                                                 </a>
                                             </td>
                                             <td>{{ $article->created_at->format('Y-m-d') }}</td>
@@ -285,7 +285,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <a href="#">{{ $article->articleCategory->name }}</a>
+                                                <a href="#">{{ $article->articleCategory->name ?? '' }}</a>
                                             </td>
                                             <td>
                                                 <a href="#">
@@ -295,7 +295,7 @@
                                                         width="35"
                                                         data-toggle="title"
                                                         title="">
-                                                    <div class="d-inline-block ml-1">{{ $article->user->name }}</div>
+                                                    <div class="d-inline-block ml-1">{{ $article->user->name ?? '' }}</div>
                                                 </a>
                                             </td>
                                             <td>{{ $article->created_at->format('Y-m-d') }}</td>

@@ -7,6 +7,7 @@ use App\Models\Article;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ArticleCategory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -264,5 +265,32 @@ class ArticleController extends Controller
             'newest_articles' => Article::latest()->publish()->notInTrash()->withoutContent()->limit(3)->get(),
             'categories' => ArticleCategory::all()
         ]);
+    }
+
+    public function draft(Request $request) {
+        $data = $request->validate([
+            'title' => 'required|string',
+            'body' => 'required'
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            $data['user_id'] = auth()->id();
+            $data['article_category_id'] = '';
+            $data['slug'] = Str::slug($data['title']);
+            $data['status'] = 'draft';
+            $data['thumbnail'] = '';
+            $data['tags'] = 'draft';
+    
+            $article = Article::create($data);
+           
+            DB::commit();
+
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors($th);
+        }
+
     }
 }
