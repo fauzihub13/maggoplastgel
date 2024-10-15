@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
         name="viewport">
-    <title>@yield('title') &mdash; Stisla</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title') &mdash; Admin Maggoplastgel</title>
+    
+    <!-- Favicon and touch icons  -->
+    <link href="{{ asset('icon/Favicon.png') }}" rel="apple-touch-icon-precomposed">
+    <link href="{{ asset('icon/Favicon.png') }}" rel="apple-touch-icon-precomposed">
+    <link href="{{ asset('icon/Favicon.png') }}" rel="shortcut icon">
 
     <!-- General CSS Files -->
     <link rel="stylesheet"
