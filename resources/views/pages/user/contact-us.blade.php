@@ -72,7 +72,9 @@
                     </div>
                     <div class="col-md-7 wow fadeInUp">
                         <div class="contact-right">
-                            <form method="post" class="form-contact-right" id="contactform" action="#" accept-charset="utf-8" novalidate="novalidate">
+                            <form method="POST" class="form-contact-right" id="contactform" action="{{ route('contact.mail') }}" accept-charset="utf-8" novalidate="novalidate">
+                                @csrf
+                                @method('POST')
                                 <div class="input-row">
                                     <div class="input-name">
                                         <label for="name" class="heading-features">Nama* </label>
@@ -80,7 +82,7 @@
                                     </div>
                                     <div class="input-phone">
                                         <label for="phone" class="heading-features">No Hp</label>
-                                        <input id="phone" name="phone" class="input-contact" type="text" placeholder="Nomor Hp" required>
+                                        <input id="phone" name="phone" class="input-contact" type="number" placeholder="Nomor Hp" required>
                                     </div>
 
                                 </div>
@@ -92,10 +94,10 @@
                                     <div class="input-services">
                                         <label for="services" class="heading-features">Keperluan </label>
                                         <select class="input-contact input-select" name="services" id="services">
-														<option value="0">Choose services</option>
-														<option value="1">Beli Produk</option>
-														<option value="2">Kerja Sama</option>
-														<option value="3">Pemodalan</option>
+														{{-- <option value="0">Choose services</option> --}}
+														<option value="Beli Produk">Beli Produk</option>
+														<option value="Kerja Sama">Kerja Sama</option>
+														<option value="Pemodalan">Pemodalan</option>
 													</select>
                                     </div>
                                 </div>
@@ -103,9 +105,14 @@
                                     <label for="message" class="heading-features">Pesan Anda*</label>
                                     <textarea name="message" class="input-contact-message" id="message" placeholder="Pesan Anda"></textarea>
                                 </div>
-                                <div class="button">
+                                <div class="button mb-2">
                                     <button type="submit" class=" btn btn-left">Kirim Pesan</button>
                                 </div>
+                                {{-- <div class="flat-alert msg-success text-custom-primary">
+                                    Pesan berhasil dikirim ke administrator.
+                                    <a class="close" href="#"><i class="fa fa-close"></i></a>
+                                </div> --}}
+
                             </form>
                         </div>
                     </div>

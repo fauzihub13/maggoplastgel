@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\ChatBotController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\MailController;
 use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -73,6 +74,10 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
         Route::get('/cities', 'cities')->name('cities');
         Route::get('/districts', 'districts')->name('districts');
         Route::get('/villages', 'villages')->name('villages');
+    });
+
+    Route::controller(MailController::class)->group(function() {
+        Route::post('/contact-us/send', 'mailContact')->name('contact.mail');
     });
 
 

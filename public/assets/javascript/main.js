@@ -109,19 +109,22 @@
                         beforeSend: function () {
                             $form.find(".form-submit").append(loading);
                         },
-                        success: function (msg) {
+                        success: function (response) {
+                            console.log(response)
+
                             var result, cls;
-                            if (msg === "Success") {
+                            if (response.status === true) {
                                 result =
-                                    "Message Sent Successfully To Email Administrator. ( You can change the email management a very easy way to get the message of customers in the user manual )";
-                                cls = "msg-success";
+                                    "Berhasil mengirim pesan.";
+                                cls = "msg-success text-custom-primary";
                             } else {
-                                result = "Error sending email.";
+                                result = "Gagal mengirim pesan, silahkan coba kembali.";
                                 cls = "msg-error";
                             }
                             $form.prepend(
                                 $("<div />", {
-                                    class: "flat-alert " + cls,
+                                    class:
+                                        "flat-alert text-custom-primary" + cls,
                                     text: result,
                                 }).append(
                                     $(
@@ -131,7 +134,16 @@
                             );
 
                             $form.find(":input").not(".submit").val("");
+
                         },
+
+                        error: function(xhr) {
+                            $.each(xhr.responseJSON.errors, function (key, message) {
+                                console.log(message);  // Tampilkan pesan error
+                            });
+                        },
+
+
                         complete: function (xhr, status, error_thrown) {
                             $form.find(".loading").remove();
                         },
