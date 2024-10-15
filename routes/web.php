@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 // use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\LaravoltController;
@@ -135,6 +136,11 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
            Route::put('/pesanan/kirim/{order}', 'sent');
            Route::put('/pesanan/selesai/{order}', 'finish');
            Route::get('/pesanan/lacak/{order}', 'track');
+        });
+
+        // Dashboard
+        Route::controller(DashboardController::class)->group(function(){
+            Route::get('/dashboard', 'index');
         });
     });
 

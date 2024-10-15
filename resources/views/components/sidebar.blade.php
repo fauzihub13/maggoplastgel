@@ -23,6 +23,11 @@
                         </li>
                     </ul>
                 </li>
+                <li class="menu-header">Dashboard</li>
+                <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
+                    <a class="nav-link"
+                        href="/dashboard"><i class="far fa-square"></i> <span>Dashboard</span></a>
+                </li>
                 <li class="menu-header">Konten</li>
                 <li class="nav-item dropdown {{ $type_menu === 'article' ? 'active' : '' }}">
                     <a href="#"
