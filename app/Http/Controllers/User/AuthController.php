@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Laravolt\Indonesia\Facade as Indonesia;
+
 
 class AuthController extends Controller
 {
@@ -53,6 +58,64 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
+    public function registerIndex(){
+        auth()->logout();
+
+        $provinces = Indonesia::allProvinces();
+
+        return view('pages.user.auth.auth-register', [
+            'provinces' => $provinces,
+        ]);
+    }
+
+    public function registerStore(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name'=> 'required|string',
+            'password' => 'required|string|confirmed',
+            'email'=> 'required|email|unique:users,email',
+            'phone_number'=> 'required|integer',
+            'province'=> 'required|string',
+            'city'=> 'required|string',
+            'kecamatan'=> 'required|string',
+            'kelurahan'=> 'required|string',
+            'zip_code'=> 'required|integer',
+            'address_detail'=> 'required|string',
+        ]);
+
+        // Validasi format form register
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        try {
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone_number = $request->phone_number;
+            $user->province = $request->province;
+            $user->city = $request->city;
+            $user->kecamatan = $request->kecamatan;
+            $user->kelurahan = $request->kelurahan;
+            $user->zip_code = $request->zip_code;
+            $user->address_detail = $request->address_detail;
+            $user->password =  Hash::make($request->password);
+            $user->role = 'user';
+            $user->save();
+
+            return redirect()->route('user.login.index')->with('status', 'User berhasil ditambahkan');
+
+        } catch (\Throwable $th) {
+            // return response()->json([
+            //     'status' => false,
+            //     'message' => $th->getMessage()
+            // ]);
+            return back();
+
+        }
+
+
+    }
+
 
 
     public function logout(Request $request)
@@ -67,4 +130,6 @@ class AuthController extends Controller
         // Redirect ke halaman utama
         return redirect('/');
     }
+
+
 }

@@ -78,7 +78,7 @@ class CheckoutController extends Controller
                     'message' => 'Biteship API not responding.',
                 ]);
 
-                return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
+                // return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
             }
         }
 
@@ -122,7 +122,7 @@ class CheckoutController extends Controller
                 'message' => 'Biteship API not responding.',
             ]);
 
-            return redirect()->route('user.product')->with('error', 'Terjadi kesalahan API Biteship.');
+            // return redirect()->route('user.product')->with('error', 'Terjadi kesalahan API Biteship.');
         } else {
             // Mengambil data asli dari JsonResponse
             $shippingInfo = $shippingInfo->getData(true); // true untuk mendapatkan data dalam bentuk array
@@ -243,7 +243,7 @@ class CheckoutController extends Controller
                 'status' => false,
                 'message' => 'Midtrans API not responding.',
             ]);
-            return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
+            // return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
 
         }
 

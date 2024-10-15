@@ -11,13 +11,24 @@
 @section('main')
     <div class="card card-primary">
         <div class="card-header">
-            <h4>User Login</h4>
+            <h4>Masuk</h4>
             @auth
                 Saya sudah login
             @endauth
         </div>
 
         <div class="card-body">
+            @if (session('status'))
+                <div class="alert alert-success alert-has-icon">
+                    {{ session('status') }}
+                </div>
+
+            @elseif (session('error'))
+                <div class="alert alert-danger alert-has-icon">
+                    {{ session('error') }}
+                </div>
+
+            @endif
             <form method="POST"
                 action="{{ route('user.login.post') }}"
                 class="needs-validation"
@@ -63,7 +74,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox"
                             name="remember"
@@ -73,22 +84,22 @@
                         <label class="custom-control-label"
                             for="remember-me">Remember Me</label>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <button type="submit"
                         class="btn btn-primary btn-lg btn-block"
                         tabindex="4">
-                        Login
+                        Masuk
                     </button>
                 </div>
             </form>
 
         </div>
     </div>
-    {{-- <div class="text-muted mt-5 text-center">
-        Don't have an account? <a href="auth-register.html">Create One</a>
-    </div> --}}
+    <div class="text-muted mt-5 text-center">
+        Belum punya akun? <a href="{{ route('user.register') }}">Daftar</a>
+    </div>
 @endsection
 
 @push('scripts')

@@ -293,7 +293,7 @@
     <script src="{{ asset('js/page/index-0.js') }}"></script>
 
     {{-- Laravols Js --}}
-    <script>
+    {{-- <script>
 
         // Default data form auth user
         var defaultProvince = '{{ Auth::user() ? Auth::user()->province : null }}';
@@ -354,5 +354,7 @@
                 onChangeSelect('{{ route("villages") }}', $(this).val(), 'kelurahan');
             });
         });
-    </script>
+    </script> --}}
+
+    @include('components.script-laravolt')
 @endpush

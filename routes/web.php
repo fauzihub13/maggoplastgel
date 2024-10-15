@@ -46,6 +46,8 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
         Route::get('/login', 'loginPage')->name('user.login.index');
         Route::post('/login', 'login')->name('user.login.post');
         Route::post('/logout', 'logout')->name('user.logout');
+        Route::get('/register', 'registerIndex')->name('user.register');
+        Route::post('/register', 'registerStore')->name('user.register.store');
     });
 
     Route::controller(ChatBotController::class)->group(function() {callback:
