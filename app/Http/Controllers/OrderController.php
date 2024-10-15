@@ -12,7 +12,6 @@ class OrderController extends Controller
     public function index() {
 
         $orders = Order::with(['user', 'orderItems.product.productImages', 'transaction'])->get()->groupBy('status');
-        // $orders = Order::all();
 
         return view('pages.admin.order.order-list', [
             'type_menu' => 'order',

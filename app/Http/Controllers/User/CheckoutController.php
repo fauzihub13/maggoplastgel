@@ -130,6 +130,7 @@ class CheckoutController extends Controller
             // Memeriksa apakah status adalah true
             if (isset($shippingInfo['status']) && $shippingInfo['status'] === true) {
                 $courierRates = $shippingInfo['price'];
+                $courierCode = $shippingInfo['courier'];
             } else {
                 return redirect()->route('user.product')->with('error', 'Gagal mendapatkan ongkir.');
 
@@ -205,6 +206,7 @@ class CheckoutController extends Controller
             $order->order_number = $orderId;
             $order->status = "pending";
             $order->shipping_cost = $courierRates;
+            $order->courier = $courierCode;
             $order->save();
             // return $order->order_number."";
 
@@ -355,11 +357,13 @@ class CheckoutController extends Controller
 
             $courierOptions = json_decode($courierOptions);
             $courier = $courierOptions->pricing[0]->price;
+            $courierCode = $courierOptions->pricing[0]->courier_code;
 
             return response()->json([
                 'status' => true,
                 'message' => 'Berhasil mengecek ongkos kirim.',
-                'price' => ($courier)
+                'price' => ($courier),
+                'courier' => ($courierCode)
             ], 200);
 
 

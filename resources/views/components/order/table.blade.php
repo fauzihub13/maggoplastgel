@@ -14,6 +14,21 @@
         'shipped' => 'primary',
         'arrived' => 'success'
     ];
+
+    $courierName = [
+        'jne' => 'JNE',
+        'pos' => 'POS Indonesia',
+        'tiki' => 'TIKI',
+        'sicepat' => 'SiCepat',
+        'anteraja' => 'AnterAja',
+        'jnt' => 'J&T Express',
+        'wahana' => 'Wahana',
+        'ninja' => 'Ninja Express',
+        'lion' => 'Lion Parcel',
+        'rex' => 'REX',
+        'jet' => 'JET Express',
+        'ide' => 'ID Express',
+    ];
 @endphp
 
 <table class="table-fit table">
@@ -45,6 +60,7 @@
                         </div>
                     </div>
                 </div>
+
                 @endforeach
 
             </td>
@@ -82,10 +98,9 @@
                     @csrf
                     @method('PUT')
                     <select class="form-control selectric w-auto mr-2" name="courier" required>
-                        <option value="" disabled selected>Ekspedisi</option>
-                        <option value="jnt">J&T</option>
-                        <option value="jne">JNE</option>
-                        <option value="sicepat">Sicepat</option>
+                        @foreach ($courierName as $code => $name)
+                        <option value="{{ $code }}" @selected($code == $order->courier)>{{ $name }}</option>
+                        @endforeach
                     </select>
                     <input type="text" class="form-control w-auto mr-2" name="resi" placeholder="Resi pengiriman" required>
                     <button type="submit" class="btn btn-primary">Kirim pesanan</button>
