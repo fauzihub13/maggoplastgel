@@ -44,7 +44,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/nengwiwi19/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/nengwiwi19/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                                 <img src="{{asset('images/team/wiwi.webp')}}" alt="images">
@@ -62,7 +62,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/senifitriani_/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/senifitriani_/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
 
                                     </ul>
                                 </div>
@@ -81,7 +81,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/renhardbker/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/renhardbker/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
 
                                     </ul>
                                 </div>
@@ -100,7 +100,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/noviaqisthi/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/noviaqisthi/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
 
                                     </ul>
                                 </div>
@@ -119,7 +119,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/sucimeyditiaa/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/sucimeyditiaa/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
 
                                     </ul>
                                 </div>
@@ -138,7 +138,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/senifitriani_/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/senifitriani_/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
 
                                     </ul>
                                 </div>

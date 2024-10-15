@@ -530,6 +530,7 @@ table tr {
 }
 
 .justify-space-between {
+    display: flex;
     justify-content: space-between !important;
 }
 

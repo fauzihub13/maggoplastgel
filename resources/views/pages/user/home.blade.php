@@ -71,11 +71,8 @@
                                             data-responsive_offset="on">
                                             <div class="button-box">
                                                 <div class="button res-btn-slider">
-                                                    <a href="contact.html" class="btn btn-left">Beli Sekarang</a>
+                                                    <a href="{{ route('user.product') }}" class="btn btn-left">Beli Sekarang</a>
                                                 </div>
-                                                {{-- <div class="button">
-                                                    <a href="service-details.html" class="btn">Read More</a>
-                                                </div> --}}
                                             </div>
                                         </div>
                                         <div class="tp-caption tp-resizeme image-slider text-right "
@@ -149,11 +146,8 @@
                                             data-responsive_offset="on">
                                             <div class="button-box">
                                                 <div class="button res-btn-slider">
-                                                    <a href="contact.html" class="btn btn-left">Beli Sekarang</a>
+                                                    <a href="{{ route('user.product') }}" class="btn btn-left">Beli Sekarang</a>
                                                 </div>
-                                                {{-- <div class="button">
-                                                    <a href="service-details.html" class="btn">Read More</a>
-                                                </div> --}}
                                             </div>
                                         </div>
                                         <div class="tp-caption tp-resizeme image-slider text-right "
@@ -196,7 +190,7 @@
                         <div class="features-box">
                             {{-- <span class="tf-icon icon-farming"></span> --}}
                             <div class="content-features">
-                                <a href="service-details.html">
+                                <a href="">
                                     <h3 class="section-heading-rubik-size20">
                                         Percepatan Penyembuhan Luka
                                     </h3>
@@ -214,7 +208,7 @@
                         <div class="features-box">
                             {{-- <span class="tf-icon icon-hand-gloves"></span> --}}
                             <div class="content-features">
-                                <a href="service-details.html">
+                                <a href="">
                                     <h3 class="section-heading-rubik-size20">
                                         Fleksibilitas dan Kenyamanan
                                     </h3>
@@ -231,7 +225,7 @@
                         <div class="features-box">
                             {{-- <span class="tf-icon icon-fruit-box"></span> --}}
                             <div class="content-features">
-                                <a href="service-details.html">
+                                <a href="">
                                     <h3 class="section-heading-rubik-size20">
                                         Ramah Lingkungan
                                     </h3>
@@ -249,7 +243,7 @@
                         <div class="features-box">
                             {{-- <span class="tf-icon icon-seed"></span> --}}
                             <div class="content-features">
-                                <a href="service-details.html">
+                                <a href="">
                                     <h3 class="section-heading-rubik-size20">
                                         Kemasan dengan Aplikator Pump
                                     </h3>
@@ -307,7 +301,7 @@
                                 <div class="about-box-nd1 wow fadeInLeft">
                                     <span class="tf-icon icon-Group-660"></span>
                                     <div class="inner-box">
-                                        <a href="services.html">
+                                        <a href="">
                                             <h3 class="section-heading-jost-size20 item-1">
                                                 Inovasi Berbasis Lingkungan</h3>
                                         </a>
@@ -317,7 +311,7 @@
                                 <div class="about-box-nd1 wow fadeInLeft">
                                     <span class="tf-icon icon-Group-661"></span>
                                     <div class="inner-box">
-                                        <a href="services.html">
+                                        <a href="">
                                             <h3 class="section-heading-jost-size20 item-2">
                                             Solusi Efektif dan Praktis</h3>
                                         </a>
@@ -330,7 +324,7 @@
                             </div>
                         </div>
                         <div class="button hover-up">
-                            <a href="contact.html" class="btn2">Beli Sekarang</a>
+                            <a href="{{ route('user.product') }}" class="btn2">Beli Sekarang</a>
                         </div>
                     </div>
                 </div>
@@ -361,7 +355,7 @@
                                 class="path2"></span><span class="path3"></span><span class="path4"></span><span
                                 class="path5"></span></span>
                         <div class="content-features">
-                            <a href="service-details.html">
+                            <a href="">
                                 <h3 class="section-heading-jost-size22">
                                     Cepat Sembuhkan Luka Tanpa Iritasi</h3>
                             </a>
@@ -383,7 +377,7 @@
                                 class="path2"></span><span class="path3"></span><span class="path4"></span><span
                                 class="path5"></span></span>
                         <div class="content-features">
-                            <a href="service-details.html">
+                            <a href="">
                                 <h3 class="section-heading-jost-size22">
                                     Ramah Lingkungan</h3>
                             </a>
@@ -406,7 +400,7 @@
                                 class="path2"></span><span class="path3"></span><span class="path4"></span><span
                                 class="path5"></span><span class="path6"></span></span>
                         <div class="content-features">
-                            <a href="service-details.html">
+                            <a href="">
                                 <h3 class="section-heading-jost-size22">
                                     Fleksibel dan Nyaman</h3>
                             </a>
@@ -427,7 +421,7 @@
                         <span class="tf-icon icon-size4 icon-Group-7528"><span class="path1"></span><span
                                 class="path2"></span><span class="path3"></span></span>
                         <div class="content-features">
-                            <a href="service-details.html">
+                            <a href="#">
                                 <h3 class="section-heading-jost-size22">
                                     Praktis dan Higienis
                                 </h3>
@@ -472,7 +466,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/nengwiwi19/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/nengwiwi19/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                                 <img src="{{ asset('images/team/wiwi.webp') }}" alt="images">
@@ -489,7 +483,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                                 <img src="{{ asset('images/team/fahrizal.webp') }}" alt="images">
@@ -506,7 +500,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/renhardbker/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/renhardbker/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                                 <img src="{{ asset('images/team/renhard.webp') }}" alt="images">
@@ -523,7 +517,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/noviaqisthi/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/noviaqisthi/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                                 <img src="{{ asset('images/team/novia.webp') }}" alt="images">
@@ -540,7 +534,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/sucimeyditiaa/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/sucimeyditiaa/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                                 <img src="{{ asset('images/team/suci.webp') }}" alt="images">
@@ -557,7 +551,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/senifitriani_/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/senifitriani_/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                                 <img src="{{ asset('images/team/seni.webp') }}" alt="images">

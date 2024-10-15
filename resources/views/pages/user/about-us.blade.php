@@ -63,7 +63,7 @@
                                     <div class="about-box-nd1 wow fadeInLeft">
                                         <span class="tf-icon icon-Group-660"></span>
                                         <div class="inner-box">
-                                            <a href="services.html">
+                                            <a href="">
                                                 <h3 class="section-heading-jost-size20 item-1">
                                                     Inovasi Berbasis Lingkungan</h3>
                                             </a>
@@ -73,7 +73,7 @@
                                     <div class="about-box-nd1 wow fadeInLeft">
                                         <span class="tf-icon icon-Group-661"></span>
                                         <div class="inner-box">
-                                            <a href="services.html">
+                                            <a href="">
                                                 <h3 class="section-heading-jost-size20 item-2">
                                                 Solusi Efektif dan Praktis</h3>
                                             </a>
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                             <div class="button hover-up">
-                                <a href="contact.html" class="btn2">Beli Sekarang</a>
+                                <a href="{{ route('user.product') }}" class="btn2">Beli Sekarang</a>
                             </div>
                         </div>
                     </div>
@@ -205,8 +205,8 @@
                     </div>
                     <div class="col-md-9">
                         <div class="counter-content-left wow fadeInLeft">
-                            <img class="background-counter" src="{{asset('images/Counter/the-man-working-tree.jpg')}}" alt="images">
-                            <div class="content-left-box">
+                            <img class="background-counter" src="{{asset('images/team/tim-1.png')}}" alt="images">
+                            <div class="content-left-box" >
                                 <h2 class="title-main">Kami adalah tim yang ramah dan berpengalaman.</h2>
                                 <p class="section-desc"></p>
                             </div>
@@ -254,7 +254,7 @@
                     </div>
                     <div class="col-md-7">
                         <div class="testimonials-content-right wow fadeInRight">
-                            <img src="{{asset('images/testimonials/young-beautiful-florist-watering-flowers.jpg')}}" alt="images">
+                            <img src="{{asset('images/product/product-square-3.png')}}" alt="images">
                         </div>
                     </div>
                     <div class="col-md-8">
