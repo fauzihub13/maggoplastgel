@@ -2,13 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
 {
     //
     public function home() {
-        return view('pages.user.home');
+
+        // Mendapatkan artikel
+        $articles = Article::with('articleCategory')->where('status','=','publish')->get();
+
+        // return response()->json($articles);
+
+        // Mengembalikan view dengan artikel perkategori
+        return view('pages.user.home', [
+            'articles' => $articles,
+        ]);
+
+        // return view('pages.user.home');
     }
 
     public function aboutUs() {

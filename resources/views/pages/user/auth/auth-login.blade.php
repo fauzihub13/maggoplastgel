@@ -57,10 +57,10 @@
                         <label for="password"
                             class="control-label">Password</label>
                         <div class="float-right">
-                            <a href="#"
+                            {{-- <a href="#"
                                 class="text-small">
                                 Forgot Password?
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                     <input id="password"

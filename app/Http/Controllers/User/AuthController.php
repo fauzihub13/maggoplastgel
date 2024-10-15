@@ -39,8 +39,6 @@ class AuthController extends Controller
                 $request->session()->regenerate();
                 // return Auth::user();
 
-                // dd(session()->get('url.intended'));
-
                 // Jika ada URL tujuan dari middleware, redirect ke sana
                 return redirect()->intended('/'); // Fallback ke '/' jika tidak ada URL tujuan
             } else {
@@ -102,7 +100,7 @@ class AuthController extends Controller
             $user->role = 'user';
             $user->save();
 
-            return redirect()->route('user.login.index')->with('status', 'User berhasil ditambahkan');
+            return redirect()->route('user.login.index')->with('status', 'Berhasil mendaftarkan akun, silahkan masuk dengan akun Anda.');
 
         } catch (\Throwable $th) {
             // return response()->json([
@@ -115,8 +113,6 @@ class AuthController extends Controller
 
 
     }
-
-
 
     public function logout(Request $request)
     {

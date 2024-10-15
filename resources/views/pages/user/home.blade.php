@@ -674,35 +674,40 @@
         <div class="container">
             <div class="row">
                 <div class="section-title-box">
-                    <h4 class="section-subtitle  wow fadeInUp">LATEST NEWS</h4>
-                    <h2 class="section-title  wow fadeInUp">Our Insights & Articles</h2>
+                    <h4 class="section-subtitle  wow fadeInUp">ARTIKEL TERBARU</h4>
+                    <h2 class="section-title  wow fadeInUp">Berita dan Kegiatan Kami</h2>
                 </div>
                 <div class="col-md-12">
                     <div class="slide-blog-content">
                         <div class="owl-carousel owl-theme">
-                            <div class="item wow fadeInUp">
-                                <div class="blog-item hover-up-style2">
-                                    <div class="item-overlay"></div>
-                                    <div class="item-box link">
-                                        <div class="content-info"><a href="blog.html" class="folder">
-                                                Home Gardening
-                                            </a></div>
-                                        <div class="link-style6">
-                                            <div class="content-info margin-top"><a href="blog-detail.html" class="user">
-                                                    By Admin
+
+                            {{-- Looping Article --}}
+                            @foreach ($articles as $article)
+                                <div class="item wow fadeInUp">
+                                    <div class="blog-item hover-up-style2" style="background-image: url(/storage/{{ $article->thumbnail }})">
+                                        <div class="item-overlay"></div>
+                                        <div class="item-box link">
+                                            <div class="content-info"><a href="/artikel/{{ $article->slug }}" class="folder">
+                                                    {{ $article->articleCategory->name }}
                                                 </a></div>
-                                            <a href="blog-detail.html" class="section-heading-jost-size20">
-                                                Mauris neque nisiibus non elementum
-                                            </a>
+                                            <div class="link-style6">
+                                                <div class="content-info margin-top"><a href="/artikel/{{ $article->slug }}" class="user">
+                                                        By Admin
+                                                    </a></div>
+                                                <a href="/artikel/{{ $article->slug }}" class="section-heading-jost-size20">
+                                                    {{ Str::substr($article->title, 0, 44) }} ..
+                                                </a>
+                                            </div>
+                                            <hr class="line-blog-item">
+                                            <h4 class="sub-title">
+                                                {{ $article->created_at->format('d F, Y') }}
+                                            </h4>
                                         </div>
-                                        <hr class="line-blog-item">
-                                        <h4 class="sub-title">
-                                            28 JANUARY, 2020
-                                        </h4>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item wow fadeInUp">
+                            @endforeach
+
+                            {{-- <div class="item wow fadeInUp">
                                 <div class="blog-item background2 hover-up-style2">
                                     <div class="item-overlay"></div>
                                     <div class="item-box box-2">
@@ -745,7 +750,8 @@
                                         </h4>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
+
                         </div>
                     </div>
                 </div>
