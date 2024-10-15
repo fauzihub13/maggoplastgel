@@ -21,6 +21,14 @@ class DashboardController extends Controller
         $recent_orders = Order::with(['user', 'orderItems.product'])->latest()->get()->take(4);
         $recent_articles = Article::with('user')->notInTrash()->publish()->latest()->get()->take(6);
 
+        $type_menu = 'dashboard';
+
+        return view('pages.admin.dashboard.dashboard', compact(
+            'num_admins', 'num_articles', 'num_orders', 'num_users', 'recent_orders', 'recent_articles', 'type_menu'
+        ));
+    }
+
+    public function chart($periode, Request $request) {
         $one_month_ago = Carbon::now()->subMonth();
         $one_week_ago = Carbon::now()->subWeek();
         $now = Carbon::now();
@@ -54,10 +62,10 @@ class DashboardController extends Controller
             $chart_orders_week['data'][] = $orders_week->firstWhere('date', $formattedDate)->total ?? 0;
         }
 
-        $type_menu = 'dashboard';
-
-        return view('pages.admin.dashboard.dashboard', compact(
-            'num_admins', 'num_articles', 'num_orders', 'num_users', 'recent_orders', 'recent_articles', 'chart_orders_month', 'chart_orders_week',  'type_menu'
-        ));
+        return response()->json([
+            'success' => true, 
+            'message' => 'Data chart berhasil diambil',
+            'data' => $periode == 'week' ? $chart_orders_week : $chart_orders_month
+        ], 201);
     }
 }

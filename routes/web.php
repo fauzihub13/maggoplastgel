@@ -142,6 +142,7 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
         // Dashboard
         Route::controller(DashboardController::class)->group(function(){
             Route::get('/dashboard', 'index');
+            Route::get('/dashboard/chart/{periode}', 'chart');
         });
     });
 

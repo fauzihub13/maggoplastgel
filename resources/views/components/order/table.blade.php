@@ -34,12 +34,14 @@
                 @foreach ($order->orderItems as $item)
                 <div class="card">
                     <div class="card-body border">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-column justify-content-between">
                             <div class="d-flex align-items-center">
                                 <img alt="image" src="/storage/{{ $item->product->productImages[0]->path ?? "" }}" class="rounded me-2 border" width="56" height="56" data-toggle="tooltip" title="{{ $item->product->name ?? "" }}">
-                                <p class="m-0 ml-2">{{ $item->product->name ?? "" }}</p>
+                                <div class="d-flex flex-column ml-2">
+                                    <p class="m-0">{{ $item->product->name ?? "" }}</p>
+                                    <p class="m-0 d-flex align-items-center">{{ $item->quantity }} x &nbsp; <span class="rupiah"> {{ $item->price }}</span></p>
+                                </div>
                             </div>
-                            <p class="m-0 d-flex align-items-center">{{ $item->quantity }} x  <span class="rupiah"> {{ $item->price }}</span></p>
                         </div>
                     </div>
                 </div>

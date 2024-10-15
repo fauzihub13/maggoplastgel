@@ -183,27 +183,6 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/features-posts.js') }}"></script>
     <script src="{{ asset('js/rupiah.js') }}"></script>
-    <script>
-
-        $(".remove-product").click(function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            swal({
-                title: 'Apakah Anda yakin?',
-                icon: 'warning',
-                buttons: true,
-                dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        document.getElementById('delete-product-form').action = '/produk/hapus-produk/' + id;
-                        document.getElementById('delete-product-form').submit();
-                    } else {
-                        swal('Produk batal dihapus');
-                    }
-                }
-            );
-        });
-    </script>
+    <script src="{{ asset('js/page/admin/product-list.js') }}"></script>
     
 @endpush
