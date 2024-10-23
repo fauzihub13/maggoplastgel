@@ -92,10 +92,6 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::group(['middleware' => 'auth'], function () {
-        Route::get('/', function(){
-            return view('pages.admin.dashboard-general-dashboard', ['type_menu' => 'dashboard']);
-        });
-
         // Artikel
         Route::controller(ArticleController::class)->group(function() {
             Route::get('/artikel/tambah-artikel', 'createIndex');
@@ -137,7 +133,7 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
 
         // Dashboard
         Route::controller(DashboardController::class)->group(function(){
-            Route::get('/dashboard', 'index');
+            Route::get('/', 'index');
             Route::get('/dashboard/chart/{periode}', 'chart');
         });
     });
