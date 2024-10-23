@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Blog Detail')
+@section('title', $article->title . " - ")
 
 @push('style')
 <link rel="stylesheet" href="{{ asset('stylesheet/article.css') }}">
