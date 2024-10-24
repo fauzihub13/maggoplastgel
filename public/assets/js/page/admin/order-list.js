@@ -2,7 +2,7 @@ function timestampToDatetime(time) {
     return new Date(time).toLocaleString('id-ID', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',', '');
 }
 $(document).ready(function() {
-    var csrf_token = $('meta[name="description"]').attr("content");
+    var csrf_token = $('meta[name="csrf-token"]').attr("content");
 
     $('.tracking-button').on('click', function(){
         $('#tracking-modal').modal('show');

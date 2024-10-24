@@ -11,7 +11,6 @@ $(document).ready(function() {
     // Ketika tombol "Tambahkan Kategori" ditekan
     $('#add-category-btn').click(function(e) {
         e.preventDefault();
-        console.log('aww saya ditekan');
         
         var newCategory = $('#new-category').val();
         if (newCategory.trim() === '') {
@@ -19,12 +18,14 @@ $(document).ready(function() {
             return;
         }
 
+        var csrf_token = $('meta[name="csrf-token"]').attr("content");
+
         // Kirim kategori baru via AJAX
         $.ajax({
             url: "/kategori-artikel", // route untuk menambahkan kategori
             method: 'POST',
             data: {
-                _token: '{{ csrf_token() }}',
+                _token: csrf_token,
                 name: newCategory
             },
             success: function(response) {

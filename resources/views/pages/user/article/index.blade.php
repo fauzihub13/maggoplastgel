@@ -80,7 +80,7 @@
                                         </ul>
                                     </div>
                                     <div class="content-art">
-                                        <a href="/artikel/{{ $article->slug }}" class="section-heading-jost-size28">
+                                        <a href="/artikel/{{ $article->slug }}" class="section-heading-jost-size28 article-title">
                                             {{ $article->title }}
                                         </a>
                                         <p class="desc-content-box text-decs article-description">
