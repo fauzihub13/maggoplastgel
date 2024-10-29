@@ -129,6 +129,7 @@ return [
     'midtrans_server_key' => env('MIDTRANS_SERVER_KEY', ''),
     'midtrans_client_key' => env('MIDTRANS_CLIENT_KEY', ''),
     'mail_to' => env('MAIL_TO', ''),
+    'api_gemini' => env('API_GEMINI',  ''),
 
     // Laravolt
     // 'aliases' => [

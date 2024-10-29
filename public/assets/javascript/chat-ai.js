@@ -6,6 +6,7 @@
         // Menghilangkan style sebelumnya
         let formattedResponse = response;
 
+        // Menghapus karakter backslash
         formattedResponse = formattedResponse.replace(/\\/g, "");
 
         // Mengatur Ordered List dengan nomor
@@ -17,12 +18,19 @@
         // Mengatur Unordered List dengan disc
         formattedResponse = formattedResponse.replace(
             /<ul>/g,
-            '<ul style="list-style-type: disc;  margin-left: 20px">'
+            '<ul style="list-style-type: disc; margin-left: 20px">'
         );
+
+        // Mengonversi teks diapit ** ke tag <b>
+        formattedResponse = formattedResponse.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+
+        // Menambahkan line break sebelum setiap nomor pada daftar bernomor
+        formattedResponse = formattedResponse.replace(/(\d+\. )/g, "<br>$1");
 
 
         return formattedResponse;
     }
+
 
     function scrollToBottom() {
         var chatBox = document.getElementById("roomChat");
@@ -53,6 +61,8 @@
             $("#message").val("");
             scrollToBottom();
 
+            console.log(message)
+
             // Get response from ai
             $.ajax({
                 type: "POST",
@@ -64,6 +74,8 @@
 
                     // Respon dari API
                     var apiResponse = response.message;
+
+                    console.log(apiResponse)
 
                     // Formatting respon
                     var formattedResponse = formatApiResponse(apiResponse);
