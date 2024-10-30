@@ -6,6 +6,10 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet"
         href="{{ asset('library/selectric/public/selectric.css') }}">
+        
+    <!-- CSS Libraries -->
+    <link rel="stylesheet"
+        href="{{ asset('library/izitoast/dist/css/iziToast.min.css') }}">
 @endpush
 
 @section('main')
@@ -364,7 +368,7 @@
         style="display: none;">
         @csrf
         @method('PUT')
-   </form>   
+   </form>     
 @endsection
 
 @push('scripts')
@@ -379,4 +383,16 @@
 
     <!-- Script Fort This page -->
     <script src="{{ asset('js/page/admin/article-list.js') }}"></script>
+
+    <script src="{{ asset('library/izitoast/dist/js/iziToast.min.js') }}"></script>
+
+    <script>
+        @if(Session::has('success'))
+            iziToast.success({
+                title: 'Sukses',
+                message: "{{ Session::get('success') }}",
+                position: 'topRight'
+            });
+        @endif
+    </script>
 @endpush

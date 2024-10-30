@@ -57,6 +57,9 @@ class ArticleController extends Controller
         // Menyimpan artikel baru ke database
         $article = Article::create($data);
 
+        // Flash tost
+        $request->session()->flash('success', 'Berhasil menambahkan artikel!');
+
         // Redirect ke halaman daftar artikel
         return redirect('/artikel/daftar-artikel');
 

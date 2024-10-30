@@ -4,6 +4,8 @@
 
 @push('style')
     <!-- CSS Libraries -->
+    <link rel="stylesheet"
+        href="{{ asset('library/izitoast/dist/css/iziToast.min.css') }}">
 @endpush
 
 @section('main')
@@ -164,4 +166,23 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/rupiah.js') }}"></script>
     <script src="{{ asset('js/page/admin/order-list.js') }}"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('library/izitoast/dist/js/iziToast.min.js') }}"></script>
+    <script>
+        @if(Session::has('success'))
+            iziToast.success({
+                title: 'Sukses',
+                message: "{{ Session::get('success') }}",
+                position: 'topRight'
+            });
+        @endif
+        @if(Session::has('fail'))
+            iziToast.error({
+                title: 'Gagal',
+                message: "{{ Session::get('fail') }}",
+                position: 'topRight'
+            });
+        @endif
+    </script>
 @endpush

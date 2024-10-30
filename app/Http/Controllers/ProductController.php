@@ -81,6 +81,9 @@ class ProductController extends Controller
             }
         }
 
+        // Flash tost
+        $request->session()->flash('success', 'Berhasil menambahkan produk!');
+
         // Redirect ke halaman daftar produk
         return redirect()->intended('/produk/daftar-produk');
     }

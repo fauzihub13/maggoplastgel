@@ -40,6 +40,13 @@ class OrderController extends Controller
                 $order->courier = $data['courier'];
                 $order->tracking_number = $data['resi'];
                 $order->save();
+
+                // Flash tost success
+                $request->session()->flash('success', 'Berhasil merubah status pesanan');
+            }
+
+            else {
+                $request->session()->flash('fail', 'Status pesanan gagal dirubah. Periksa kembali nomer resi.');
             }
 
         }
