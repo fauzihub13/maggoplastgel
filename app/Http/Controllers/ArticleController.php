@@ -268,7 +268,8 @@ class ArticleController extends Controller
         return view('pages.user.article.index', [
             'articles' => $articles,
             'newest_articles' => $newest_article,
-            'category_name' => $category_name
+            'category_name' => $category_name,
+            'categories' => ArticleCategory::all()
         ]);
     }
 

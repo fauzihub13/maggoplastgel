@@ -115,8 +115,6 @@
                                         <tr>
                                             <td>{{ $article->title }}
                                                 <div class="table-links">
-                                                    <a href="/artikel/{{ $article->slug }}">View</a>
-                                                    <div class="bullet"></div>
                                                     <a href="/artikel/edit-artikel/{{ $article->id }}">Edit</a>
                                                     <div class="bullet"></div>
                                                     <a href="#"
