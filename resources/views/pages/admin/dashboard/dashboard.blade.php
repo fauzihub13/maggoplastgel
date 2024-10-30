@@ -26,10 +26,10 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Admin</h4>
+                                <h4>Total Produk</h4>
                             </div>
                             <div class="card-body">
-                                {{ $num_admins }}
+                                {{ $num_products }}
                             </div>
                         </div>
                     </div>
