@@ -46,6 +46,7 @@ class OrderController extends Controller
             }
 
             else {
+                // Flash toast fail
                 $request->session()->flash('fail', 'Status pesanan gagal dirubah. Periksa kembali nomer resi.');
             }
 

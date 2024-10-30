@@ -304,9 +304,9 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
     // Route::get('/modules-sweet-alert', function () {
     //     return view('pages.admin.modules-sweet-alert', ['type_menu' => 'modules']);
     // });
-    Route::get('/modules-toastr', function () {
-        return view('pages.admin.modules-toastr', ['type_menu' => 'modules']);
-    });
+    // Route::get('/modules-toastr', function () {
+    //     return view('pages.admin.modules-toastr', ['type_menu' => 'modules']);
+    // });
     // Route::get('/modules-vector-map', function () {
     //     return view('pages.admin.modules-vector-map', ['type_menu' => 'modules']);
     // });

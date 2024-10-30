@@ -197,6 +197,13 @@
                 position: 'topRight'
             });
         @endif
-    </script>
+        @if(Session::has('fail'))
+            iziToast.error({
+                title: 'Gagal',
+                message: "{{ Session::get('fail') }}",
+                position: 'topRight'
+            });
+        @endif
+     </script>
     
 @endpush

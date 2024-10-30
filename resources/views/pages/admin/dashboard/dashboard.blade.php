@@ -8,6 +8,8 @@
         href="{{ asset('library/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('library/summernote/dist/summernote-bs4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('library/izitoast/dist/css/iziToast.min.css') }}">
 @endpush
 
 @section('main')
@@ -256,4 +258,15 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/index-0.js') }}"></script>
     <script src="{{ asset('js/page/admin/dashboard.js') }}"></script>
+    <script src="{{ asset('library/izitoast/dist/js/iziToast.min.js') }}"></script>
+
+    <script>
+        @if(Session::has('success'))
+            iziToast.success({
+                title: 'Sukses',
+                message: "{{ Session::get('success') }}",
+                position: 'topRight'
+            });
+        @endif
+    </script>
 @endpush

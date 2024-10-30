@@ -5,11 +5,20 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
         name="viewport">
-    <title>@yield('title') &mdash; Stisla</title>
+    <title>@yield('title') &mdash; Maggoplastgel</title>
+
+    <!-- Favicon and touch icons  -->
+    <link href="{{ asset('icon/Favicon.png') }}" rel="apple-touch-icon-precomposed">
+    <link href="{{ asset('icon/Favicon.png') }}" rel="apple-touch-icon-precomposed">
+    <link href="{{ asset('icon/Favicon.png') }}" rel="shortcut icon">
 
     <!-- General CSS Files -->
     <link rel="stylesheet"
+        href="{{ asset('css/custom.css.map') }}">
+        
+    <link rel="stylesheet"
         href="{{ asset('library/bootstrap/dist/css/bootstrap.min.css') }}">
+
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -24,7 +33,7 @@
     <link rel="stylesheet"
         href="{{ asset('css/components.css') }}">
     <!-- Start GA -->
-    <script async
+    {{-- <script async
         src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -35,7 +44,7 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-94034622-3');
-    </script>
+    </script> --}}
     <!-- END GA -->
 </head>
 

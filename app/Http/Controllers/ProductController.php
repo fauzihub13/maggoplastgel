@@ -40,9 +40,9 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|integer',
             'weight' => 'required|integer',
-            'length' => 'integer',
-            'width' => 'integer',
-            'height' => 'integer',
+            'length' => 'nullable|integer',
+            'width' => 'nullable|integer',
+            'height' => 'nullable|integer',
             'stock' => 'required|integer',
             'status' => 'nullable|boolean',
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000',
@@ -110,7 +110,7 @@ class ProductController extends Controller
      * @param \App\Models\Product $product
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function deactivate(Product $product) {
+    public function deactivate(Product $product, Request $request) {
         // Validasi jika produk aktif
         if ($product->status) {
             // Update status produk menjadi tidak aktif
@@ -118,6 +118,9 @@ class ProductController extends Controller
                 'status' => false
             ]);
         }
+
+        // Flash toast success
+        $request->session()->flash('success', 'Berhasil merubah status produk');
 
         // Redirect ke halaman daftar produk
         return redirect()->intended('/produk/daftar-produk');
@@ -129,7 +132,7 @@ class ProductController extends Controller
      * @param \App\Models\Product $product
      * @return \Illuminate\Http\RedirectResponse 
      */
-    public function activate(Product $product) {
+    public function activate(Product $product, Request $request) {
         // Validasi jika produk tidak aktif
         if (!$product->status) {
             // Update status produk menjadi aktif
@@ -137,6 +140,8 @@ class ProductController extends Controller
                 'status' => true
             ]);
         }
+        // Flash toast success
+        $request->session()->flash('success', 'Berhasil merubah status produk');
 
         // Redirect ke halaman daftar produk
         return redirect()->intended('/produk/daftar-produk');
@@ -236,6 +241,9 @@ class ProductController extends Controller
             }
         }
 
+        // Flash toast success
+        $request->session()->flash('success', 'Berhasil merubah data produk');
+
         // Redirect ke halaman daftar produk
         return redirect()->intended('/produk/daftar-produk');
     }
@@ -246,9 +254,12 @@ class ProductController extends Controller
      * @param \App\Models\Product $product
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete(Product $product) {
+    public function delete(Product $product, Request $request) {
         // Soft delete produk
         $product->delete();
+
+        // Flash toast success
+        $request->session()->flash('success', 'Berhasil menghapus produk');
 
         // Redirect ke halaman daftar produk
         return redirect()->intended('/produk/daftar-produk');
