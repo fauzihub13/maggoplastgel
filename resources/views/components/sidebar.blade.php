@@ -49,7 +49,7 @@
         @elseif (Auth::user()->role === 'user')
             <div class="sidebar-brand pt-4" >
                 <img alt="image"
-                    src="{{ asset('img/avatar/avatar-1.png') }}"
+                src="{{ asset('img/avatar/avatar-2.png') }}"
                     class="rounded-circle mr-1" width="70">
                     <br>
                 <a href="#">{{ Auth::user()->name }}</a>
