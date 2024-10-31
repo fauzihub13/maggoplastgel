@@ -183,27 +183,9 @@
     <script src="{{ asset('library/cleave.js/dist/cleave.min.js') }}"></script>
     <script src="{{ asset('library/sweetalert/dist/sweetalert.min.js') }}"></script>
     <script src="{{ asset('library/sweetalert/dist/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('library/izitoast/dist/js/iziToast.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/features-posts.js') }}"></script>
     <script src="{{ asset('js/rupiah.js') }}"></script>
     <script src="{{ asset('js/page/admin/product-list.js') }}"></script>
-    <script>
-        @if(Session::has('success'))
-            iziToast.success({
-                title: 'Sukses',
-                message: "{{ Session::get('success') }}",
-                position: 'topRight'
-            });
-        @endif
-        @if(Session::has('fail'))
-            iziToast.error({
-                title: 'Gagal',
-                message: "{{ Session::get('fail') }}",
-                position: 'topRight'
-            });
-        @endif
-     </script>
-    
 @endpush

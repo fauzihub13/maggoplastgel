@@ -71,6 +71,23 @@
     <script src="{{ asset('library/jquery.nicescroll/dist/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('library/moment/min/moment.min.js') }}"></script>
     <script src="{{ asset('js/stisla.js') }}"></script>
+    <script src="{{ asset('library/izitoast/dist/js/iziToast.min.js') }}"></script>
+    <script>
+        @if(Session::has('success'))
+            iziToast.success({
+                title: 'Sukses',
+                message: "{{ Session::get('success') }}",
+                position: 'topRight'
+            });
+        @endif
+        @if(Session::has('fail'))
+            iziToast.error({
+                title: 'Gagal',
+                message: "{{ Session::get('fail') }}",
+                position: 'topRight'
+            });
+        @endif
+     </script>
 
     @stack('scripts')
 

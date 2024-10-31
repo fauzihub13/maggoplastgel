@@ -200,11 +200,6 @@
                                         <tr>
                                             <td>
                                                 {{ $article->title }}
-                                                <div class="table-links">
-                                                    in <a href="#">Web Development</a>
-                                                    <div class="bullet"></div>
-                                                    <a href="#">View</a>
-                                                </div>
                                             </td>
                                             <td>
                                                 <a href="#"
@@ -258,15 +253,5 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/index-0.js') }}"></script>
     <script src="{{ asset('js/page/admin/dashboard.js') }}"></script>
-    <script src="{{ asset('library/izitoast/dist/js/iziToast.min.js') }}"></script>
-
-    <script>
-        @if(Session::has('success'))
-            iziToast.success({
-                title: 'Sukses',
-                message: "{{ Session::get('success') }}",
-                position: 'topRight'
-            });
-        @endif
-    </script>
+    
 @endpush

@@ -381,16 +381,4 @@
 
     <!-- Script Fort This page -->
     <script src="{{ asset('js/page/admin/article-list.js') }}"></script>
-
-    <script src="{{ asset('library/izitoast/dist/js/iziToast.min.js') }}"></script>
-
-    <script>
-        @if(Session::has('success'))
-            iziToast.success({
-                title: 'Sukses',
-                message: "{{ Session::get('success') }}",
-                position: 'topRight'
-            });
-        @endif
-    </script>
 @endpush

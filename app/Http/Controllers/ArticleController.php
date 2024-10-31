@@ -182,7 +182,7 @@ class ArticleController extends Controller
         $request->session()->flash('success', 'Berhasil menghapus artikel!');
 
         // Redirect ke halaman daftar artikel
-        return redirect('/artikel/daftar-artikel');
+        return back();
     }
 
     /**
@@ -223,7 +223,7 @@ class ArticleController extends Controller
         $request->session()->flash('success', 'Berhasil menghapus artikel!');
 
         // Redirect ke halaman daftar artikel
-        return redirect('/artikel/daftar-artikel');
+        return back();
     }
 
     /**
