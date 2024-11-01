@@ -6,6 +6,10 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet"
         href="{{ asset('library/selectric/public/selectric.css') }}">
+        
+    <!-- CSS Libraries -->
+    <link rel="stylesheet"
+        href="{{ asset('library/izitoast/dist/css/iziToast.min.css') }}">
 @endpush
 
 @section('main')
@@ -111,8 +115,6 @@
                                         <tr>
                                             <td>{{ $article->title }}
                                                 <div class="table-links">
-                                                    <a href="/artikel/{{ $article->slug }}">View</a>
-                                                    <div class="bullet"></div>
                                                     <a href="/artikel/edit-artikel/{{ $article->id }}">Edit</a>
                                                     <div class="bullet"></div>
                                                     <a href="#"
@@ -364,7 +366,7 @@
         style="display: none;">
         @csrf
         @method('PUT')
-   </form>   
+   </form>     
 @endsection
 
 @push('scripts')

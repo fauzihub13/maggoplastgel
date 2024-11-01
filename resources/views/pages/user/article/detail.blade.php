@@ -96,7 +96,7 @@
                                             @endphp
                                             <ul class="list-related">
                                                 @foreach ($tags as $tag)
-                                                <li><a href="/artikel?tag={{ $tag }}">{{ $tag }}.</a></li>
+                                                <li><a href="/artikel?tag={{ $tag }}">#{{ $tag }}</a></li>
                                                     
                                                 @endforeach
                                             </ul>

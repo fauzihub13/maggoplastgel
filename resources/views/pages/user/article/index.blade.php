@@ -73,7 +73,7 @@
 												</a>
                                             </li>
                                             <li>
-                                                <a href="#" class="line text-decs">
+                                                <a href="?kategori={{ $article->article_category_id }}" class="line text-decs">
                                                     {{ $article->articleCategory->name }}
 												</a>
                                             </li>
@@ -143,7 +143,16 @@
                                     </form>
                                 </div>
                             </div>
-
+                            <div class="widgets-category">
+                                <h3 class="widgets-side-bar-title">
+                                    Kategori
+                                </h3>
+                                <ul class="list-category">
+                                    @foreach ($categories as $category)
+                                    <li><a href="/artikel?kategori={{ $category->id }}">{{ $category->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             <div class="widget widget_lastest">
                                 <h2 class="widgets-side-bar-title"><span>Artikel Terbaru</span></h2>
                                 <ul class="lastest-posts data-effect clearfix">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Article;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -13,7 +14,7 @@ class DashboardController extends Controller
     public function index() {
 
         Carbon::setLocale('id');
-        $num_admins = User::where('role', 'admin')->count();
+        $num_products = Product::all()->count();
         $num_articles = Article::where('status', 'publish')->count();
         $num_orders = Order::whereNot('status', 'pending')->count();
         $num_users = User::where('role', 'user')->count();
@@ -24,7 +25,7 @@ class DashboardController extends Controller
         $type_menu = 'dashboard';
 
         return view('pages.admin.dashboard.dashboard', compact(
-            'num_admins', 'num_articles', 'num_orders', 'num_users', 'recent_orders', 'recent_articles', 'type_menu'
+            'num_products', 'num_articles', 'num_orders', 'num_users', 'recent_orders', 'recent_articles', 'type_menu'
         ));
     }
 

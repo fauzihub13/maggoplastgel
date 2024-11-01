@@ -57,6 +57,9 @@ class ArticleController extends Controller
         // Menyimpan artikel baru ke database
         $article = Article::create($data);
 
+        // Flash tost
+        $request->session()->flash('success', 'Berhasil menambahkan artikel!');
+
         // Redirect ke halaman daftar artikel
         return redirect('/artikel/daftar-artikel');
 
@@ -156,6 +159,9 @@ class ArticleController extends Controller
         // Update artikel
         $article->update($data);
 
+        // Flash tost
+        $request->session()->flash('success', 'Berhasil merubah data artikel!');
+
         // Redirect ke halaman daftar artikel
         return redirect('/artikel/daftar-artikel');
     }
@@ -166,14 +172,17 @@ class ArticleController extends Controller
      * @param \App\Models\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function delete(Article $article) {
+    public function delete(Article $article, Request $request) {
         // Update kolom 'deleted_at' dengan waktu sekarang
         $article->update([
             'deleted_at' => now()
         ]);
 
+        // Flash tost
+        $request->session()->flash('success', 'Berhasil menghapus artikel!');
+
         // Redirect ke halaman daftar artikel
-        return redirect('/artikel/daftar-artikel');
+        return back();
     }
 
     /**
@@ -182,11 +191,14 @@ class ArticleController extends Controller
      * @param \App\Models\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function restore(Article $article) {
+    public function restore(Article $article, Request $request) {
         // Update kolom 'deleted_at' menjadi null
         $article->update([
             'deleted_at' => null
         ]);
+
+        // Flash tost
+        $request->session()->flash('success', 'Berhasil merubah status artikel!');
 
         // Redirect ke halaman daftar artikel
         return redirect('/artikel/daftar-artikel');
@@ -198,7 +210,7 @@ class ArticleController extends Controller
      * @param \App\Models\Article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article) {
+    public function destroy(Article $article, Request $request) {
         // Hapus file thumbnail
         if (Storage::disk('public')->exists($article->thumbnail)) {
             Storage::disk('public')->delete($article->thumbnail);
@@ -207,8 +219,11 @@ class ArticleController extends Controller
         // Hapus artikel pada database
         $article->delete();
 
+        // Flash tost
+        $request->session()->flash('success', 'Berhasil menghapus artikel!');
+
         // Redirect ke halaman daftar artikel
-        return redirect('/artikel/daftar-artikel');
+        return back();
     }
 
     /**
@@ -253,7 +268,8 @@ class ArticleController extends Controller
         return view('pages.user.article.index', [
             'articles' => $articles,
             'newest_articles' => $newest_article,
-            'category_name' => $category_name
+            'category_name' => $category_name,
+            'categories' => ArticleCategory::all()
         ]);
     }
 
@@ -287,7 +303,10 @@ class ArticleController extends Controller
            
             DB::commit();
 
-            return redirect()->back();
+            // Flash tost
+            $request->session()->flash('success', 'Berhasil menambahkan draft artikel!');
+
+            return back();
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors($th);
         }

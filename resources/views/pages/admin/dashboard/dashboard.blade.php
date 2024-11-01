@@ -8,6 +8,8 @@
         href="{{ asset('library/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('library/summernote/dist/summernote-bs4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('library/izitoast/dist/css/iziToast.min.css') }}">
 @endpush
 
 @section('main')
@@ -24,10 +26,10 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Admin</h4>
+                                <h4>Total Produk</h4>
                             </div>
                             <div class="card-body">
-                                {{ $num_admins }}
+                                {{ $num_products }}
                             </div>
                         </div>
                     </div>
@@ -198,11 +200,6 @@
                                         <tr>
                                             <td>
                                                 {{ $article->title }}
-                                                <div class="table-links">
-                                                    in <a href="#">Web Development</a>
-                                                    <div class="bullet"></div>
-                                                    <a href="#">View</a>
-                                                </div>
                                             </td>
                                             <td>
                                                 <a href="#"
@@ -256,4 +253,5 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/index-0.js') }}"></script>
     <script src="{{ asset('js/page/admin/dashboard.js') }}"></script>
+    
 @endpush

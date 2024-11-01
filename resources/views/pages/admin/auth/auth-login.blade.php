@@ -11,10 +11,7 @@
 @section('main')
     <div class="card card-primary">
         <div class="card-header">
-            <h4>Login</h4>
-            @auth
-                Saya sudah login
-            @endauth
+            <h4 class="text-primary">Login</h4>
         </div>
 
         <div class="card-body">
@@ -26,7 +23,7 @@
                     <label for="email">Email</label>
                     <input id="email"
                         type="email"
-                        class="form-control"
+                        class="form-control border-green"
                         name="email"
                         tabindex="1"
                         value="{{ old('email') ?? '' }}"
@@ -45,12 +42,7 @@
                     <div class="d-block">
                         <label for="password"
                             class="control-label">Password</label>
-                        <div class="float-right">
-                            <a href="auth-forgot-password.html"
-                                class="text-small">
-                                Forgot Password?
-                            </a>
-                        </div>
+
                     </div>
                     <input id="password"
                         type="password"
@@ -60,18 +52,6 @@
                         required>
                     <div class="invalid-feedback">
                         please fill in your password
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox"
-                            name="remember"
-                            class="custom-control-input"
-                            tabindex="3"
-                            id="remember-me">
-                        <label class="custom-control-label"
-                            for="remember-me">Remember Me</label>
                     </div>
                 </div>
 

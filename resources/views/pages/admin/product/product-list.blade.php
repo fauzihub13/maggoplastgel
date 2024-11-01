@@ -6,6 +6,10 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet"
         href="{{ asset('library/selectric/public/selectric.css') }}">
+
+        <!-- CSS Libraries -->
+    <link rel="stylesheet"
+    href="{{ asset('library/izitoast/dist/css/iziToast.min.css') }}">
 @endpush
 
 @section('main')
@@ -184,5 +188,4 @@
     <script src="{{ asset('js/page/features-posts.js') }}"></script>
     <script src="{{ asset('js/rupiah.js') }}"></script>
     <script src="{{ asset('js/page/admin/product-list.js') }}"></script>
-    
 @endpush
