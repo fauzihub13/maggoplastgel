@@ -299,7 +299,7 @@
                         <div id="about-box" class="about-desc-box">
                             <div class="about-desc">
                                 <div class="about-box-nd1 wow fadeInLeft">
-                                    <span class="tf-icon icon-Group-660"></span>
+                                    <span class="tf-icon vertical-center"><img src="{{ asset('icon/icon_environment.svg') }}" alt=""></span>
                                     <div class="inner-box">
                                         <a href="">
                                             <h3 class="section-heading-jost-size20 item-1">
@@ -309,7 +309,8 @@
                                     </div>
                                 </div>
                                 <div class="about-box-nd1 wow fadeInLeft">
-                                    <span class="tf-icon icon-Group-661"></span>
+                                    <span class="tf-icon vertical-center"><img src="{{ asset('icon/icon_bulb.svg') }}" alt=""></span>
+
                                     <div class="inner-box">
                                         <a href="">
                                             <h3 class="section-heading-jost-size20 item-2">
@@ -351,9 +352,7 @@
                 <div class="item-four-column">
                     <div class="our-services-box hover-up-style2 mg-bottom30 wow fadeInDown">
                         <div class="our-services-overlay"></div>
-                        <span class="tf-icon icon-size icon-icon-farming-layer"><span class="path1"></span><span
-                                class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                class="path5"></span></span>
+                        <span class="tf-icon icon-medium horizontal-center"><img src="{{ asset('icon/icon_plester.svg') }}" class="" alt=""></span>
                         <div class="content-features">
                             <a href="">
                                 <h3 class="section-heading-jost-size22">
@@ -373,9 +372,7 @@
                 <div class="item-four-column">
                     <div class="our-services-box hover-up-style2 mg-bottom30 wow fadeInDown">
                         <div class="our-services-overlay"></div>
-                        <span class="tf-icon icon-size icon-icon-farming-layer"><span class="path1"></span><span
-                                class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                class="path5"></span></span>
+                        <span class="tf-icon icon-medium horizontal-center"><img src="{{ asset('icon/icon_environment.svg') }}" class="" alt=""></span>
                         <div class="content-features">
                             <a href="">
                                 <h3 class="section-heading-jost-size22">
@@ -396,9 +393,7 @@
                 <div class="item-four-column">
                     <div class="our-services-box hover-up-style2 wow fadeInLeft">
                         <div class="our-services-overlay"></div>
-                        <span class="tf-icon icon-size2 icon-Group-7526"><span class="path1"></span><span
-                                class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                class="path5"></span><span class="path6"></span></span>
+                        <span class="tf-icon icon-medium horizontal-center"><img src="{{ asset('icon/icon_comfort.svg') }}" class="" alt=""></span>
                         <div class="content-features">
                             <a href="">
                                 <h3 class="section-heading-jost-size22">
@@ -418,8 +413,7 @@
                 <div class="item-four-column">
                     <div class="our-services-box hover-up-style2 wow fadeInRight">
                         <div class="our-services-overlay"></div>
-                        <span class="tf-icon icon-size4 icon-Group-7528"><span class="path1"></span><span
-                                class="path2"></span><span class="path3"></span></span>
+                        <span class="tf-icon icon-medium horizontal-center"><img src="{{ asset('icon/icon_easy_to_use.svg') }}" class="" alt=""></span>
                         <div class="content-features">
                             <a href="#">
                                 <h3 class="section-heading-jost-size22">

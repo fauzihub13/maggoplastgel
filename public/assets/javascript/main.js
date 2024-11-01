@@ -94,6 +94,14 @@
         });
     };
 
+    // Fungsi untuk menutup notifikasi
+    function closeMessage(element) {
+        $(element).closest(".flat-alert").fadeOut(300, function () {
+            $(this).remove(); // Menghapus elemen notifikasi dari DOM setelah efek fadeOut
+        });
+    }
+
+    // Fungsi utama untuk mengelola form kontak
     var ajaxContactForm = function () {
         $("#contactform").each(function () {
             $(this).validate({
@@ -107,51 +115,58 @@
                         url: $form.attr("action"),
                         data: str,
                         beforeSend: function () {
+                            // Menambahkan elemen loading saat pengiriman
                             $form.find(".form-submit").append(loading);
                         },
                         success: function (response) {
-                            console.log(response)
-
                             var result, cls;
+                            // Menentukan pesan dan kelas berdasarkan status respons
                             if (response.status === true) {
-                                result =
-                                    "Berhasil mengirim pesan.";
+                                result = "Berhasil mengirim pesan.";
                                 cls = "msg-success text-custom-primary";
                             } else {
                                 result = "Gagal mengirim pesan, silahkan coba kembali.";
-                                cls = "msg-error";
+                                cls = "msg-error text-custom-primary";
                             }
-                            $form.prepend(
-                                $("<div />", {
-                                    class:
-                                        "flat-alert text-custom-primary" + cls,
-                                    text: result,
-                                }).append(
-                                    $(
-                                        '<a class="close" href="#"><i class="fa fa-close"></i></a>'
-                                    )
-                                )
+                            // Membuat elemen notifikasi
+                            var alertBox = $("<div />", {
+                                class: "flat-alert " + cls,
+                                text: result,
+                            }).append(
+                                $('<a class="close" href="javascript:void(0);"><i class="fa fa-close"></i></a>')
                             );
 
-                            $form.find(":input").not(".submit").val("");
+                            // Menambahkan notifikasi ke atas form
+                            $form.prepend(alertBox);
 
+                            // Menambahkan event listener untuk tombol close
+                            alertBox.find('.close').on('click', function() {
+                                closeMessage(this);
+                            });
+
+                            // Mengosongkan input setelah pengiriman
+                            $form.find(":input").not(".submit").val("");
                         },
 
-                        error: function(xhr) {
+                        error: function (xhr) {
+                            // Menampilkan pesan error dari respons
                             $.each(xhr.responseJSON.errors, function (key, message) {
-                                console.log(message);  // Tampilkan pesan error
+                                console.log(message); // Tampilkan pesan error di console
                             });
                         },
 
-
                         complete: function (xhr, status, error_thrown) {
+                            // Menghapus elemen loading setelah permintaan selesai
                             $form.find(".loading").remove();
                         },
                     });
                 },
             });
-        }); // each contactform
+        });
     };
+
+
+
 
     //Wow animation
     var wow = new WOW({

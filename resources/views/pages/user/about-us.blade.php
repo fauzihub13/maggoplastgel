@@ -61,7 +61,7 @@
                             <div id="about-box" class="about-desc-box">
                                 <div class="about-desc">
                                     <div class="about-box-nd1 wow fadeInLeft">
-                                        <span class="tf-icon icon-Group-660"></span>
+                                        <span class="tf-icon vertical-center"><img src="{{ asset('icon/icon_environment.svg') }}" alt=""></span>
                                         <div class="inner-box">
                                             <a href="">
                                                 <h3 class="section-heading-jost-size20 item-1">
@@ -71,7 +71,8 @@
                                         </div>
                                     </div>
                                     <div class="about-box-nd1 wow fadeInLeft">
-                                        <span class="tf-icon icon-Group-661"></span>
+                                        <span class="tf-icon vertical-center"><img src="{{ asset('icon/icon_bulb.svg') }}" alt=""></span>
+
                                         <div class="inner-box">
                                             <a href="">
                                                 <h3 class="section-heading-jost-size20 item-2">
@@ -120,8 +121,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="features-box wow fadeInUp">
-                            <div class="icon-wp-box">
-                                <span class="tf-icon-wp icon-farming"></span>
+                            <div class="icon-wp-box box-ingredient">
+                                <span class="tf-icon-wp "><img src="{{ asset('icon/icon_maggo_oil.svg') }}" class="icon-medium" alt=""></span>
+
                                 <div class="icon-box link-style3">
                                     <span class="section-heading-jost-size20 icon" >01</span>
                                 </div>
@@ -136,8 +138,8 @@
                             </div>
                         </div>
                         <div class="features-box wow fadeInUp">
-                            <div class="icon-wp-box">
-                                <span class="tf-icon-wp icon-seed"></span>
+                            <div class="icon-wp-box box-ingredient">
+                                <span class="tf-icon-wp "><img src="{{ asset('icon/icon_batang_brotowali.svg') }}" class="icon-medium" alt=""></span>
                                 <div class="icon-box link-style3">
                                     <span class="section-heading-jost-size20 icon" >03</span>
                                 </div>
@@ -155,8 +157,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="features-box wow fadeInUp">
-                            <div class="icon-wp-box size-icon">
-                                <span class="tf-icon-wp2 icon-seeding1"></span>
+                            <div class="icon-wp-box box-ingredient">
+                                <span class="tf-icon-wp "><img src="{{ asset('icon/icon_nanoemulsi.svg') }}" class="icon-medium" alt=""></span>
                                 <div class="icon-box2 link-style3">
                                     <span class="section-heading-jost-size20 icon" >02</span>
                                 </div>
@@ -171,8 +173,8 @@
                             </div>
                         </div>
                         <div class="features-box wow fadeInUp">
-                            <div class="icon-wp-box size-icon2">
-                                <span class="tf-icon-wp4 icon-greenhouse1"></span>
+                            <div class="icon-wp-box  box-ingredient">
+                                <span class="tf-icon-wp icon-medium"><img src="{{ asset('icon/icon_hydrogel.svg') }}" class="icon-medium" alt=""></span>
                                 <div class="icon-box3 link-style3">
                                     <span class="section-heading-jost-size20 icon" >04</span>
                                 </div>
