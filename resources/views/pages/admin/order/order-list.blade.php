@@ -70,7 +70,6 @@
                 <div class="card">
                     <div class="card-body p-0 tab-content">
                         <div class="table-responsive tab-pane fade show active"
-
                                         id="pending"
                                         role="tabpanel"
                                         aria-labelledby="pending">
@@ -102,18 +101,19 @@
             </div>
         </section>
     </div>
-    <div class="modal fade" tabindex="-1" id="tracking-modal" aria-modal="true" role="dialog">       
-        <div class="modal-dialog modal-md modal-dialog-centered" role="document">         
-            <div class="modal-content">           
-                <div class="modal-header">             
-                    <h5 class="modal-title">Lacak Pesanan</h5>             
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">               
-                        <span aria-hidden="true">×</span>             
-                    </button>           
-                </div>           
-                <div class="modal-body">           
+    
+    <div class="modal fade" tabindex="-1" id="tracking-modal" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Lacak Pesanan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <div class="activities">
-                        
+
                         <div class="activity">
                             <div class="activity-icon bg-primary shadow-primary text-white">
                                 <i class="fas fa-trash"></i>
@@ -145,18 +145,18 @@
                             <div class="activity-detail">
                                 <div class="mb-2">
                                     <span class="text-job">2024-08-31 11:27</span>
-                                    
+
                                 </div>
                                 <p>Manifes</p>
                             </div>
                         </div>
                     </div>
-                </div>           
-                <div class="modal-footer bg-whitesmoke">    
+                </div>
+                <div class="modal-footer bg-whitesmoke">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                </div>         
-            </div>       
-        </div>    
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 

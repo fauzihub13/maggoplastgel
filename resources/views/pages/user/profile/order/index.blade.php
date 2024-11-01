@@ -19,7 +19,6 @@
                     <div class="breadcrumb-item">Daftar pesanan</div>
                 </div>
             </div>
-
             <div class="section-body">
                 <h2 class="section-title">Pesanan</h2>
                 <p class="section-lead">
@@ -68,39 +67,36 @@
                         </div>
                     </div>
                 </div>
-                <div class="">
+                <div class="card">
+                    <div class="card-body p-0 tab-content">
+                        <div class="table-responsive tab-pane fade show active"
+                                        id="pending"
+                                        role="tabpanel"
+                                        aria-labelledby="pending">
+                            <x-order.user-table :orders="$orders['pending'] ?? []"/>
+                        </div>
 
-                    <div class="table-responsive tab-pane fade show active"
+                        <div class="table-responsive tab-pane fade"
+                                        id="paid"
+                                        role="tabpanel"
+                                        aria-labelledby="paid">
+                            <x-order.user-table :orders="$orders['paid'] ?? []"/>
+                        </div>
 
-                                    id="pending"
-                                    role="tabpanel"
-                                    aria-labelledby="pending">
-                        <x-order.user-table :orders="$orders['pending'] ?? []"/>
+                        <div class="table-responsive tab-pane fade"
+                                        id="shipped"
+                                        role="tabpanel"
+                                        aria-labelledby="shipped">
+                            <x-order.user-table :orders="$orders['shipped'] ?? []"/>
+                        </div>
+
+                        <div class="table-responsive tab-pane fade"
+                                        id="arrived"
+                                        role="tabpanel"
+                                        aria-labelledby="arrived">
+                            <x-order.user-table :orders="$orders['arrived'] ?? []"/>
+                        </div>
                     </div>
-
-                    <div class="table-responsive tab-pane fade"
-                                    id="paid"
-                                    role="tabpanel"
-                                    aria-labelledby="paid">
-                        <x-order.user-table :orders="$orders['paid'] ?? []"/>
-                    </div>
-
-                    <div class="table-responsive tab-pane fade"
-                                    id="shipped"
-                                    role="tabpanel"
-                                    aria-labelledby="shipped">
-                        <x-order.user-table :orders="$orders['shipped'] ?? []"/>
-                    </div>
-
-                    <div class="table-responsive tab-pane fade"
-                                    id="arrived"
-                                    role="tabpanel"
-                                    aria-labelledby="arrived">
-                        <x-order.user-table :orders="$orders['arrived'] ?? []"/>
-                    </div>
-
-
-
                 </div>
             </div>
         </section>
@@ -168,6 +164,7 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/rupiah.js') }}"></script>
+
     <script>
         function timestampToDatetime(time) {
             return new Date(time).toLocaleString('id-ID', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',', '');
@@ -229,5 +226,6 @@
                 });
             })
         });
+
     </script>
 @endpush
