@@ -103,9 +103,9 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
             Route::get('/artikel/daftar-artikel', 'list');
             Route::get('/artikel/edit-artikel/{article}', 'updateIndex');
             Route::get('/artikel/{article:slug}', 'show');
-            Route::post('/artikel/tambah-artikel', 'create');
+            Route::post('/artikel', 'create');
             Route::post('/artikel/tambah-draft', 'draft');
-            Route::put('/artikel/edit-artikel/{article}', 'update');
+            Route::put('/artikel/edit/{article}', 'update');
             Route::put('/artikel/hapus-artikel/{article}', 'delete');
             Route::put('/artikel/hapus-permanen-artikel/{article}', 'destroy');
             Route::put('/artikel/restore-artikel/{article}', 'restore');
@@ -121,10 +121,10 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
             Route::get('/produk/tambah-produk', 'createIndex');
             Route::get('/produk/daftar-produk', 'list');
             Route::get('/produk/edit-produk/{product}', 'updateIndex');
-            Route::post('/produk/tambah-produk', 'store');
+            Route::post('/produk', 'store');
             Route::put('/produk/nonaktif-produk/{product}', 'deactivate');
             Route::put('/produk/aktif-produk/{product}', 'activate');
-            Route::put('/produk/edit-produk/{product}', 'update');
+            Route::put('/produk/edit/{product}', 'update');
             Route::delete('/produk/hapus-produk/{product}', 'delete');
         });
 

@@ -37,7 +37,7 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <form class="card" id="form" method="post" action="{{ isset($product) ? "/produk/edit-produk/" . $product->id : "/produk/tambah-produk" }}" enctype="multipart/form-data">
+                        <form class="card" id="form" method="post" action="{{ isset($product) ? "/produk/edit/" . $product->id : "/produk" }}" enctype="multipart/form-data">
                             @csrf
                             @isset($product)
                                 @method('PUT')
