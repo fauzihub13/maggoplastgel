@@ -8,4 +8,9 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::post('/v1/webhook/midtrans', [CheckoutController::class, 'webhookPayment'])->name('user.payment-status');
+Route::controller(CheckoutController::class)->group(function() {
+    Route::post('/v1/webhook/midtrans',  'webhookPayment')->name('user.payment-status');
+    // Route::get('/v1/payment/status/{statusParameter}', 'notification');
+
+});
+

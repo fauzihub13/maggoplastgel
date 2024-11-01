@@ -15,6 +15,8 @@ use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\MailController;
 use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
+
 
 // User Only
 Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
@@ -35,8 +37,10 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
 
     Route::controller(CheckoutController::class)->group(function() {
         Route::get('/product', 'productPage')->name('user.product');
-        Route::post('/product/checkout', 'checkoutPage')->name('user.checkout')->middleware('isUserLogin');
-        Route::post('/product/checkout/payment/{orderId}', 'payment')->name('user.checkout.store')->middleware('isUserLogin');
+        Route::post('/product/checkout/{product}', 'saveOrder')->name('user.checkout')->middleware('isUserLogin');
+        Route::get('/product/checkout', 'checkoutPage')->name('user.checkout.get')->middleware('isUserLogin');
+        Route::get('/product/checkout/payment', 'payment')->name('user.checkout.store')->middleware('isUserLogin');
+        Route::get('/payment/status/{statusParameter}', 'notification')->middleware('isUserLogin');
 
     });
 

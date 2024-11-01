@@ -66,9 +66,8 @@
                                         <span>-</span>
                                     </div>
                                     <div class="order-quantity">
-                                        <form action="{{ route ('user.checkout') }}" method="POST" id="productForm">
+                                        <form action="/product/checkout/{{ $product->id }}" method="POST" id="productForm">
                                             @csrf
-                                            @method('POST')
                                             <input type="number" name="quantity" id="quantity" value="1" required>
                                         </form>
                                     </div>

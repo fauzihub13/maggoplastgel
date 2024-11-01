@@ -61,7 +61,7 @@
             $("#message").val("");
             scrollToBottom();
 
-            console.log(message)
+            
 
             // Get response from ai
             $.ajax({
@@ -75,7 +75,7 @@
                     // Respon dari API
                     var apiResponse = response.message;
 
-                    console.log(apiResponse)
+
 
                     // Formatting respon
                     var formattedResponse = formatApiResponse(apiResponse);

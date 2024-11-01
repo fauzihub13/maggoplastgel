@@ -34,7 +34,8 @@ class CheckoutController extends Controller
         // return  $product;
     }
 
-    public function checkoutPage(Request $request) {
+    public function saveOrder(Request $request, Product $product) {
+
 
         $validator = Validator::make($request->all(), [
             'quantity'=> 'required|integer'
@@ -42,14 +43,16 @@ class CheckoutController extends Controller
 
         $quantity = $request->quantity;
 
-
         // Jika validasi tidak berhasil, kembali ke halaman sebelumnya dengan pesan error
         if ($validator->fails() || $quantity <= 0) {
             return redirect()->route('user.product')->with('error', 'Jumlah produk tidak sesuai.');
-
+        }
+        if ($quantity >= $product->stock) {
+            return redirect()->route('user.product')->with('error', 'Jumlah produk melebihi stok yang tersedia.');
         }
 
-        $product = Product::with('productImages')->first();
+        $product = Product::with('productImages')->findOrFail($product->id);
+
         $apiKeyBiteship = Config::get('app.api_key_biteship');
 
         $product->quantity = $quantity;
@@ -62,6 +65,7 @@ class CheckoutController extends Controller
         if ($shippingInfo === null) {
             return null;
         } else {
+
             // Mengambil data asli dari JsonResponse
             $shippingInfo = $shippingInfo->getData(true); // true untuk mendapatkan data dalam bentuk array
 
@@ -69,8 +73,60 @@ class CheckoutController extends Controller
             if (isset($shippingInfo['status']) && $shippingInfo['status'] === true) {
 
                 $courierRates = $shippingInfo['price'];
+                $courierCode = $shippingInfo['courier'];
 
-                return view('pages.user.checkout', compact('quantity', 'product', 'courierRates'));
+                $orderId = $this->generateOrderId();
+
+                // save order to cart
+                DB::beginTransaction();
+
+                $user = Auth::user();
+                $order = Order::with('orderItems.product') // Memuat relasi orderItems dan product
+                        ->where('user_id', $user->id)
+                        ->where('status', 'cart')
+                        ->first();
+
+                if (!$order) {
+                    // Jika order tidak ditemukan, buat order baru
+                    $order = new Order();
+                    $order->user_id = $user->id;
+                    $order->order_number = $orderId;
+                    $order->status = "cart";
+                    $order->shipping_cost = $courierRates;
+                    $order->courier = $courierCode;
+                    $order->save();
+                } else {
+                    // Update informasi order jika sudah ada
+                    $order->shipping_cost = $courierRates;
+                    $order->courier = $courierCode;
+                    $order->updated_at = now();
+                    $order->save();
+                }
+
+                // Cek apakah order item sudah ada untuk produk yang sama
+                $orderItem = $order->orderItems()->where('product_id', $product->id)->first();
+
+                if (!$orderItem) {
+                    // Jika order item tidak ditemukan, buat yang baru
+                    $orderItem = new OrderItem();
+                    $orderItem->order_id = $order->id;
+                    $orderItem->product_id = $product->id;
+                    $orderItem->quantity = $quantity;
+                    $orderItem->price = $product->price;
+                    $orderItem->save();
+                } else {
+                    // Jika sudah ada, update kuantitas dan harga (jika perlu)
+                    $orderItem->product_id = $product->id;
+                    $orderItem->quantity = $quantity;
+                    $orderItem->price = $product->price;
+                    $orderItem->updated_at = now();
+                    $orderItem->save();
+                }
+
+
+                DB::commit();
+
+                return redirect()->route('user.checkout.get');
 
             } else {
                 return response()->json([
@@ -84,74 +140,40 @@ class CheckoutController extends Controller
 
     }
 
-    public function payment(Request $request, string $encryptedUniqueCode){
+    public function checkoutPage() {
 
-        $decryptedUniqueCode = decrypt($encryptedUniqueCode);
+        try {
+            $user = Auth::user();
+            $order = Order::with(['orderItems.product.productImages']) // Memuat order items beserta detail produk
+                ->where('user_id', $user->id)
+                ->where('status', 'cart')
+                ->firstOrFail();
 
-        Carbon::setLocale('id');
-        // dd($request->all());
-
-        $validator = Validator::make($request->all(), [
-            'quantity'=> 'required|integer',
-            'uniqueCode'=> 'required|integer'
-        ]);
-
-        $quantity = $request->quantity;
-        $uniqueCode = $request->uniqueCode;
-
-        // Validate unique code from request and parameter
-        if($decryptedUniqueCode != $uniqueCode) {
-            // return response()->json([
-            //     'status' => false,
-            //     'message' => $decryptedUniqueCode." != ".$uniqueCode,
-            // ]);
-
-            return redirect()->route('user.product')->with('error', 'Kode unik tidak sesuai.');
-        }
-
-        $product = Product::first();
-
-        // Check ShippingRates
-        $shippingInfo = $this->shippingInfo($request, $quantity);
-
-        // Pastikan $shippingInfo tidak null
-        if ($shippingInfo === null) {
-
-            return response()->json([
-                'status' => false,
-                'message' => 'Biteship API not responding.',
-            ]);
-
-            // return redirect()->route('user.product')->with('error', 'Terjadi kesalahan API Biteship.');
-        } else {
-            // Mengambil data asli dari JsonResponse
-            $shippingInfo = $shippingInfo->getData(true); // true untuk mendapatkan data dalam bentuk array
-
-            // Memeriksa apakah status adalah true
-            if (isset($shippingInfo['status']) && $shippingInfo['status'] === true) {
-                $courierRates = $shippingInfo['price'];
-                $courierCode = $shippingInfo['courier'];
-            } else {
-                return redirect()->route('user.product')->with('error', 'Gagal mendapatkan ongkir.');
-
+            if(!$order) {
+                return redirect()->route('user.product')->with('error', 'Order cart tidak ditemukan.');
             }
+
+            // return response()->json($order);
+
+            return view('pages.user.checkout', compact( 'order'));
+
+        } catch (\Throwable $th) {
+            return redirect()->route('user.product')->with('error', 'Terjadi kesalahan silahkan coba kembali.');
+
         }
 
+    }
 
-        // Jika validasi tidak berhasil, kembali ke halaman sebelumnya dengan pesan error
-        if ($validator->fails() || $quantity <= 0) {
-            return redirect()->route('user.product')->with('error', 'Jumlah produk tidak sesuai.');
-        }
+    public function payment(){
 
-        if ($quantity >= $product->stock) {
-            return redirect()->route('user.product')->with('error', 'Jumlah produk melebihi stok yang tersedia.');
-        }
+        $user = Auth::user();
+        $order = Order::with(['orderItems.product.productImages']) // Memuat order items beserta detail produk
+                ->where('user_id', $user->id)
+                ->where('status', 'cart')
+                ->firstOrFail();
 
-        if ($uniqueCode <= 100) {
-            return redirect()->route('user.product')->with('error', 'Kode unik tidak sesuai.');
-        }
-
-        $totalPayment = ($product->price * $quantity) + $uniqueCode + $courierRates;
+        $totalPayment = ($order->orderItems[0]->product->price) * ($order->orderItems[0]->quantity) + ($order->shipping_cost);
+        $orderNumber = $order->order_number;
 
         // Midtrans Integration
         // Set your Merchant Server Key
@@ -163,11 +185,10 @@ class CheckoutController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
-        $orderId = $this->generateOrderId();
 
         $params = array(
             'transaction_details' => array(
-                'order_id' => $orderId,
+                'order_id' => $orderNumber,
                 'gross_amount' => $totalPayment,
             ),
             'customer_details' => array(
@@ -200,28 +221,13 @@ class CheckoutController extends Controller
 
             DB::beginTransaction();
 
-            // Save to order table
-            $order = new Order();
-            $order->user_id = Auth::user()->id;
-            $order->order_number = $orderId;
             $order->status = "pending";
-            $order->shipping_cost = $courierRates;
-            $order->courier = $courierCode;
             $order->save();
-            // return $order->order_number."";
-
-            // Save to order items table
-            $orderItems = new OrderItem();
-            $orderItems->order_id = $order->id;
-            $orderItems->product_id = $product->id ;
-            $orderItems->quantity = $quantity;
-            $orderItems->price = $product->price;
-            $orderItems->save();
 
             // Save to transaction table
             $transaction = new Transaction();
             $transaction->order_id = $order->id;
-            $transaction->transaction_id = $orderId;
+            $transaction->transaction_id = $orderNumber;
             $transaction->gross_amount = $totalPayment;
             $transaction->transaction_time = Carbon::now();
             $transaction->midtrans_response = $snapToken;
@@ -298,6 +304,67 @@ class CheckoutController extends Controller
 
 
     }
+
+    public function notification(Request $request, String $statusParameter) {
+
+        $validator = Validator::make($request->all(), [
+            'transaction_id'=> 'required',
+            'transaction_status'=> 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('user.profile.order')->with('error', 'Transaksi tidak ditemukan.');
+        }
+
+        // Daftar status pembayaran yang valid
+        $urlStatus = ['success', 'fail', 'error'];
+
+        // Validasi statusParameter
+        if (!in_array($statusParameter, $urlStatus)) {
+            return response()->json([
+                'success' => false,
+                'status' => 'error',
+                'message' => 'Status pembayaran tidak valid'
+            ], 404);
+        }
+
+        $transaction_id = $request->order_id;
+        $transaction_status = $request->transaction_status;
+
+        $transaction = Transaction::where('transaction_id', $transaction_id)->first();
+
+        if (!$transaction) {
+            return redirect()->route('user.profile.order')->with('error', 'Transaksi tidak ditemukan.');
+
+            // return response()->json([
+            //     'success' => false,
+            //     'status' => 'error',
+            //     'message' => 'Transaksi tidak ditemukan'
+            // ]);
+        }
+
+        if ($transaction_status == 'settlement' || $transaction_status == 'capture') {
+
+            return view('pages.user.success');
+
+            // return response()->json([
+            //     'success' => true,
+            //     'status' => 'success',
+            //     'message' => 'Berhasil melakukan pembayaran'
+            // ]);
+
+        } else {
+            return view('pages.user.fail');
+
+            // return response()->json([
+            //     'success' => false,
+            //     'status' => 'false',
+            //     'message' => 'Gagal melakukan pembayaran'
+            // ]);
+        }
+
+    }
+
 
     public function shippingInfo(Request $request, int $quantity){
 
@@ -377,8 +444,15 @@ class CheckoutController extends Controller
     }
 
     function generateOrderId() {
+        
         // Generate 3 random uppercase letters
-        $letters = strtoupper(Str::random(3));
+        $letters = '';
+        while (strlen($letters) < 3) {
+            $char = strtoupper(Str::random(1));
+            if (ctype_alpha($char)) {  // Check if the character is a letter
+                $letters .= $char;
+            }
+        }
 
         // Generate 8 random numbers
         $numbers = rand(10000000, 99999999);

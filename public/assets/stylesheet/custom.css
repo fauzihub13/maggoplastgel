@@ -549,6 +549,10 @@ table tr {
     background-color: transparent;
 }
 
+.gif-status {
+    width: 150px;
+}
+
 @media (max-width: 576px) {
 
     .slider-images {

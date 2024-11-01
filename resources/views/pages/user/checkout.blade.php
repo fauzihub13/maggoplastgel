@@ -53,8 +53,7 @@
                         </p>
                     </div>
                     <div class="col-md-2">
-                        <p class="desc-box text-custom-grey text-right"> <a href="" >Ubah</a></p>
-
+                        <p class="desc-box text-custom-grey text-right"> <a href="" ></a></p>
                     </div>
                 </div>
             </div>
@@ -84,27 +83,27 @@
                             <tr class="row-product">
                                 <td>
                                     <div class=" d-flex">
-                                        @if (isset($product))
+                                        @if (isset($order))
                                             <div class="product-small">
-                                                <img src="{{('/storage/'.$product->productImages[0]->path)}}" alt="Maggoplastgel">
+                                                <img src="{{('/storage/'.$order->orderItems[0]->product->productImages[0]->path)}}" alt="Maggoplastgel">
                                             </div>
                                         @else
                                             <div class="product-small">
                                                 <img src="{{asset('images/testimonials/young-beautiful-florist-watering-flowers.jpg')}}" alt="Maggoplastgel">
                                             </div>
                                         @endif
-                                        <p class="vertical-center">{{ $product->name }}</p>
+                                        <p class="vertical-center">{{ $order->orderItems[0]->product->name }}</p>
                                     </div>
                                 </td>
-                                <td class="vertical-center text-center rupiah">{{ $product->price }}</td>
-                                <td class="vertical-center text-center">{{ $quantity }}</td>
-                                <td class="vertical-center text-right rupiah">{{ ($product->price) * ($quantity) }}</td>
+                                <td class="vertical-center text-center rupiah">{{ $order->orderItems[0]->product->price }}</td>
+                                <td class="vertical-center text-center">{{ $order->orderItems[0]->quantity }}</td>
+                                <td class="vertical-center text-right rupiah">{{ ($order->orderItems[0]->product->price) * ($order->orderItems[0]->quantity) }}</td>
                             </tr>
                             <tr class="row-product-subtotal">
                                 <td colspan="3" class="text-right">
-                                    <strong>Total Produk ({{ $quantity }})</strong>
+                                    <strong>Total Produk ({{ $order->orderItems[0]->quantity }})</strong>
                                 </td>
-                                <td class="text-right  rupiah">{{ ($product->price) * ($quantity) }}</td>
+                                <td class="text-right  rupiah">{{ ($order->orderItems[0]->product->price) * ($order->orderItems[0]->quantity) }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -124,7 +123,7 @@
                             <p class="text-custom-primary text-right"><strong>Subtotal untuk Produk</strong></p>
                         </div>
                         <div class="col-md-4">
-                            <p class="text-custom-primary text-right rupiah">{{ ($product->price) * ($quantity) }}</p>
+                            <p class="text-custom-primary text-right rupiah">{{ ($order->orderItems[0]->product->price) * ($order->orderItems[0]->quantity) }}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -132,10 +131,10 @@
                             <p class="text-custom-primary text-right"><strong>Total Ongkos Kirim</strong></p>
                         </div>
                         <div class="col-md-4">
-                            <p class="text-custom-primary text-right rupiah">{{ $courierRates }}</p>
+                            <p class="text-custom-primary text-right rupiah">{{ $order->shipping_cost }}</p>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-8">
                             <p class="text-custom-primary text-right"><strong>Kode Unik</strong></p>
                         </div>
@@ -147,14 +146,14 @@
                                 @endphp
                             </p>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-md-8">
                             <p class="text-custom-primary text-right"><strong>Total Pembayaran</strong></p>
                         </div>
                         <div class="col-md-4">
                             <p class="text-custom-primary text-right section-custom-medium "><strong>
-                                <span class="rupiah">{{ ($product->price) * ($quantity) + $uniqueCode + $courierRates }}</span>
+                                <span class="rupiah">{{ ($order->orderItems[0]->product->price) * ($order->orderItems[0]->quantity) + ($order->shipping_cost) }}</span>
                             </strong></p>
                         </div>
                     </div>
@@ -167,14 +166,12 @@
                     <div class="col-md-4">
                         <div class="wrap-button">
                             <button class="btn button-custom-primary" onclick="event.preventDefault(); document.getElementById('checkoutForm').submit()">Bayar</button>
-                            <form action="{{ route('user.checkout.store', encrypt($uniqueCode) ) }}"
-                                method="POST"
+                            <form action="{{ route('user.checkout.store') }}"
+                                method="GET"
                                 id="checkoutForm"
                                 style="display:none">
                                     @csrf
-                                    @method('POST')
-                                    <input type="number" name="quantity" value="{{ $quantity }}">
-                                    <input type="number" name="uniqueCode" value="{{ $uniqueCode }}">
+                                    @method('GET')
                             </form>
                         </div>
                     </div>
@@ -211,8 +208,8 @@
                 <div class="row">
                     <hr>
                     <div class="mobile-subtotal-product">
-                        <h3 class="section-custom-medium text-custom-primary"><strong>Total Produk (5)</strong></h3>
-                        <p class="text-custom-primary text-right">Rp150.000</p>
+                        <h3 class="section-custom-medium text-custom-primary"><strong>Total Produk ({{ $order->orderItems[0]->quantity }})</strong></h3>
+                        <p class="text-custom-primary text-right">{{ ($order->orderItems[0]->product->price) * ($order->orderItems[0]->quantity) }}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -225,49 +222,35 @@
                 <div class="row">
                     <div class="mobile-subtotal-product">
                         <p class="text-custom-primary text-left"><strong>Subtotal untuk Produk</strong></p>
-                        <p class="text-custom-primary text-right rupiah">{{ ($product->price) * ($quantity) }}</p>
+                        <p class="text-custom-primary text-right rupiah">{{ ($order->orderItems[0]->product->price) * ($order->orderItems[0]->quantity) }}</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="mobile-subtotal-product">
                         <p class="text-custom-primary text-left"><strong>Total Ongkos Kirim</strong></p>
-                        <p class="text-custom-primary text-right rupiah">{{ $courierRates }}</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="mobile-subtotal-product">
-                        <p class="text-custom-primary text-left"><strong>Kode Unik</strong></p>
-                        <p class="text-custom-primary text-right rupiah">
-                            @php
-                                $uniqueCode = rand(100, 999);
-                                echo $uniqueCode;
-                            @endphp
-                        </p>
+                        <p class="text-custom-primary text-right rupiah">{{ $order->shipping_cost }}</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="mobile-subtotal-product">
                         <p class="text-custom-primary text-left"><strong>Total Pembayaran</strong></p>
                         <p class="text-custom-primary text-right section-custom-medium "><strong>
-                            <span class="rupiah">{{ ($product->price) * ($quantity) + $uniqueCode + $courierRates }}</span>
+                            <span class="rupiah">{{ ($order->orderItems[0]->product->price) * ($order->orderItems[0]->quantity) + $order->shipping_cost }}</span>
                         </strong></p>
                     </div>
                 </div>
 
                 <hr>
-                <div class="row mb-1">
 
+                <div class="row mb-1">
                     <div class="wrap-button">
                         <button class="btn button-custom-primary w-100 mb-1" onclick="event.preventDefault(); document.getElementById('checkoutForm').submit()">Bayar</button>
-                        <form action="{{ route('user.checkout.store', encrypt($uniqueCode) ) }}"
-                            method="POST"
+                        <form action="{{ route('user.checkout.store') }}"
+                            method="GET"
                             id="checkoutForm"
                             style="display:none">
                                 @csrf
-                                @method('POST')
-                                <input type="number" name="quantity" value="{{ $quantity }}">
-                                <input type="number" name="uniqueCode" value="{{ $uniqueCode }}">
+                                @method('GET')
                         </form>
                     </div>
 
