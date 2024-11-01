@@ -47,7 +47,12 @@
 
         @include('components.main-header')
 
+        @include('components.alert')
+
+
         @yield('main')
+
+
 
         <!-- btn go top -->
         @include('components.scroll-up')

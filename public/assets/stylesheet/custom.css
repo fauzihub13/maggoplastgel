@@ -553,6 +553,48 @@ table tr {
     width: 150px;
 }
 
+/* START ALERT NOTIFICATION */
+.alert-box {
+    position: fixed;
+    bottom: 80px;
+    right: -500px;
+    /* Start off-screen to the right */
+    z-index: 9999;
+    width: 400px;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 16px;
+    transition: right 0.5s ease-in-out;
+    animation: slideIn 0.5s forwards;
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+    from {
+        right: -500px;
+        /* Off-screen */
+    }
+
+    to {
+        right: 20px;
+        /* Visible position */
+    }
+}
+
+/* Slide-out animation */
+@keyframes slideOut {
+    from {
+        right: 20px;
+    }
+
+    to {
+        right: -500px;
+    }
+}
+/* END ALERT NOTIFICATION */
+
 @media (max-width: 576px) {
 
     .slider-images {
@@ -588,4 +630,9 @@ table tr {
     .profile-navbar{
         display: block !important;
     }
+
+    .alert-box{
+        width: 90%;
+    }
 }
+
