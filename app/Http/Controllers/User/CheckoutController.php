@@ -36,7 +36,6 @@ class CheckoutController extends Controller
 
     public function saveOrder(Request $request, Product $product) {
 
-
         $validator = Validator::make($request->all(), [
             'quantity'=> 'required|integer'
         ]);
@@ -53,10 +52,7 @@ class CheckoutController extends Controller
 
         $product = Product::with('productImages')->findOrFail($product->id);
 
-        $apiKeyBiteship = Config::get('app.api_key_biteship');
-
-        $product->quantity = $quantity;
-        // dd($product);
+        // $product->quantity = $quantity;
 
         // Check ShippingRates
         $shippingInfo = $this->shippingInfo($request, $quantity);
@@ -114,6 +110,7 @@ class CheckoutController extends Controller
                     $orderItem->quantity = $quantity;
                     $orderItem->price = $product->price;
                     $orderItem->save();
+
                 } else {
                     // Jika sudah ada, update kuantitas dan harga (jika perlu)
                     $orderItem->product_id = $product->id;
@@ -122,6 +119,10 @@ class CheckoutController extends Controller
                     $orderItem->updated_at = now();
                     $orderItem->save();
                 }
+
+                // Update Qty Product
+                $product->stock -= $quantity;
+                $product->save();
 
 
                 DB::commit();
@@ -185,7 +186,6 @@ class CheckoutController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
-
         $params = array(
             'transaction_details' => array(
                 'order_id' => $orderNumber,
@@ -243,10 +243,13 @@ class CheckoutController extends Controller
                 $isPaid = true;
             }
 
-            return view('pages.user.payment', compact('totalPayment', 'snapToken','isPaid'));
+            $encryptedOrderNumber = encrypt($orderNumber);
+            // return $encryptedOrderNumber;
+
+            return redirect('/product/checkout/payment/'.$encryptedOrderNumber);
 
         } catch (\Throwable $th) {
-            // DB::rollBack();
+            DB::rollBack();
             return response()->json([
                 'status' => false,
                 'message' => 'Midtrans API not responding.',
@@ -254,6 +257,38 @@ class CheckoutController extends Controller
             // return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
 
         }
+
+    }
+
+    public function paymentPage($orderNumber=null) {
+
+        // Check if order number is missing, then redirect with an error message
+        if (!$orderNumber) {
+            return redirect()->route('user.product')->with('error', 'Pesanan tidak ditemukan.');
+        }
+
+        $orderNumber =  decrypt($orderNumber);
+
+        $user = Auth::user();
+        $transaction = Transaction::where('transaction_id', $orderNumber)
+                ->firstOrFail();
+
+        $isPaid = false;
+        $transactionStatus = $transaction->transaction_status;
+
+        if(in_array($transactionStatus, ['capture','settlement'])){
+            $isPaid = true;
+        }
+
+        return view('pages.user.payment', [
+            'totalPayment' => $transaction->gross_amount,
+            'snapToken' => $transaction->midtrans_response,
+            'isPaid' => $isPaid
+        ]);
+
+
+        // return view('pages.user.payment', compact('totalPayment', 'snapToken','isPaid'));
+
 
     }
 
@@ -444,7 +479,7 @@ class CheckoutController extends Controller
     }
 
     function generateOrderId() {
-        
+
         // Generate 3 random uppercase letters
         $letters = '';
         while (strlen($letters) < 3) {

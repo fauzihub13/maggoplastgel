@@ -166,12 +166,12 @@
                     <div class="col-md-4">
                         <div class="wrap-button">
                             <button class="btn button-custom-primary" onclick="event.preventDefault(); document.getElementById('checkoutForm').submit()">Bayar</button>
-                            <form action="{{ route('user.checkout.store') }}"
-                                method="GET"
+                            <form action="{{ route('user.checkout.store', Crypt::encrypt($order->order_number)) }}"
+                                method="POST"
                                 id="checkoutForm"
                                 style="display:none">
                                     @csrf
-                                    @method('GET')
+                                    @method('POST')
                             </form>
                         </div>
                     </div>
@@ -245,12 +245,12 @@
                 <div class="row mb-1">
                     <div class="wrap-button">
                         <button class="btn button-custom-primary w-100 mb-1" onclick="event.preventDefault(); document.getElementById('checkoutForm').submit()">Bayar</button>
-                        <form action="{{ route('user.checkout.store') }}"
-                            method="GET"
+                        <form action="{{ route('user.checkout.store', Crypt::encrypt($order->order_number)) }}"
+                            method="POST"
                             id="checkoutForm"
                             style="display:none">
                                 @csrf
-                                @method('GET')
+                                @method('POST')
                         </form>
                     </div>
 

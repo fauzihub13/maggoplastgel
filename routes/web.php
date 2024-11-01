@@ -39,7 +39,8 @@ Route::domain(env('APP_DOMAIN', "maggoplastgel.test"))->group(function () {
         Route::get('/product', 'productPage')->name('user.product');
         Route::post('/product/checkout/{product}', 'saveOrder')->name('user.checkout')->middleware('isUserLogin');
         Route::get('/product/checkout', 'checkoutPage')->name('user.checkout.get')->middleware('isUserLogin');
-        Route::get('/product/checkout/payment', 'payment')->name('user.checkout.store')->middleware('isUserLogin');
+        Route::post('/product/checkout/payment/{orderId}', 'payment')->name('user.checkout.store')->middleware('isUserLogin');
+        Route::get('/product/checkout/payment/{orderId}', 'paymentPage')->name('user.checkout.payment')->middleware('isUserLogin');
         Route::get('/payment/status/{statusParameter}', 'notification')->middleware('isUserLogin');
 
     });

@@ -121,7 +121,7 @@
                                     <li><a href="#" class="page-numbers next"><span class="fa fa-angle-right"></span></a></li> --}}
                                 </ul>
                                 @endif
-                                
+
                             </div>
                             <!-- end pagination-->
                         </div>
@@ -167,7 +167,7 @@
                                         </div>
                                     </li>
                                     @endforeach
-                                    
+
                                 </ul>
                             </div>
                             <!-- /.widget_lastest -->
@@ -191,9 +191,6 @@
     <script>
         $('.search-form').submit(function(e) {
             e.preventDefault(); // Mencegah pindah halaman
-            
-            console.log("horray");
-            
 
             var search = $('.search-field').val();
             var currentUrl = new URL(window.location.href);
