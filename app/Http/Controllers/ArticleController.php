@@ -126,7 +126,7 @@ class ArticleController extends Controller
         // Validasi input update artikel
         $data = $request->validate([
             'title' => 'required|string',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'body' => 'required|string',
             'status' => 'required|in:publish,draft,pending',
             'tags' => 'required|string',

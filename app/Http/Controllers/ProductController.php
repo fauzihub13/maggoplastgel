@@ -180,8 +180,8 @@ class ProductController extends Controller
             'height' => 'integer',
             'stock' => 'required|integer',
             'status' => 'boolean',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10000',
-            'new_images.*' => 'image|mimes:jpeg,png,jpg,gif|max:10000',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:10000',
+            'new_images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:10000',
         ]);
 
         // Validasi jika terdapat gambar yang dihapus
