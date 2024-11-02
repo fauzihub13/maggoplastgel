@@ -127,7 +127,10 @@
                             } else {
                                 result = "Gagal mengirim pesan, silahkan coba kembali.";
                                 cls = "msg-error text-custom-primary";
+                                // console.log(response)
+
                             }
+
                             // Membuat elemen notifikasi
                             var alertBox = $("<div />", {
                                 class: "flat-alert " + cls,

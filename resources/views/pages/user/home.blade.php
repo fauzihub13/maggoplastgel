@@ -376,7 +376,7 @@
                         <div class="content-features">
                             <a href="">
                                 <h3 class="section-heading-jost-size22">
-                                    Ramah Lingkungan</h3>
+                                    Organik dan Ramah Lingkungan</h3>
                             </a>
                             <p class="section-desc">
                                 Tidak seperti plester berbahan plastik, MaggoPlast-Gel terbuat dari bahan-bahan organik yang mudah terurai, berkontribusi pada lingkungan yang lebih sehat.<br>
@@ -400,7 +400,7 @@
                                     Fleksibel dan Nyaman</h3>
                             </a>
                             <p class="section-desc">
-                                Gel cair ini mudah diaplikasikan, tidak lengket, tahan air, dan memberikan sensasi dingin yang menenangkan. Bebas beraktivitas tanpa khawatir plester terlepas.
+                                Gel cair mudah diaplikasikan, tidak lengket, tahan air, dan memberikan sensasi dingin yang menenangkan. Bebas beraktivitas tanpa khawatir plester terlepas.
                             </p>
                             <div class="link2 link-style2">
                                 {{-- <a href="service-details.html" class="read-more">
@@ -421,7 +421,7 @@
                                 </h3>
                             </a>
                             <p class="section-desc">
-                                Dengan kemasan aplikator pump yang inovatif, MaggoPlast-Gel memudahkan Anda dalam penggunaan kapan saja dan di mana saja, tanpa perlu menyentuh langsung luka.
+                                Dengan kemasan aplikator pump, MaggoPlast-Gel memudahkan Anda dalam penggunaan kapan saja dan di mana saja, tanpa menyentuh langsung luka.
                             </p>
                             <div class="link2 link-style2">
                                 {{-- <a href="service-details.html" class="read-more">
@@ -477,7 +477,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="#"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/ferryhazra/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                                 <img src="{{ asset('images/team/fahrizal.webp') }}" alt="images">

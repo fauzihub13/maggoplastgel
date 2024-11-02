@@ -130,12 +130,14 @@ class CheckoutController extends Controller
                 return redirect()->route('user.checkout.get');
 
             } else {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Biteship API not responding.',
-                ]);
+                return redirect()->route('user.product')->with('error', 'Terjadi kesalaham, silahkan coba kembali.');
 
-                // return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
+                // return response()->json([
+                //     'status' => false,
+                //     'message' => 'Biteship API not responding.',
+                // ]);
+
+
             }
         }
 
@@ -334,7 +336,7 @@ class CheckoutController extends Controller
 
         } catch (\Throwable $th) {
             //throw $th;
-            return "erorrrr kawann ->  ".$th->getMessage();
+            return "Unfinish -> ".$th->getMessage();
         }
 
 

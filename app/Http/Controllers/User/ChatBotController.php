@@ -60,8 +60,7 @@ class ChatBotController extends Controller
             } else {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Mohon maaf, MinAI sedang tidak tersedia untuk saat ini. Dari response',
-
+                    'message' => 'Mohon maaf, MinAI sedang tidak tersedia untuk saat ini.',
                 ]);
             }
 
@@ -69,7 +68,7 @@ class ChatBotController extends Controller
 
             return response()->json([
                 'status' => false,
-                'message' => $th->getMessage(),
+                'message' => 'Mohon maaf, MinAI sedang tidak tersedia untuk saat ini.',
             ]);
         }
 

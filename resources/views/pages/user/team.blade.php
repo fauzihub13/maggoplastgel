@@ -62,7 +62,7 @@
                                 <div class="backround-overlay"></div>
                                 <div class="list-icon-hidden">
                                     <ul class="widgets-nav-social link-style3">
-                                        <li><a href="https://www.instagram.com/senifitriani_/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.instagram.com/ferryhazra/"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a></li>
 
                                     </ul>
                                 </div>
