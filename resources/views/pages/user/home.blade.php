@@ -273,17 +273,7 @@
                         <img class="main-post-about"
                             src="{{ asset('images/product/product-square-2.webp') }}" alt="images">
                         <img class="circel-inside" src="{{ asset('images/product/circle-1.webp') }}" alt="images">
-                        {{-- <div class="about-count-box themesflat-counter">
-                            <div class="box">
-                                <div class="inner-about-count-box">
-                                    <span class="number-count number" data-speed="1500" data-to="20"
-                                        data-inviewport="yes"></span>
-                                    <div class="caption-number-count">
-                                        Plester Luka
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
+
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -359,12 +349,9 @@
                                     Cepat Sembuhkan Luka Tanpa Iritasi</h3>
                             </a>
                             <p class="section-desc">
-                                Dengan bahan-bahan alami seperti ekstrak maggot BSF dan brotowali, MaggoPlast-Gel mempercepat penyembuhan luka tanpa menimbulkan iritasi.<br>
+                                Dengan bahan-bahan alami ekstrak maggot BSF dan brotowali, MaggoPlast-Gel mempercepat penyembuhan luka tanpa menimbulkan iritasi.<br>
                             </p>
                             <div class="link2 link-style2">
-                                {{-- <a href="service-details.html" class="read-more">
-                                    Read More
-                                </a> --}}
                             </div>
                         </div>
                     </div>
@@ -382,9 +369,6 @@
                                 Tidak seperti plester berbahan plastik, MaggoPlast-Gel terbuat dari bahan-bahan organik yang mudah terurai, berkontribusi pada lingkungan yang lebih sehat.<br>
                             </p>
                             <div class="link2 link-style2">
-                                {{-- <a href="service-details.html" class="read-more">
-                                    Read More
-                                </a> --}}
                             </div>
                         </div>
                     </div>
@@ -403,9 +387,6 @@
                                 Gel cair mudah diaplikasikan, tidak lengket, tahan air, dan memberikan sensasi dingin yang menenangkan. Bebas beraktivitas tanpa khawatir plester terlepas.
                             </p>
                             <div class="link2 link-style2">
-                                {{-- <a href="service-details.html" class="read-more">
-                                    Read More
-                                </a> --}}
                             </div>
                         </div>
                     </div>
@@ -424,9 +405,6 @@
                                 Dengan kemasan aplikator pump, MaggoPlast-Gel memudahkan Anda dalam penggunaan kapan saja dan di mana saja, tanpa menyentuh langsung luka.
                             </p>
                             <div class="link2 link-style2">
-                                {{-- <a href="service-details.html" class="read-more">
-                                    Read More
-                                </a> --}}
                             </div>
                         </div>
                     </div>
@@ -667,33 +645,40 @@
                 </div>
                 <div class="col-md-12">
                     <div class="slide-blog-content">
-                        <div class="owl-carousel owl-theme">
+                        <div class="owl-carousel owl-theme horizontal-center">
 
-                            {{-- Looping Article --}}
-                            @foreach ($articles as $article)
-                                <div class="item wow fadeInUp">
-                                    <div class="blog-item hover-up-style2" style="background-image: url(/storage/{{ $article->thumbnail }})">
-                                        <div class="item-overlay"></div>
-                                        <div class="item-box link">
-                                            <div class="content-info"><a href="/artikel/{{ $article->slug }}" class="folder">
-                                                    {{ $article->articleCategory->name }}
-                                                </a></div>
-                                            <div class="link-style6">
-                                                <div class="content-info margin-top"><a href="/artikel/{{ $article->slug }}" class="user">
-                                                        By Admin
+
+                            @if (isset($articlesa))
+                                {{-- Looping Article --}}
+                                @foreach ($articles as $article)
+                                    <div class="item wow fadeInUp">
+                                        <div class="blog-item hover-up-style2" style="background-image: url(/storage/{{ $article->thumbnail }})">
+                                            <div class="item-overlay"></div>
+                                            <div class="item-box link">
+                                                <div class="content-info"><a href="/artikel/{{ $article->slug }}" class="folder">
+                                                        {{ $article->articleCategory->name }}
                                                     </a></div>
-                                                <a href="/artikel/{{ $article->slug }}" class="section-heading-jost-size20">
-                                                    {{ Str::substr($article->title, 0, 44) }} ..
-                                                </a>
+                                                <div class="link-style6">
+                                                    <div class="content-info margin-top"><a href="/artikel/{{ $article->slug }}" class="user">
+                                                            By Admin
+                                                        </a></div>
+                                                    <a href="/artikel/{{ $article->slug }}" class="section-heading-jost-size20">
+                                                        {{ Str::substr($article->title, 0, 44) }} ..
+                                                    </a>
+                                                </div>
+                                                <hr class="line-blog-item">
+                                                <h4 class="sub-title">
+                                                    {{ $article->created_at->format('d F, Y') }}
+                                                </h4>
                                             </div>
-                                            <hr class="line-blog-item">
-                                            <h4 class="sub-title">
-                                                {{ $article->created_at->format('d F, Y') }}
-                                            </h4>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @else
+                                <div class=" mt-2 mb-2 text-custom-grey text-center ">Belum ada artikel.</div>
+
+                            @endif
+
 
                             {{-- <div class="item wow fadeInUp">
                                 <div class="blog-item background2 hover-up-style2">
