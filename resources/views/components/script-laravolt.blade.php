@@ -1,5 +1,5 @@
 <script>
-    
+
     // Default data form auth user
     var defaultProvince = '{{ Auth::user() ? Auth::user()->province : null }}';
     var defaultCity = '{{ Auth::user() ? Auth::user()->city : null }}';
@@ -8,11 +8,11 @@
 
     if (defaultProvince) {
         // Load cities and then load districts based on the selected city
-        onChangeSelect('{{ route("cities") }}', defaultProvince, 'kota', defaultCity, function() {
+        onChangeSelect('/cities', defaultProvince, 'kota', defaultCity, function() {
             // After cities are loaded, load districts
-            onChangeSelect('{{ route("districts") }}', defaultCity, 'kecamatan', defaultDistrict, function() {
+            onChangeSelect('/districts', defaultCity, 'kecamatan', defaultDistrict, function() {
                 // After districts are loaded, load villages
-                onChangeSelect('{{ route("villages") }}', defaultDistrict, 'kelurahan', defaultVillage);
+                onChangeSelect('/villages', defaultDistrict, 'kelurahan', defaultVillage);
             });
         });
     }
@@ -41,7 +41,7 @@
 
     $(function () {
         $('#provinsi').on('change', function () {
-            onChangeSelect('{{ route("cities") }}', $(this).val(), 'kota', null, function() {
+            onChangeSelect('/cities', $(this).val(), 'kota', null, function() {
                 // Clear kecamatan and kelurahan when province changes
                 $('#kecamatan').empty().append('<option>-- Pilih --</option>');
                 $('#kelurahan').empty().append('<option>-- Pilih --</option>');
@@ -49,14 +49,14 @@
         });
 
         $('#kota').on('change', function () {
-            onChangeSelect('{{ route("districts") }}', $(this).val(), 'kecamatan', null, function() {
+            onChangeSelect('/districts', $(this).val(), 'kecamatan', null, function() {
                 // Clear kelurahan when city changes
                 $('#kelurahan').empty().append('<option>-- Pilih --</option>');
             });
         });
 
         $('#kecamatan').on('change', function () {
-            onChangeSelect('{{ route("villages") }}', $(this).val(), 'kelurahan');
+            onChangeSelect('/villages', $(this).val(), 'kelurahan');
         });
     });
 </script>
