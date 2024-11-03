@@ -102,7 +102,6 @@ Route::domain('admin.' . env('APP_DOMAIN', "maggoplastgel.test"))->group(functio
             Route::get('/artikel/tambah-artikel', 'createIndex');
             Route::get('/artikel/daftar-artikel', 'list');
             Route::get('/artikel/edit-artikel/{article}', 'updateIndex');
-            Route::get('/artikel/{article:slug}', 'show');
             Route::post('/artikel', 'create');
             Route::post('/artikel/tambah-draft', 'draft');
             Route::put('/artikel/edit/{article}', 'update');

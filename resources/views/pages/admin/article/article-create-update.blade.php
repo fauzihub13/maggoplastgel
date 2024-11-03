@@ -18,7 +18,7 @@
         <section class="section">
             <div class="section-header">
                 <div class="section-header-back">
-                    <a href="features-posts.html"
+                    <a href="/artikel/daftar-artikel"
                         class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
                 </div>
                 <h1>{{ isset($article) ? "Edit Artikel" : "Buat Artikel Baru" }}</h1>

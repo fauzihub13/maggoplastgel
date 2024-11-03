@@ -113,7 +113,6 @@
                                                     </button>
                                                     <div class="dropdown-menu" style="">
                                                         <a class="dropdown-item has-icon" href="/produk/edit-produk/{{ $product->id }}"><i class="fas fa-pen"></i> Edit</a>
-                                                        <a class="dropdown-item has-icon" href="#"><i class="fas fa-eye"></i> Lihat</a>
                                                         <a class="dropdown-item has-icon text-danger remove-product" href="#" data-id="{{ $product->id }}"><i class="fas fa-trash"></i> Hapus</a>
                                                     </div>
                                                 </div>
