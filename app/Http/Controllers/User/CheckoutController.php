@@ -477,6 +477,7 @@ class CheckoutController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'Gagal mengecek ongkos kirim.',
+                'data' => $th->getMessage()
             ], 201);
         }
     }
