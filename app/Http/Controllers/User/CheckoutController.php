@@ -130,12 +130,13 @@ class CheckoutController extends Controller
                 return redirect()->route('user.checkout.get');
 
             } else {
-                return redirect()->route('user.product')->with('error', 'Terjadi kesalaham, silahkan coba kembali.');
+                // return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
 
-                // return response()->json([
-                //     'status' => false,
-                //     'message' => 'Biteship API not responding.',
-                // ]);
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Biteship API not responding.',
+                    'data' => $shippingInfo,
+                ]);
 
 
             }
