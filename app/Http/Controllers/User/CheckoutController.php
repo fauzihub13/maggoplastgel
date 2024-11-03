@@ -130,13 +130,13 @@ class CheckoutController extends Controller
                 return redirect()->route('user.checkout.get');
 
             } else {
-                // return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
+                return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
 
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Biteship API not responding.',
-                    'data' => $shippingInfo,
-                ]);
+                // return response()->json([
+                //     'status' => false,
+                //     'message' => 'Biteship API not responding.',
+                //     'data' => $shippingInfo,
+                // ]);
 
 
             }
@@ -183,7 +183,7 @@ class CheckoutController extends Controller
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = Config::get('app.midtrans_server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isProduction = true;
         // Set sanitization on (default)
         \Midtrans\Config::$isSanitized = true;
         // Set 3DS transaction for credit card to true
@@ -212,7 +212,7 @@ class CheckoutController extends Controller
             $response = Http::withHeaders([
                 'content-type' => 'application/json',
                 'authorization' => 'Basic '.$auth,
-            ])->post("https://app.sandbox.midtrans.com/snap/v1/transactions", $params);
+            ])->post("https://app.midtrans.com/snap/v1/transactions", $params);
 
             $response = json_decode($response->body());
             $snapToken = $response->token;
@@ -253,11 +253,11 @@ class CheckoutController extends Controller
 
         } catch (\Throwable $th) {
             DB::rollBack();
-            return response()->json([
-                'status' => false,
-                'message' => 'Midtrans API not responding.',
-            ]);
-            // return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
+            // return response()->json([
+            //     'status' => false,
+            //     'message' => 'Midtrans API not responding.',
+            // ]);
+            return redirect()->route('user.product')->with('error', 'Terjadi kesalahan, silahkan coba kembali.');
 
         }
 
@@ -296,24 +296,12 @@ class CheckoutController extends Controller
     }
 
     public function webhookPayment(Request $request) {
-        // return "asda";
-        // dd($request->all());
+
         // Request payment midtrans
-        $auth = base64_encode(Config::get('app.midtrans_server_key').":");
-
-        $response = Http::withHeaders([
-            'content-type' => 'application/json',
-            'authorization' => 'Basic '.$auth,
-        ])->get("https://api.sandbox.midtrans.com/v2/$request->order_id/status", );
-
-        $response = json_decode($response->body());
-        // dd($response);
-
-
         $transactionStatuses = ['capture', 'settlement', 'pending', 'cancel', 'expired'];
 
-        $transactionId = $response->order_id;
-        $transactionStatus = $response->transaction_status;
+        $transactionId = $request->order_id;
+        $transactionStatus = $request->transaction_status;
 
         try {
 
@@ -343,33 +331,29 @@ class CheckoutController extends Controller
 
     }
 
-    public function notification(Request $request, String $statusParameter) {
+    public function notification(String $statusParameter) {
 
-        $validator = Validator::make($request->all(), [
-            'transaction_id'=> 'required',
-            'transaction_status'=> 'required',
-        ]);
+        $orderId = request()->query('order_id');
+        $statusCode = request()->query('status_code');
+        $transactionStatus = request()->query('transaction_status');
 
-        if ($validator->fails()) {
-            return redirect()->route('user.profile.order')->with('error', 'Transaksi tidak ditemukan.');
-        }
 
         // Daftar status pembayaran yang valid
         $urlStatus = ['success', 'fail', 'error'];
 
         // Validasi statusParameter
         if (!in_array($statusParameter, $urlStatus)) {
-            return response()->json([
-                'success' => false,
-                'status' => 'error',
-                'message' => 'Status pembayaran tidak valid'
-            ], 404);
+            return redirect()->route('user.profile.order')->with('error', 'Transaksi tidak ditemukan.');
+            // return response()->json([
+            //     'success' => false,
+            //     'status' => 'error',
+            //     'message' => 'Status pembayaran tidak valid'
+            // ], 404);
         }
 
-        $transaction_id = $request->order_id;
-        $transaction_status = $request->transaction_status;
+        // $transaction_status = $request->transaction_status;
 
-        $transaction = Transaction::where('transaction_id', $transaction_id)->first();
+        $transaction = Transaction::where('transaction_id', $orderId)->first();
 
         if (!$transaction) {
             return redirect()->route('user.profile.order')->with('error', 'Transaksi tidak ditemukan.');
@@ -381,7 +365,7 @@ class CheckoutController extends Controller
             // ]);
         }
 
-        if ($transaction_status == 'settlement' || $transaction_status == 'capture') {
+        if ($transactionStatus == 'settlement' || $transactionStatus == 'capture') {
 
             return view('pages.user.success');
 
