@@ -18,7 +18,9 @@ class AuthController extends Controller
         if(Auth::user()){
             return redirect("/");
         }
-        return view('pages.user.auth.auth-login');
+        return view('pages.user.auth.auth-login', [
+            'menu' => 'login'
+        ]);
     }
 
     public function login(Request $request) {
@@ -63,6 +65,7 @@ class AuthController extends Controller
 
         return view('pages.user.auth.auth-register', [
             'provinces' => $provinces,
+            'menu' => 'register'
         ]);
     }
 
