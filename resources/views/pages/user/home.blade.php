@@ -214,7 +214,7 @@
                                     </h3>
                                 </a>
                                 <p class="section-desc">
-                                    Mudah diaplikasikan, memberikan sensasi dingin, tidak lengket, dan tahan air,
+                                    Mudah diaplikasikan, memberikan sensasi dingin, tidak lengket, tahan air, dan nyaman di kulit.
                                 </p>
                             </div>
                         </div>
