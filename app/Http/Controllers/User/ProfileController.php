@@ -30,6 +30,7 @@ class ProfileController extends Controller
 
         $orders = Order::with(['user', 'orderItems.product.productImages', 'transaction'])
                 ->where('user_id','=', $user->id)
+                ->where('status', '!=', 'cart')
                 ->get()->groupBy('status');
 
         foreach($orders as $order){
