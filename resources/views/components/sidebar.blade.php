@@ -6,7 +6,7 @@
             </div>
             <ul class="sidebar-menu">
                 <li class="menu-header">Dashboard</li>
-                <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
+                <li class="{{ Request::is('/') ? 'active' : '' }}">
                     <a class="nav-link"
                         href="/"><i class="fa fa-gauge"></i> <span>Dashboard</span></a>
                 </li>

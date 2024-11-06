@@ -19,7 +19,7 @@ class AuthController extends Controller
             return redirect("/");
         }
         return view('pages.user.auth.auth-login', [
-            'menu' => 'login'
+            'type_menu' => 'login'
         ]);
     }
 
@@ -65,7 +65,7 @@ class AuthController extends Controller
 
         return view('pages.user.auth.auth-register', [
             'provinces' => $provinces,
-            'menu' => 'register'
+            'type_menu' => 'register'
         ]);
     }
 
