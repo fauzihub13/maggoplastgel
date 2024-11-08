@@ -34,6 +34,15 @@ class ProductController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request) {
+
+        // Cek apakah produk sudah ada atau belum
+        $product_exists = Product::count();
+
+        if ($product_exists) {
+            // Kembali jiak produk sudah ada
+            return redirect('/produk/daftar-produk')->with('fail', 'Hanya boleh menambahkan 1 produk saja!');
+        }
+
         // Validasi input produk
         $data = $request->validate([
             'name' => 'required|string',
