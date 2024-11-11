@@ -13,7 +13,7 @@
                                     <div class="inner-header">
                                         <div class="logo-header">
                                             <a href="{{ route('user.home')  }}" title="">
-                                                <img src="" alt="images">
+                                                <img src="{{ asset('/images/logo/Logo-x.png') }}" alt="images">
                                                 {{-- <img src="{{ u('/images/logo/Logo-x.png') }}" alt="images"> --}}
                                             </a>
                                         </div>

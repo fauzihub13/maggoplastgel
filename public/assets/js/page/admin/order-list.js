@@ -20,7 +20,7 @@ $(document).ready(function() {
             },
             success: function(response) {
                 console.log(response.data.history);
-                
+
                 response.data.history.forEach(activity => {
                     $(".activities").append(`<div class="activity">
                     <div class="activity-icon bg-primary shadow-primary text-white">
@@ -29,7 +29,7 @@ $(document).ready(function() {
                     <div class="activity-detail">
                         <div class="mb-2">
                             <span class="text-job">${timestampToDatetime(activity.updated_at)}</span>
-                            
+
                         </div>
                         <p>${activity.note}</p>
                         ${activity.status == 'delivered' ? '<button class="btn btn-success mt-2 finish-order" data-id="' + id + '">Selesaikan pesanan</button>' : ''}
@@ -45,7 +45,7 @@ $(document).ready(function() {
         var id = $(this).data('id');
 
         console.log('click');
-        
+
 
         $.ajax({
             url: '/pesanan/selesai/' + id,
