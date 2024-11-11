@@ -56,7 +56,7 @@
                             Beli Lagi
                         </button>
                     @elseif($order->status == 'pending')
-                        <button class="btn btn-outline-primary mr-2 " id="pay-button">
+                        <button class="btn btn-outline-primary mr-2 " id="pay-button-{{ $loop->iteration }}">
                             Bayar Sekarang
                         </button>
                         @php
@@ -65,7 +65,7 @@
 
                         <script type="text/javascript">
                         // For example trigger on button clicked, or any time you need
-                            var payButton = document.getElementById('pay-button');
+                            var payButton = document.getElementById('pay-button-{{ $loop->iteration }}');
                             payButton.addEventListener('click', function () {
                                 // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
                                 window.snap.pay('{{ $snapToken }}');
