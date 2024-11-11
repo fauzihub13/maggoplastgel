@@ -51,13 +51,15 @@
                     </div>
                 </div>
                 <div class="row justify-content-end mt-3">
-                    @if ($order->status == 'shipped' || $order->status == 'arrived')
-                        <button class="btn btn-outline-primary mr-2 tracking-button" data-id="{{ $order->id }}">
-                            Lacak
-                        </button>
-                        <button class="btn btn-primary mr-2" >
+                    @if ($order->status == 'shipped')
+                    <button class="btn btn-outline-primary mr-2 tracking-button" data-id="{{ $order->id }}">
+                        Lacak
+                    </button>
+                    @endif
+                    @if ($order->status == 'arrived')
+                        <a href="/product" class="btn btn-primary mr-2" >
                             Beli Lagi
-                        </button>
+                        </a>
                     @elseif($order->status == 'pending')
                         <button class="btn btn-outline-primary mr-2 " id="pay-button-{{ $index }}">
                             Bayar Sekarang
