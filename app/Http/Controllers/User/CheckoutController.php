@@ -406,7 +406,7 @@ class CheckoutController extends Controller
 
         try {
             $customerInfo = User::findOrFail(Auth::user()->id);
-            $customerAddress = $customerInfo->address_detail;
+            $customerAddress = "$customerInfo->kecamatan, $customerInfo->city, $customerInfo->province";
 
             $response = Http::withHeaders([
                 'content-type' => 'application/json',
