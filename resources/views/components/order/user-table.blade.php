@@ -17,6 +17,9 @@
 @endphp
 
 @foreach ($orders ?? [] as $order)
+    @php
+        $index = $loop->index;
+    @endphp
     @foreach ($order->orderItems as $item)
         <div class="card">
             <div class="card-header justify-content-between">
@@ -56,7 +59,7 @@
                             Beli Lagi
                         </button>
                     @elseif($order->status == 'pending')
-                        <button class="btn btn-outline-primary mr-2 " id="pay-button-{{ $loop->iteration }}">
+                        <button class="btn btn-outline-primary mr-2 " id="pay-button-{{ $index }}">
                             Bayar Sekarang
                         </button>
                         @php
@@ -65,7 +68,7 @@
 
                         <script type="text/javascript">
                         // For example trigger on button clicked, or any time you need
-                            var payButton = document.getElementById('pay-button-{{ $loop->iteration }}');
+                            var payButton = document.getElementById('pay-button-{{ $index }}');
                             payButton.addEventListener('click', function () {
                                 // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
                                 window.snap.pay('{{ $snapToken }}');
