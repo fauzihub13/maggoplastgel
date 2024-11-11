@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header justify-content-between">
                 <h4>#{{ $order->order_number }}</h4>
-                <h4 class="text-secondary">{{ $order->created_at_formatted }}</h4>
+                <h4 class="text-secondary">{{ $order->created_at->toDayDateTimeString() }}</h4>
             </div>
 
             <div class="card-body">
@@ -60,7 +60,7 @@
                             Bayar Sekarang
                         </button>
                         @php
-                            $snapToken = $order->snap_token;
+                            $snapToken = $order->transaction->midtrans_response;
                         @endphp
 
                         <script type="text/javascript">
