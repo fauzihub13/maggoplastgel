@@ -229,28 +229,13 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <!-- /.widget_lastest -->
-                            {{-- <div class="widgets-contact-info">
-                                <div class="contact-info-img">
-                                    <img src="{{ asset('images/blog/young-beautiful-florist-watering-flowers.jpg')}}" alt="image">
-                                </div>
-                                <div class="contact-info-box">
-                                    <div class="contact-info-content">
-                                        <div class="call-us">
-                                            <div class="icon-call-us"></div>
-                                            <div class="content-call-us">
-                                                <div class="heading-16px-rubik">Call Us</div>
-                                                <div class="heading-16px-rubik">360-779-22289</div>
-                                            </div>
-                                        </div>
-                                        <div class="our-mail">
-                                            <div class="icon-our-mail"></div>
-                                            <div class="content-our-mail">
-                                                <div class="heading-16px-rubik">Our Mail</div>
-                                                <div class="heading-16px-rubik">yourname@mail.com</div>
-                                            </div>
-                                        </div>
 
+
+
+                                    </div>
+                                </div>
+                            </div> --}}
+                            
 
                                     </div>
                                 </div>
