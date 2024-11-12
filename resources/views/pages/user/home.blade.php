@@ -648,7 +648,7 @@
                         <div class="owl-carousel owl-theme horizontal-center">
 
 
-                            @if (isset($articlesa))
+                            @if (isset($articles))
                                 {{-- Looping Article --}}
                                 @foreach ($articles as $article)
                                     <div class="item wow fadeInUp">
