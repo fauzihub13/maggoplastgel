@@ -124,6 +124,7 @@
                                             <input type="text"
                                                 class="form-control currency"
                                                 name="price"
+                                                min="1"
                                                 value="{{ isset($product) ? $product->price : "" }}">
                                         </div>
                                         @error('price')
@@ -139,7 +140,7 @@
                                         <input type="number"
                                             class="form-control" 
                                             name="stock"
-                                            min="0"
+                                            min="1"
                                             value="{{ isset($product) ? $product->stock : "" }}"
                                             required>
                                         @error('stock')
@@ -179,6 +180,7 @@
                                                 class="form-control"
                                                 placeholder="Panjang"
                                                 name="length"
+                                                min="1"
                                                 value="{{ isset($product) ? $product->length : "" }}">
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
@@ -198,6 +200,7 @@
                                                 class="form-control"
                                                 placeholder="Lebar"
                                                 name="width"
+                                                min="1"
                                                 value="{{ isset($product) ? $product->width : "" }}">
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
@@ -218,6 +221,7 @@
                                                 class="form-control"
                                                 placeholder="Tinggi"
                                                 name="height"
+                                                min="1"
                                                 value="{{ isset($product) ? $product->height : "" }}">
                                             <div class="input-group-append">
                                                 <div class="input-group-text">

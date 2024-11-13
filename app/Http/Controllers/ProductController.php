@@ -47,12 +47,12 @@ class ProductController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
-            'price' => 'required|integer',
-            'weight' => 'required|integer',
-            'length' => 'nullable|integer',
-            'width' => 'nullable|integer',
-            'height' => 'nullable|integer',
-            'stock' => 'required|integer',
+            'price' => 'required|integer|min:1',
+            'weight' => 'required|integer|min:1',
+            'length' => 'nullable|integer|min:1',
+            'width' => 'nullable|integer|min:1',
+            'height' => 'nullable|integer|min:1',
+            'stock' => 'required|integer|min:1',
             'status' => 'nullable|boolean',
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000',
         ]);
