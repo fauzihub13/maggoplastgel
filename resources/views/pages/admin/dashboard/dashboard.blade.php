@@ -126,7 +126,7 @@
                                     <div class="media-body">
                                         <div class="text-primary float-right">{{ $order->created_at->diffForHumans() }}</div>
                                         <div class="media-title">{{ $order->user->name }}</div>
-                                        <span class="text-small text-muted">Membeli <span class="font-weight-bold">{{ $order->orderItems[0]->quantity }}</span> buah <span class="font-weight-bold">{{ $order->orderItems[0]->product->name }}</span></span>
+                                        <span class="text-small text-muted">Membeli <span class="font-weight-bold">{{ $order->orderItems[0]->quantity ?? "" }}</span> buah <span class="font-weight-bold">{{ $order->orderItems[0]->product->name ?? "Produk dihapus" }}</span></span>
                                     </div>
                                 </li>    
                                 @endforeach
