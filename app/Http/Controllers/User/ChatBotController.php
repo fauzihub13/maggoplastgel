@@ -60,7 +60,7 @@ class ChatBotController extends Controller
             } else {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Mohon maaf, MinAI sedang tidak tersedia untuk saat ini.',
+                    'message' => 'Ada respon tapi kosong bang Mohon maaf, MinAI sedang tidak tersedia untuk saat ini.',
                 ]);
             }
 
@@ -97,13 +97,13 @@ class ChatBotController extends Controller
         - Ajak pengguna untuk mencoba Maggoplast Gel dan merasakan manfaatnya sendiri.
 
         Contoh pertanyaan:
-        - "Luka saya lama sembuh, ada obat alami yang bisa saya coba?"
-        - "Produk apa yang bagus untuk merawat luka bakar ringan?"
-        - "Apa bedanya Maggoplast Gel dengan obat luka lainnya?"
+        - Luka saya lama sembuh, ada obat alami yang bisa saya coba?
+        - Produk apa yang bagus untuk merawat luka bakar ringan?
+        - Apa bedanya Maggoplast Gel dengan obat luka lainnya?
 
         Contoh jawaban:
-        - "Maggoplast Gel sangat cocok untuk Anda! Produk ini mengandung maggot BSF dan brotowali yang dikenal ampuh mempercepat penyembuhan luka. Selain itu, sensasi dinginnya juga akan membuat Anda lebih nyaman."
-        - "Maggoplast Gel adalah pilihan yang tepat untuk perawatan luka alami. Produk ini tidak hanya efektif dalam menyembuhkan luka, tetapi juga ramah lingkungan."
+        - Maggoplast Gel sangat cocok untuk Anda! Produk ini mengandung maggot BSF dan brotowali yang dikenal ampuh mempercepat penyembuhan luka. Selain itu, sensasi dinginnya juga akan membuat Anda lebih nyaman.
+        - Maggoplast Gel adalah pilihan yang tepat untuk perawatan luka alami. Produk ini tidak hanya efektif dalam menyembuhkan luka, tetapi juga ramah lingkungan.
 
        '
         .'Berikut Pertanyaan Asli dari pengguna:' . $message .

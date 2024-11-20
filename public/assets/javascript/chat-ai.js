@@ -22,15 +22,21 @@
         );
 
         // Mengonversi teks diapit ** ke tag <b>
-        formattedResponse = formattedResponse.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+        formattedResponse = formattedResponse.replace(
+            /\*\*(.*?)\*\*/g,
+            "<b>$1</b>"
+        );
 
         // Menambahkan line break sebelum setiap nomor pada daftar bernomor
         formattedResponse = formattedResponse.replace(/(\d+\. )/g, "<br>$1");
 
+        // Menghapus petik markdown
+        formattedResponse = formattedResponse
+            .replace(/```html/g, "")
+            .replace(/```/g, "");
 
         return formattedResponse;
     }
-
 
     function scrollToBottom() {
         var chatBox = document.getElementById("roomChat");
@@ -48,7 +54,7 @@
 
     $("#sendMessage").on("click", function (e) {
         var message = $("#message").val();
-        if(message !== '') {
+        if (message !== "") {
             // Show message from user
             $("#roomChat").append(
                 `<div class="d-flex chat-row right-chat">
@@ -61,8 +67,6 @@
             $("#message").val("");
             scrollToBottom();
 
-            
-
             // Get response from ai
             $.ajax({
                 type: "POST",
@@ -71,14 +75,13 @@
                     message: message,
                 },
                 success: function (response) {
-
                     // Respon dari API
                     var apiResponse = response.message;
 
 
-
                     // Formatting respon
                     var formattedResponse = formatApiResponse(apiResponse);
+                    // console.log(formattedResponse);
 
                     // Validasi respon API
                     if (response.status) {
@@ -93,9 +96,8 @@
                         // Menambahkan HTML ke elemen yang baru dibuat
                         $("#roomChat .chat-text")
                             .last()
-                            .html(formattedResponse);; // Tampilkan pesan error jika ada
+                            .html(formattedResponse); // Tampilkan pesan error jika ada
                         scrollToBottom();
-
                     } else {
                         // console.log(response.message); // Tampilkan pesan error jika ada
                         $("#roomChat").append(
@@ -117,10 +119,5 @@
                 },
             });
         }
-
-
     });
-
-
-
 })(jQuery);
