@@ -89,11 +89,19 @@
                                         @else
                                             {{-- Jika create, tampilkan form untuk upload gambar baru --}}
                                             @for ($i = 1; $i <= 5; $i++)
+                                                @if ($i == 1)
+                                                <div id="image-preview-{{ $i }}" class="image-preview image-preview-product">
+                                                    <label for="image-upload-{{ $i }}" id="image-label">Foto {{ $i }}</label>
+                                                    <input type="file" name="new_images[]" id="image-upload-{{ $i }}" 
+                                                        accept="image/png, image/gif, image/jpeg, image/jpg" required/>
+                                                </div>
+                                                @else
                                                 <div id="image-preview-{{ $i }}" class="image-preview image-preview-product">
                                                     <label for="image-upload-{{ $i }}" id="image-label">Foto {{ $i }}</label>
                                                     <input type="file" name="images[]" id="image-upload-{{ $i }}" 
                                                         accept="image/png, image/gif, image/jpeg, image/jpg"/>
                                                 </div>
+                                                @endif
                                             @endfor
                                         @endif
                                     </div>
