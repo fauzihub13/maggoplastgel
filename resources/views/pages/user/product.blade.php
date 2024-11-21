@@ -42,14 +42,20 @@
                         <div class="col-md-6 wow fadeInUp">
                             <div class="contact-left">
                                 <div class="main-image mb-1">
-                                    <img src="{{ ('storage/'.$product->productImages[0]->path) }}" alt="Maggoplastgel">
+                                    <img src="{{ $product->productImages->isNotEmpty() ? ('storage/'.$product->productImages[0]->path) : asset('images/product/empty-image.png') }}" alt="Maggoplastgel">
                                 </div>
                                 <div class="slider-images d-flex">
-                                    @foreach ($product->productImages as $index => $image)
-                                        <div class="single-image {{ $index === 0 ? 'image-active' : '' }}" >
-                                            <img src="{{('storage/'.$image->path)}}" alt="Maggoplastgel">
+                                    @if ($product->productImages->isNotEmpty())
+                                        @foreach ($product->productImages as $index => $image)
+                                            <div class="single-image {{ $index === 0 ? 'image-active' : '' }}">
+                                                <img src="{{ ('storage/'.$image->path) }}" alt="Maggoplastgel">
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div class="single-image image-active">
+                                            <img src="{{ asset('images/product/empty-image.png') }}" alt="Maggoplastgel">
                                         </div>
-                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
                             <div class="themesflat-spacer clearfix" data-desktop="0" data-mobile="30" data-smobile="30"></div>

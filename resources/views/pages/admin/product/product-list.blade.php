@@ -70,7 +70,7 @@
                                         <tr>
                                             <td class="d-flex">
                                                 <figure class="rounded border mr-2">
-                                                    <img src="/storage/{{ $product->productImages()->first()->path ?? '' }}" class="product-image" alt="...">
+                                                    <img src="{{ isset($product->productImages()->first()->path) ? "/storage/" . $product->productImages()->first()->path : asset('images/product/empty-image.png') }}" class="product-image" alt="...">
                                                 </figure>
                                                 <div>
                                                     <span class="fw-bold">{{ $product->name }}</span>

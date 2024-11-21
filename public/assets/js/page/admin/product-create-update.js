@@ -62,6 +62,7 @@ $("select").selectric();
         $(this).parent().css("background-image", "none")
         $(this).hide()
         $(this).siblings('.delete-image-list').prop('checked', true)
+        $(this).siblings(".change-image").prop("required", true);
     });
 
     $('.change-image').on('change', function(){

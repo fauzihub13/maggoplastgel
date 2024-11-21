@@ -68,6 +68,19 @@
                                         
                                         @if (isset($product))
                                             @foreach ($product->productImages as $index => $image)
+                                                @if ($index == 0)
+                                                <div id="image-preview-{{ $index + 1 }}" class="image-preview image-preview-product position-relative"
+                                                style="background-image: url('/storage/{{ $image->path }}'); background-size: cover; background-position: center;">
+                                                    <button type="button" class="btn btn-light position-absolute z-15 top-50 start-50 delete-prev-image"><i class="fas fa-trash"></i></button>
+                                                    <label for="image-upload-{{ $index + 1 }}" id="image-label">Foto {{ $index + 1 }}</label>
+                                                    <input type="file" name="images[{{ $image->id }}]" class="change-image" id="image-upload-{{ $index + 1 }}" 
+                                                        accept="image/png, image/gif, image/jpeg, image/jpg"
+                                                        oninvalid="this.setCustomValidity('Foto 1 wajib diisi')" 
+                                                        oninput="this.setCustomValidity('')"
+                                                        />
+                                                    <input type="checkbox" class="delete-image-list" name="delete_images[]" value="{{ $image->id }}" id="">
+                                                </div>
+                                                @else
                                                 <div id="image-preview-{{ $index + 1 }}" class="image-preview image-preview-product position-relative"
                                                 style="background-image: url('/storage/{{ $image->path }}'); background-size: cover; background-position: center;">
                                                     <button type="button" class="btn btn-light position-absolute z-15 top-50 start-50 delete-prev-image"><i class="fas fa-trash"></i></button>
@@ -76,6 +89,7 @@
                                                         accept="image/png, image/gif, image/jpeg, image/jpg"/>
                                                     <input type="checkbox" class="delete-image-list" name="delete_images[]" value="{{ $image->id }}" id="">
                                                 </div>
+                                                @endif
                                             @endforeach
 
                                             {{-- Slot kosong jika gambar kurang dari 5 --}}
@@ -92,8 +106,11 @@
                                                 @if ($i == 1)
                                                 <div id="image-preview-{{ $i }}" class="image-preview image-preview-product">
                                                     <label for="image-upload-{{ $i }}" id="image-label">Foto {{ $i }}</label>
-                                                    <input type="file" name="new_images[]" id="image-upload-{{ $i }}" 
-                                                        accept="image/png, image/gif, image/jpeg, image/jpg" required/>
+                                                    <input type="file" name="images[]" id="image-upload-{{ $i }}" 
+                                                        accept="image/png, image/gif, image/jpeg, image/jpg"
+                                                        oninvalid="this.setCustomValidity('Foto 1 wajib diisi')" 
+                                                        oninput="this.setCustomValidity('')"
+                                                        required/>
                                                 </div>
                                                 @else
                                                 <div id="image-preview-{{ $i }}" class="image-preview image-preview-product">

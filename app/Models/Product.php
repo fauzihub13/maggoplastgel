@@ -9,20 +9,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory, HasUuids, SoftDeletes;
+    use HasFactory, HasUuids;
 
     /**
      * Atribut yang tidak dapat diisi
      */
     protected $guarded = [
 
-    ];
-
-    /**
-     * Atribut yang akan diubah menjadi tipe data tertentu
-     */
-    protected $dates = [
-        'deleted_at'
     ];
 
     /**
