@@ -27,7 +27,7 @@
             },
             success: function (data) {
                 $('#' + tag).empty();
-                $('#' + tag).append('<option>-- Pilih --</option>');
+                $('#' + tag).append('<option value="">-- Pilih --</option>');
                 $.each(data, function (key, value) {
                     $('#' + tag).append('<option value="' + value + '"'+ (value == selected ? ' selected' : '') + '>' + value + '</option>');
                 });
