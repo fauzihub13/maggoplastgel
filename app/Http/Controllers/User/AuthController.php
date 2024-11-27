@@ -72,14 +72,14 @@ class AuthController extends Controller
     public function registerStore(Request $request) {
         $validator = Validator::make($request->all(), [
             'name'=> 'required|string',
-            'password' => 'required|string|confirmed',
+            'password' => 'required|string|min:8|confirmed',
             'email'=> 'required|email|unique:users,email',
-            'phone_number'=> 'required|integer',
+            'phone_number'=> 'required|integer|digits_between:11,14',
             'province'=> 'required|string',
             'city'=> 'required|string',
             'kecamatan'=> 'required|string',
             'kelurahan'=> 'required|string',
-            'zip_code'=> 'required|integer',
+            'zip_code'=> 'required|integer|digits:5',
             'address_detail'=> 'required|string',
         ]);
 

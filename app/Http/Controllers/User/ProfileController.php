@@ -55,12 +55,12 @@ class ProfileController extends Controller
         $validator = Validator::make($request->all(), [
             'name'=> 'required|string',
             'email'=> 'required|email|unique:users,email,' . Auth::user()->id,
-            'phone_number'=> 'required|integer',
+            'phone_number'=> 'required|integer|digits_between:11,14',
             'province'=> 'required|string',
             'city'=> 'required|string',
             'kecamatan'=> 'required|string',
             'kelurahan'=> 'required|string',
-            'zip_code'=> 'required|integer',
+            'zip_code'=> 'required|integer|digits:5',
             'address_detail'=> 'required|string',
         ]);
 
