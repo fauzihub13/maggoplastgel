@@ -100,9 +100,9 @@ class CheckoutController extends Controller
                 }
 
                 // Cek apakah order item sudah ada untuk produk yang sama
-                $orderItem = $order->orderItems()->where('product_id', $product->id)->first();
+                $orderExist = $order->orderItems()->count();
 
-                if (!$orderItem) {
+                if (!$orderExist) {
                     // Jika order item tidak ditemukan, buat yang baru
                     $orderItem = new OrderItem();
                     $orderItem->order_id = $order->id;
@@ -113,6 +113,7 @@ class CheckoutController extends Controller
 
                 } else {
                     // Jika sudah ada, update kuantitas dan harga (jika perlu)
+                    $orderItem = $order->orderItems()->first();
                     $orderItem->product_id = $product->id;
                     $orderItem->quantity = $quantity;
                     $orderItem->price = $product->price;
